@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "kill": "npx kill-port 8080"
+    "kill": "npx kill-port 8080",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "core-js": "3.6.5",
