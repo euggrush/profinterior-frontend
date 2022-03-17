@@ -72,7 +72,7 @@
             </p>
           </div>
         </div>
-        <img class="img-fluid" src="assets/img/ipad.png" alt="..." />
+        <img class="img-fluid" src="../assets/img/ipad.png" alt="..." />
       </div>
     </section>
     <!-- Projects-->
@@ -83,7 +83,7 @@
           <div class="col-xl-8 col-lg-7">
             <img
               class="img-fluid mb-3 mb-lg-0"
-              src="assets/img/bg-masthead.jpg"
+              src="../assets/img/bg-masthead.jpg"
               alt="..."
             />
           </div>
@@ -103,7 +103,7 @@
           <div class="col-lg-6">
             <img
               class="img-fluid"
-              src="assets/img/demo-image-01.jpg"
+              src="../assets/img/demo-image-01.jpg"
               alt="..."
             />
           </div>
@@ -129,7 +129,7 @@
           <div class="col-lg-6">
             <img
               class="img-fluid"
-              src="assets/img/demo-image-02.jpg"
+              src="../assets/img/demo-image-02.jpg"
               alt="..."
             />
           </div>
@@ -299,7 +299,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+  mounted() {
+    this.getMenuWork();
+  },
+};
 </script>
 
 <style lang="scss" scoped>
