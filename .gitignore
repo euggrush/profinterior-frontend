@@ -1,5 +1,2 @@
 node_modules
-<<<<<<< HEAD
-dist
-=======
->>>>>>> 3c0d49a3f02ba67b419a6404745368a998a78690
+dist/
