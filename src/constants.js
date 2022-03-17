@@ -1,0 +1,1 @@
+export const DEFAULT_AVATAR = `https://www.turneo.ru/i/noavatar.jpeg`;
