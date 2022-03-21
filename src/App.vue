@@ -3,30 +3,9 @@
 </template>
 
 <style lang="scss">
-body {
-  background-color: $mainWhite;
-  @include media-breakpoint-up(sm) {
-    font-size: $font-size-small;
-  }
-  @include media-breakpoint-up(md) {
-    font-size: $font-size-medium;
-  }
-  @include media-breakpoint-up(lg) {
-    font-size: $font-size-medium;
-  }
-  @include media-breakpoint-up(xl) {
-    font-size: $font-size-large;
-  }
-  @include media-breakpoint-up(xxl) {
-    font-size: $font-size-xxl;
-  }
-}
 #app {
-  // font-family: "Cormorant Garamond", "Ubuntu", "sans-serif";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: $mainBlack;
 }
 
 #nav {
