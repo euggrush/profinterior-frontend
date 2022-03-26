@@ -1,6 +1,6 @@
 <template>
   <!-- Masthead-->
-  <header class="masthead">
+  <header class="masthead" id="header">
     <div
       class="
         container
@@ -13,7 +13,7 @@
     >
       <div class="d-flex justify-content-center">
         <div class="text-center">
-          <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
+          <h1 class="mx-auto my-0 text-uppercase">Profinterior</h1>
           <h2 class="text-white-50 mx-auto mt-2 mb-5">
             A free, responsive, one page Bootstrap theme created by Start
             Bootstrap.

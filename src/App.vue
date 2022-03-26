@@ -1,7 +1,22 @@
 <template>
+  <Navigation />
   <router-view />
+  <Footer />
 </template>
 
+<script>
+import Navigation from "./components/Partials/Navigation.vue";
+import Footer from "./components/Partials/Footer.vue";
+export default {
+  components: {
+    Navigation,
+    Footer,
+  },
+  mounted() {
+    this.getMenuWork();
+  },
+};
+</script>
 <style lang="scss">
 #app {
   -webkit-font-smoothing: antialiased;

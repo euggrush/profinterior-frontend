@@ -1,25 +1,33 @@
 <template>
   <section id="page-top">
-    <Navigation />
+    <!-- <Navigation /> -->
     <Header />
-    <About />
+    <!-- <About /> -->
     <Projects />
     <Signup />
     <Contact />
-    <Footer />
+    <!-- <Footer /> -->
   </section>
 </template>
 
 <script>
-import Navigation from "../components/Partials/Navigation.vue";
+// import Navigation from "../components/Partials/Navigation.vue";
 import Header from "../components/Partials/Header.vue";
-import Footer from "../components/Partials/Footer.vue";
-import About from "../components/Partials/About.vue";
+// import Footer from "../components/Partials/Footer.vue";
+// import About from "../components/Partials/About.vue";
 import Projects from "../components/Partials/Projects.vue";
 import Signup from "../components/Partials/Signup.vue";
 import Contact from "../components/Partials/Contact.vue";
 export default {
-  components: { Navigation, Header, Footer, About, Projects, Signup, Contact },
+  components: {
+    // Navigation,
+    Header,
+    // Footer,
+    // About,
+    Projects,
+    Signup,
+    Contact,
+  },
   mounted() {
     this.getMenuWork();
   },
