@@ -1,6 +1,6 @@
 <template>
     <section class="container-fluid">
-        <h1 class="text-white">Комнаты, гостинные</h1>
+        <h1 class="text-white text-capitalize">гостиные</h1>
     </section>
 </template>
 

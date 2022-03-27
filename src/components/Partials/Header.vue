@@ -30,4 +30,7 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
+h1 {
+  font-size: 5.9vw;
+}
 </style>

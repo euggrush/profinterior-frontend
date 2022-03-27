@@ -39,11 +39,11 @@
           <div class="bg-black text-center h-100 project">
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white">Комнаты, гостинные</h4>
-                <p class="mb-0 text-white-50">
+                <h4 class="text-white text-capitalize">гостиные</h4>
+                <!-- <p class="mb-0 text-white-50">
                   An example of where you can put an image of a project, or
                   anything else, along with a description.
-                </p>
+                </p> -->
                 <hr class="d-none d-lg-block mb-0 ms-0" />
               </div>
             </div>
@@ -64,11 +64,11 @@
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-right">
                 <h4 class="text-white">Ванные комнаты</h4>
-                <p class="mb-0 text-white-50">
+                <!-- <p class="mb-0 text-white-50">
                   Another example of a project with its respective description.
                   These sections work well responsively as well, try this theme
                   on a small screen!
-                </p>
+                </p> -->
                 <hr class="d-none d-lg-block mb-0 me-0" />
               </div>
             </div>
