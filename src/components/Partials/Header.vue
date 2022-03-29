@@ -16,9 +16,9 @@
           width="320"
           height="240"
           autoplay
-          loop
           muted
-          controls
+          playsinline
+          loop
           id="myVideo"
         >
           <source
@@ -33,7 +33,7 @@
             A free, responsive, one page Bootstrap theme created by Start
             Bootstrap.
           </h2>
-          <a class="btn btn-primary" href="#about">Get Started</a>
+          <a class="btn btn-primary" href="#signup">Get Started</a>
         </div>
       </div>
     </div>
@@ -49,7 +49,8 @@ h1 {
   font-size: 5.9vw;
 }
 #myVideo {
-  object-fit: cover;
+  // object-fit: cover;
+  object-fit: scale-down;
   width: 100%;
   height: 100%;
   position: absolute;

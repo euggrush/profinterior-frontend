@@ -12008,13 +12008,14 @@ body {
   height: auto;
   min-height: 35rem;
   padding: 15rem 0;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.3) 0%,
-      rgba(0, 0, 0, 0.7) 75%,
-      #000 100%
-    ),
-    url("./assets/img/bg-masthead.jpg");
+  background-color: $mainBlack;
+  // background: linear-gradient(
+  //     to bottom,
+  //     rgba(0, 0, 0, 0.3) 0%,
+  //     rgba(0, 0, 0, 0.7) 75%,
+  //     #000 100%
+  //   ),
+  //   url("./assets/img/bg-masthead.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
