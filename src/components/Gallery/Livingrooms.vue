@@ -1,6 +1,6 @@
 <template>
   <section class="container-fluid ps-5 pe-5">
-    <h1 class="text-white text-capitalize">спальни</h1>
+    <h1 class="text-white text-capitalize">гостиные</h1>
     <div class="row row-cols-auto row-cols-md-3 mt-5">
       <div class="col">
         <img

@@ -33,7 +33,7 @@
             A free, responsive, one page Bootstrap theme created by Start
             Bootstrap.
           </h2>
-          <a class="btn btn-primary" href="#signup">Get Started</a>
+          <a class="btn btn-primary" @click="scrollToContent" href="#">Get Started</a>
         </div>
       </div>
     </div>
@@ -41,7 +41,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    scrollToContent() {
+      window.scrollTo(
+        0,
+        document.getElementById(`signup`).getBoundingClientRect().y +
+          window.scrollY -
+          120
+      );
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

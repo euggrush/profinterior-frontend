@@ -26,7 +26,7 @@
       <!-- Project One Row-->
       <div
         class="row gx-0 mb-5 mb-lg-0 justify-content-center mt-5"
-        @click="getBedrooms"
+        @click="getLivingrooms"
       >
         <div class="col-lg-6">
           <img
@@ -75,6 +75,33 @@
           </div>
         </div>
       </div>
+      <!-- Project Three Row-->
+      <div
+        class="row gx-0 mb-5 mb-lg-0 justify-content-center"
+        @click="getBedrooms"
+      >
+        <div class="col-lg-6">
+          <img
+            class="img-fluid"
+            src="../../assets/img/gallery-bedroom2.jpg"
+            alt="..."
+          />
+        </div>
+        <div class="col-lg-6">
+          <div class="bg-black text-center h-100 project">
+            <div class="d-flex h-100">
+              <div class="project-text w-100 my-auto text-center text-lg-left">
+                <h4 class="text-white text-capitalize">спальни</h4>
+                <!-- <p class="mb-0 text-white-50">
+                  An example of where you can put an image of a project, or
+                  anything else, along with a description.
+                </p> -->
+                <hr class="d-none d-lg-block mb-0 ms-0" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -82,11 +109,14 @@
 <script>
 export default {
   methods: {
-    getBedrooms() {
-      this.$router.push(`/bedrooms`);
+    getLivingrooms() {
+      this.$router.push(`/livingrooms`);
     },
     getBathrooms() {
       this.$router.push(`/bathrooms`);
+    },
+    getBedrooms() {
+      this.$router.push(`/bedrooms`);
     },
   },
 };

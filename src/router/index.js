@@ -3,8 +3,9 @@ import {
   createWebHashHistory
 } from 'vue-router'
 import Home from '../views/Home.vue'
-import Bedrooms from '../components/Gallery/Bedrooms.vue'
+import Livingrooms from '../components/Gallery/Livingrooms.vue'
 import Bathrooms from '../components/Gallery/Bathrooms.vue'
+import Bedrooms from '../components/Gallery/Bedrooms.vue'
 
 const routes = [{
     path: '/',
@@ -20,13 +21,18 @@ const routes = [{
     component: () => import( /* webpackChunkName: "about" */ '../views/About.vue')
   },
   {
-    path: '/bedrooms',
-    component: Bedrooms
+    path: '/livingrooms',
+    component: Livingrooms
   },
   {
     path: '/bathrooms',
     component: Bathrooms
+  },
+  {
+    path: '/bedrooms',
+    component: Bedrooms
   }
+
 
 ]
 
