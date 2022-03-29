@@ -12,7 +12,22 @@
       "
     >
       <div class="d-flex justify-content-center">
-        <div class="text-center">
+        <video
+          width="320"
+          height="240"
+          autoplay
+          loop
+          muted
+          controls
+          id="myVideo"
+        >
+          <source
+            src="../../assets/video/header-backgound.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div class="text-center" id="content">
           <h1 class="mx-auto my-0 text-uppercase">Profinterior</h1>
           <h2 class="text-white-50 mx-auto mt-2 mb-5">
             A free, responsive, one page Bootstrap theme created by Start
@@ -32,5 +47,16 @@ export default {};
 <style lang="scss" scoped>
 h1 {
   font-size: 5.9vw;
+}
+#myVideo {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#content {
+  z-index: 2;
 }
 </style>
