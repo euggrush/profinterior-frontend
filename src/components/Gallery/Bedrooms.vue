@@ -37,4 +37,8 @@ export default {};
   padding-top: 10em;
   min-height: 100vh;
 }
+.img-thumbnail {
+  background-color: $mainBlack !important;
+  border: none !important;
+}
 </style>

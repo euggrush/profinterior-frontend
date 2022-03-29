@@ -18,13 +18,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#header">About</a>
+            <a class="nav-link" href="#">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link" href="#">Projects</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#signup">Contact</a>
+            <a class="nav-link" href="#">Contact</a>
           </li>
         </ul>
       </div>
@@ -33,7 +33,18 @@
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    scrollToContent() {
+      window.scrollTo(
+        0,
+        document.getElementById(`projects`).getBoundingClientRect().y +
+          window.scrollY -
+          120
+      );
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
