@@ -18,7 +18,7 @@
       </div>
       <div class="col">
         <img
-          src="../../assets/img/livingroom1.jpg"
+          src="../../assets/img/livingroom3.jpg"
           class="img-thumbnail"
           alt="image"
         />
@@ -40,5 +40,20 @@ export default {};
 .img-thumbnail {
   background-color: $mainBlack !important;
   border: none !important;
+}
+.col {
+  cursor: pointer;
+}
+.col:hover {
+  position: absolute;
+  left: 50%;
+  width: 98%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+.col img:hover {
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
 }
 </style>
