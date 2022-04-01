@@ -1,0 +1,9 @@
+[
+    {
+        "id": "1",
+        "email": "erushin@mail.com",
+        "password_hash": "hgvbjhkjklnjbhjbh",
+        "name": "Eugene",
+        "role": "admin"
+    }
+]

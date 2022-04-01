@@ -2,7 +2,10 @@
   <section class="container-fluid ps-5 pe-5">
     <h1 class="text-white text-capitalize">гостиные</h1>
     <div class="row row-cols-auto row-cols-md-3 mt-5">
-      <div class="col">
+      <div
+        class="col"
+        :class="{ 'full-size': isFullPicture, show: !isFullPicture }"
+      >
         <img
           src="../../assets/img/livingroom1.jpg"
           class="img-thumbnail"
@@ -28,7 +31,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isFullPicture: false,
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -44,16 +53,16 @@ export default {};
 .col {
   cursor: pointer;
 }
-.col:hover {
-  position: absolute;
-  left: 50%;
-  width: 98%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-.col img:hover {
-  width: 100%;
-  max-height: 70vh;
-  object-fit: cover;
-}
+// .col:hover {
+//   position: absolute;
+//   left: 50%;
+//   width: 98%;
+//   -webkit-transform: translateX(-50%);
+//   transform: translateX(-50%);
+// }
+// .col img:hover {
+//   width: 100%;
+//   max-height: 70vh;
+//   object-fit: cover;
+// }
 </style>

@@ -1,0 +1,53 @@
+[
+    {
+        "id": 1,
+        "title": "project 1 title",
+        "description": "project 1 description",
+        "category_id": 1,
+        "categories": {
+            "id": 1,
+            "name": "Гостиные"
+        },
+        "pictures": [
+            {
+                "id": 1,
+                "path": "image1.jpeg",
+                "project_id": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "project 4 title",
+        "description": "project 4 description",
+        "category_id": 1,
+        "categories": {
+            "id": 1,
+            "name": "Гостиные"
+        },
+        "pictures": [
+            {
+                "id": 8,
+                "path": "image8.jpeg",
+                "project_id": 4
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "project 3 title",
+        "description": "project 3 description",
+        "category_id": 1,
+        "categories": {
+            "id": 1,
+            "name": "Гостиные"
+        },
+        "pictures": [
+            {
+                "id": 9,
+                "path": "image9.jpeg",
+                "project_id": 3
+            }
+        ]
+    }
+]
