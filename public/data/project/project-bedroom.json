@@ -11,7 +11,7 @@
         "pictures": [
             {
                 "id": 1,
-                "path": "image1.jpeg",
+                "path": "https://i.ibb.co/8nk6S6k/gallery-bedroom.jpg",
                 "project_id": 1
             }
         ]
@@ -28,7 +28,7 @@
         "pictures": [
             {
                 "id": 8,
-                "path": "image8.jpeg",
+                "path": "https://i.ibb.co/27smvy1/livingroom3.jpg",
                 "project_id": 4
             }
         ]
@@ -45,7 +45,7 @@
         "pictures": [
             {
                 "id": 9,
-                "path": "image9.jpeg",
+                "path": "https://i.ibb.co/zfQ4FDv/livingroom2.jpg",
                 "project_id": 3
             }
         ]
