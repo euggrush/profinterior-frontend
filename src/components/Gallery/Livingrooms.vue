@@ -3,16 +3,15 @@
     <h1 class="text-white text-capitalize">гостиные</h1>
     <div class="row row-cols-auto row-cols-md-3 mt-5">
       <div
+        v-for="(image, index) in galleryImages"
+        :key="index"
         class="col"
-        :class="{ 'full-size': isFullPicture, show: !isFullPicture }"
+        :class="{ 'full-size': isFullPicture }"
+        @click="showFullImage"
       >
-        <img
-          src="../../assets/img/livingroom1.jpg"
-          class="img-thumbnail"
-          alt="image"
-        />
+        <img :src="image" class="img-thumbnail" alt="image" />
       </div>
-      <div class="col">
+      <!-- <div class="col">
         <img
           src="../../assets/img/livingroom2.jpg"
           class="img-thumbnail"
@@ -25,7 +24,7 @@
           class="img-thumbnail"
           alt="image"
         />
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -35,7 +34,19 @@ export default {
   data() {
     return {
       isFullPicture: false,
+      hideColumn: false,
+      galleryImages: [
+       `livingroom1.jpg`,
+        `/img/livingroom2.jpg`,
+        `/img/livingroom3.jpg`,
+      ],
     };
+  },
+  methods: {
+    showFullImage() {
+      this.isFullPicture = true;
+      this.hideColumn = true;
+    },
   },
 };
 </script>
