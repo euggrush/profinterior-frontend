@@ -41,32 +41,31 @@ export default {
     },
   },
   mounted() {
-    this.fetchData(`./data/categories.json`);
+    this.fetchData(`./data/categories.json`).then((r) => {
+      this.categories = r;
+    });
   },
   methods: {
     getRooms(arg) {
       switch (arg) {
         case `Гостиные`:
-          this.getLivingrooms();
+          this.getGallery(`Гостиные`);
           break;
         case `Ванные комнаты`:
-          this.getBathrooms();
+          this.getGallery(`Ванные комнаты`);
           break;
         case `Спальни`:
-          this.getBedrooms();
+          this.getGallery(`Спальни`);
           break;
         default:
           return;
       }
     },
-    getLivingrooms() {
-      this.$router.push(`/livingrooms`);
-    },
-    getBathrooms() {
-      this.$router.push(`/bathrooms`);
-    },
-    getBedrooms() {
-      this.$router.push(`/bedrooms`);
+    getGallery(arg) {
+      this.$router.push({
+        path: "/gallery",
+        query: { rooms: "livingrooms", title: arg },
+      });
     },
   },
 };

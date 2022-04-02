@@ -1,30 +1,10 @@
 <template>
   <section class="container-fluid ps-5 pe-5">
-    <h1 class="text-white text-capitalize">гостиные</h1>
+    <h1 class="text-white text-capitalize">{{title}}</h1>
     <div class="row row-cols-auto row-cols-md-3 mt-5">
-      <div
-        v-for="(image, index) in galleryImages"
-        :key="index"
-        class="col"
-        :class="{ 'full-size': isFullPicture }"
-        @click="showFullImage"
-      >
-        <img :src="image" class="img-thumbnail" alt="image" />
+      <div v-for="(room, index) in roomsList" :key="index" class="col">
+        <img :src="room.pictures[0].path" class="img-thumbnail" alt="image" />
       </div>
-      <!-- <div class="col">
-        <img
-          src="../../assets/img/livingroom2.jpg"
-          class="img-thumbnail"
-          alt="image"
-        />
-      </div>
-      <div class="col">
-        <img
-          src="../../assets/img/livingroom3.jpg"
-          class="img-thumbnail"
-          alt="image"
-        />
-      </div> -->
     </div>
   </section>
 </template>
@@ -35,12 +15,22 @@ export default {
     return {
       isFullPicture: false,
       hideColumn: false,
-      galleryImages: [
-       `livingroom1.jpg`,
-        `/img/livingroom2.jpg`,
-        `/img/livingroom3.jpg`,
-      ],
+      rooms: [],
+      title: ``,
+      roomsQuery: ``,
     };
+  },
+  computed: {
+    roomsList() {
+      return this.rooms;
+    },
+  },
+  mounted() {
+    console.log(this.$route.query);
+    this.title = this.$route.query.title;
+    this.fetchData(`./data/project/project-livingroom.json`).then((r) => {
+      this.rooms = r;
+    });
   },
   methods: {
     showFullImage() {

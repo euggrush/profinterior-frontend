@@ -5,14 +5,15 @@ const dayjs = require("dayjs");
 export default {
     methods: {
         async fetchData(arg) {
+            let result = [];
             let response = await fetch(arg);
             if (response.ok) {
-              this.categories = await response.json();
-              console.log(this.categories)
+                result = await response.json();
             } else {
-              alert(response.status);
+                alert(response.status);
             }
-          },
+            return result
+        },
         scrollToTop() {
             window.scrollTo(0, 0);
         },
