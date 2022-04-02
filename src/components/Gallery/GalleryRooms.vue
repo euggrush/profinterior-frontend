@@ -1,6 +1,6 @@
 <template>
   <section class="container-fluid ps-5 pe-5">
-    <h1 class="text-white text-capitalize">{{title}}</h1>
+    <h1 class="text-white text-capitalize">{{ title }}</h1>
     <div class="row row-cols-auto row-cols-md-3 mt-5">
       <div v-for="(room, index) in roomsList" :key="index" class="col">
         <img :src="room.pictures[0].path" class="img-thumbnail" alt="image" />
@@ -26,11 +26,14 @@ export default {
     },
   },
   mounted() {
-    console.log(this.$route.query);
+    console.log(this.$route.query.rooms);
     this.title = this.$route.query.title;
-    this.fetchData(`./data/project/project-livingroom.json`).then((r) => {
-      this.rooms = r;
-    });
+    this.roomsQuery = this.$route.query.rooms;
+    this.fetchData(`./data/project/project-${this.roomsQuery}.json`).then(
+      (r) => {
+        this.rooms = r;
+      }
+    );
   },
   methods: {
     showFullImage() {

@@ -49,13 +49,13 @@ export default {
     getRooms(arg) {
       switch (arg) {
         case `Гостиные`:
-          this.getGallery(`Гостиные`);
+          this.getGallery({ title: `Гостиные`, query: `livingroom` });
           break;
         case `Ванные комнаты`:
-          this.getGallery(`Ванные комнаты`);
+          this.getGallery({ title: `Ванные комнаты`, query: `bathroom` });
           break;
         case `Спальни`:
-          this.getGallery(`Спальни`);
+          this.getGallery({ title: `Спальни`, query: `bedroom` });
           break;
         default:
           return;
@@ -64,7 +64,7 @@ export default {
     getGallery(arg) {
       this.$router.push({
         path: "/gallery",
-        query: { rooms: "livingrooms", title: arg },
+        query: { title: arg.title, rooms: arg.query },
       });
     },
   },
