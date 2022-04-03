@@ -8,6 +8,10 @@
         class="col"
         @click="getProject(room.id)"
       >
+        <p class="text-white text-capitalize fw-bold">{{ room.title }}</p>
+        <p class="text-white text-capitalize fst-italic fw-lighter">
+          Project description here...
+        </p>
         <img :src="room.pictures[0].path" class="img-thumbnail" alt="image" />
       </div>
     </div>
@@ -60,5 +64,13 @@ export default {
 }
 .col {
   cursor: pointer;
+}
+img {
+  transition: all 2s ease-in-out;
+  box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
+}
+
+img:hover {
+  transform: scale(1.1);
 }
 </style>

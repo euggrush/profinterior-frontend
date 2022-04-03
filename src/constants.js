@@ -1,5 +1,6 @@
 export const DEFAULT_AVATAR = `https://www.turneo.ru/i/noavatar.jpeg`;
 export const BASE_URL_LOCAL = `./data/`;
+export const BASE_URL = ``;
 export const URL_IMAGES = [
     `https://i.ibb.co/27smvy1/livingroom3.jpg`,
     `https://i.ibb.co/dKkMLn0/bathroom3.jpg`,

@@ -75,7 +75,12 @@ export default {
 .row {
   cursor: pointer;
 }
-.row:hover {
-  opacity: 0.9;
+img{
+  transition: all 2s ease-in-out;
+  box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
 }
+
+img:hover{
+  transform: scale(1.1);
+} 
 </style>
