@@ -4,6 +4,7 @@ import {
 } from 'vue-router'
 import Home from '../views/Home.vue'
 import GalleryRooms from '../components/Gallery/GalleryRooms.vue'
+import ProjectSingle from '../components/ProjectSingle/ProjectSingle.vue'
 
 const routes = [{
     path: '/',
@@ -13,6 +14,10 @@ const routes = [{
   {
     path: '/gallery',
     component: GalleryRooms
+  },
+  {
+    path: '/gallery/:id',
+    component: ProjectSingle
   },
 ]
 
