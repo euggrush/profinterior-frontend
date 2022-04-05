@@ -10,7 +10,7 @@
       >
         <p class="text-white text-capitalize fw-bold">{{ room.title }}</p>
         <p class="text-white text-capitalize fst-italic fw-lighter">
-          Project description here...
+         {{room.description}}
         </p>
         <img :src="room.pictures[0].path" class="img-thumbnail" alt="image" />
       </div>
