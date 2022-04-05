@@ -23,7 +23,8 @@ import {
 
 export const store = new Vuex.Store({
   state: {
-    categories: []
+    categories: [],
+    uploaded_file: []
   },
   plugins: [
     createLogger(),
@@ -40,11 +41,42 @@ export const store = new Vuex.Store({
     }),
   ],
   mutations: {
+    SET_GENERAL_ERRORS(state, payload) {
+      if (payload.response) {
+        state.general_errors = {
+          data: payload.response.data,
+          status: payload.response.status,
+          headers: payload.response.headers
+        }
+      } else if (payload.request) {
+        state.general_errors = {
+          request: payload.request
+        }
+      } else {
+        state.general_errors = {
+          error: payload.message
+        }
+      }
+      console.log(payload.config);
+    },
     SET_CATEGORIES(state, payload) {
       state.categories = payload;
-    }
+    },
+    SET_UPLOADED_FILE(state, payload) {
+      state.uploaded_file = payload;
+    },
   },
   actions: {
+    UPLOAD: async (context, payload) => {
+      Axios.post(`${BASE_URL}/pictures`, payload).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_UPLOADED_FILE`, data);
+        }
+      ).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
     GET_CATEGORIES: async (context, payload) => {
       let url = `../../public/data/categories.json`;
 

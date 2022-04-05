@@ -5,6 +5,7 @@ import {
 import Home from '../views/Home.vue'
 import GalleryRooms from '../components/Gallery/GalleryRooms.vue'
 import ProjectSingle from '../components/ProjectSingle/ProjectSingle.vue'
+import Upload from '../components/ProjectSingle/Upload.vue'
 
 const routes = [{
     path: '/',
@@ -19,6 +20,10 @@ const routes = [{
     path: '/gallery/:id',
     component: ProjectSingle
   },
+  {
+    path: '/upload',
+    component: Upload
+  }
 ]
 
 const router = createRouter({
