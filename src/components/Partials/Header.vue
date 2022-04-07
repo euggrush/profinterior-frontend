@@ -37,7 +37,7 @@
             height="10"
           />
           <img
-            class="design-text-image mx-auto mt-5 mb-5 d-block"
+            class="design-quote-image mx-auto mt-5 mb-5 d-block"
             src="../../assets/img/design-text.png"
             alt="logo"
             width="100"
@@ -102,7 +102,26 @@ h1 {
     width: 34vw;
   }
   @include media-breakpoint-up(xxl) {
-    width: 39vw;
+    width: 35vw;
+  }
+}
+.design-quote-image {
+  width: 80vw;
+  height: auto;
+  @include media-breakpoint-up(sm) {
+    width: 28vw;
+  }
+  @include media-breakpoint-up(md) {
+    width: 50vw;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 33vw;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 30vw;
+  }
+  @include media-breakpoint-up(xxl) {
+    width: 28vw;
   }
 }
 </style>

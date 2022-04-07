@@ -42,12 +42,12 @@ export default {
                     }
                     if (window.scrollY === 0) {
                         navbarCollapsible.classList.remove('navbar-shrink');
-                        logo.classList.add(`d-none`);
-                        logoWhite.classList.remove(`d-none`);
+                        // logo.classList.add(`d-none`);
+                        // logoWhite.classList.remove(`d-none`);
                     } else {
                         navbarCollapsible.classList.add('navbar-shrink');
-                        logo.classList.remove(`d-none`);
-                        logoWhite.classList.add(`d-none`);
+                        // logo.classList.remove(`d-none`);
+                        // logoWhite.classList.add(`d-none`);
                     }
 
                 };
