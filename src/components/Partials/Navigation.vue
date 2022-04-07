@@ -12,7 +12,7 @@
         />
         <img
           class="logo-white"
-          src="../../assets/img/logo-black.png"
+          src="../../assets/img/logo-white.png"
           alt="logo"
           width="100"
           height="10"
