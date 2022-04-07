@@ -19,7 +19,7 @@
           <div class="card py-4 h-100">
             <div class="card-body text-center">
               <i class="fas fa-envelope text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Email</h4>
+              <h4 class="text-uppercase m-0">Электронная почта</h4>
               <hr class="my-4 mx-auto" />
               <div class="small text-black-50">
                 <a href="#!">hello@yourdomain.com</a>
@@ -31,9 +31,9 @@
           <div class="card py-4 h-100">
             <div class="card-body text-center">
               <i class="fas fa-mobile-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Phone</h4>
+              <h4 class="text-uppercase m-0">Телефон</h4>
               <hr class="my-4 mx-auto" />
-              <div class="small text-black-50">+1 (555) 902-8832</div>
+              <div class="small text-black-50">+7 (919) 612-38-12</div>
             </div>
           </div>
         </div>

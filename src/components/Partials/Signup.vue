@@ -5,7 +5,7 @@
       <div class="row gx-4 gx-lg-5">
         <div class="col-md-10 col-lg-8 mx-auto text-center">
           <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-          <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
+          <h2 class="text-white mb-5 text-capitalize">заявка на дизайн</h2>
           <!-- * * * * * * * * * * * * * * *-->
           <!-- * * SB Forms Contact Form * *-->
           <!-- * * * * * * * * * * * * * * *-->
@@ -25,7 +25,7 @@
                   class="form-control"
                   id="emailAddress"
                   type="email"
-                  placeholder="Enter email address..."
+                  placeholder="Введите адрес электронной почты..."
                   aria-label="Enter email address..."
                   data-sb-validations="required,email"
                 />
@@ -36,7 +36,7 @@
                   id="submitButton"
                   type="submit"
                 >
-                  Notify Me!
+                  Отправить
                 </button>
               </div>
             </div>

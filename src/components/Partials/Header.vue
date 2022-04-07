@@ -29,11 +29,10 @@
         </video>
         <div class="text-center" id="content">
           <h1 class="mx-auto my-0 text-uppercase">Profinterior</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5">
-            A free, responsive, one page Bootstrap theme created by Start
-            Bootstrap.
+          <h2 class="text-white-50 mx-auto mt-2 mb-5 text-capitalize">
+            профессиональный дизайн интерьеров в ваш дом
           </h2>
-          <a class="btn btn-primary" @click="scrollToContent" href="#">Get Started</a>
+          <a class="btn btn-primary" @click="scrollToContent" href="#">Заказать Дизайн</a>
         </div>
       </div>
     </div>

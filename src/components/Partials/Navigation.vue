@@ -18,13 +18,17 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <a class="nav-link" href="#" @click="scrollToContent(`header`)"
+              >О Нас</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Projects</a>
+            <a class="nav-link" href="#" @click="scrollToContent(`projects`)"
+              >Проекты</a
+            >
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="tel:+79196123812">+7 (919) 612-38-12</a>
           </li>
         </ul>
       </div>
@@ -35,12 +39,12 @@
 <script>
 export default {
   methods: {
-    scrollToContent() {
+    scrollToContent(arg) {
       window.scrollTo(
         0,
-        document.getElementById(`projects`).getBoundingClientRect().y +
+        document.getElementById(arg).getBoundingClientRect().y +
           window.scrollY -
-          120
+          60
       );
     },
   },

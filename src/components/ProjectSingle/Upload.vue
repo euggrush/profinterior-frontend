@@ -1,6 +1,10 @@
 <template>
   <section class="container">
-    <form @submit.prevent="createPicture">
+    <form
+      @submit.prevent="createPicture"
+      method="post"
+      enctype="multipart/form-data"
+    >
       <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Project id</label>
         <input
@@ -8,6 +12,7 @@
           class="form-control"
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
+          v-model="projectId"
         />
       </div>
       <div class="mb-3">
@@ -18,6 +23,7 @@
           class="form-control"
           type="file"
           id="formFile"
+          name="upload"
           @change="onFileChange($event)"
         />
       </div>
@@ -31,12 +37,21 @@ export default {
   data() {
     return {
       file: ``,
+      projectId: ``,
     };
   },
   methods: {
     createPicture() {
-      console.log(this.file);
-      this.$store.dispatch(`UPLOAD`, this.file);
+      const formData = new FormData();
+      formData.append(
+        `meta`,
+        JSON.stringify({
+          project_id: this.projectId,
+        })
+      );
+      formData.append(`upload`, this.file);
+
+      this.$store.dispatch(`UPLOAD`, formData);
     },
     onFileChange(event) {
       this.file = event.target.files[0];
