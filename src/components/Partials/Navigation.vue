@@ -3,7 +3,7 @@
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container px-4 px-lg-5">
       <router-link class="navbar-brand" to="/">
-        <img
+        <!-- <img
           class="logo"
           src="../../assets/img/logo-black.png"
           alt="logo"
@@ -16,7 +16,7 @@
           alt="logo"
           width="100"
           height="10"
-        />
+        /> -->
       </router-link>
       <button
         class="navbar-toggler navbar-toggler-right"

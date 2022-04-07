@@ -28,11 +28,27 @@
           Your browser does not support the video tag.
         </video>
         <div class="text-center" id="content">
-          <h1 class="mx-auto my-0 text-uppercase">Profinterior</h1>
-          <h2 class="text-white-50 mx-auto mt-2 mb-5 text-capitalize">
-            профессиональный дизайн интерьеров в ваш дом
-          </h2>
-          <a class="btn btn-primary" @click="scrollToContent" href="#">Заказать Дизайн</a>
+          <!-- <h1 class="mx-auto my-0 text-uppercase">Profinterior</h1> -->
+          <img
+            class="design-text-image mx-auto my-0"
+            src="../../assets/img/logo-white.png"
+            alt="logo"
+            width="100"
+            height="10"
+          />
+          <img
+            class="design-text-image mx-auto mt-5 mb-5 d-block"
+            src="../../assets/img/design-text.png"
+            alt="logo"
+            width="100"
+            height="10"
+          />
+          <!-- <h2 class="text-white-50 mx-auto mt-5 mb-5">
+            профессиональный дизайн интерьеров вашего дома
+          </h2> -->
+          <a class="btn btn-primary" @click="scrollToContent" href="#"
+            >Заказать Дизайн</a
+          >
         </div>
       </div>
     </div>
@@ -69,5 +85,24 @@ h1 {
 }
 #content {
   z-index: 2;
+}
+.design-text-image {
+  width: 96vw;
+  height: auto;
+  @include media-breakpoint-up(sm) {
+    width: 28vw;
+  }
+  @include media-breakpoint-up(md) {
+    width: 66vw;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 40vw;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 34vw;
+  }
+  @include media-breakpoint-up(xxl) {
+    width: 39vw;
+  }
 }
 </style>
