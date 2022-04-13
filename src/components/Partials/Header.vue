@@ -1,56 +1,40 @@
 <template>
   <!-- Masthead-->
-  <header class="masthead" id="header">
-    <div
-      class="
-        container
-        px-4 px-lg-5
-        d-flex
-        h-100
-        align-items-center
-        justify-content-center
-      "
+  <header
+    class="masthead p-0 d-flex h-100 align-items-center justify-content-center"
+    id="header"
+  >
+    <video
+      class="position-absolute top-0 start-50 translate-middle-x"
+      id="my-video"
+      width="320"
+      height="240"
+      autoplay
+      muted
+      playsinline
+      loop
     >
-      <div class="d-flex justify-content-center">
-        <video
-          width="320"
-          height="240"
-          autoplay
-          muted
-          playsinline
-          loop
-          id="myVideo"
-        >
-          <source
-            src="../../assets/video/header-backgound.mp4"
-            type="video/mp4"
-          />
-          Your browser does not support the video tag.
-        </video>
-        <div class="text-center" id="content">
-          <!-- <h1 class="mx-auto my-0 text-uppercase">Profinterior</h1> -->
-          <img
-            class="design-text-image mx-auto my-0"
-            src="../../assets/img/logo-white.png"
-            alt="logo"
-            width="100"
-            height="10"
-          />
-          <img
-            class="design-quote-image mx-auto mt-5 mb-5 d-block"
-            src="../../assets/img/design-text.png"
-            alt="logo"
-            width="100"
-            height="10"
-          />
-          <!-- <h2 class="text-white-50 mx-auto mt-5 mb-5">
-            профессиональный дизайн интерьеров вашего дома
-          </h2> -->
-          <a class="btn btn-primary" @click="scrollToContent" href="#"
-            >Заказать Дизайн</a
-          >
-        </div>
-      </div>
+      <source src="../../assets/video/header-backgound.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <div class="text-center" id="content">
+      <img
+        class="design-text-image mx-auto my-0"
+        src="../../assets/img/logo-white.png"
+        alt="logo"
+        width="100"
+        height="10"
+      />
+      <img
+        class="design-quote-image mx-auto mt-5 mb-5 d-block"
+        src="../../assets/img/design-text.png"
+        alt="logo"
+        width="100"
+        height="10"
+      />
+      <a class="btn btn-primary" @click="scrollToContent" href="#"
+        >Заказать Дизайн</a
+      >
     </div>
   </header>
 </template>
@@ -74,14 +58,26 @@ export default {
 h1 {
   font-size: 5.9vw;
 }
-#myVideo {
-  // object-fit: cover;
-  object-fit: scale-down;
+#my-video {
+  object-fit: cover;
   width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  min-height: 35em;
+  @include media-breakpoint-up(sm) {
+    width: 100%;
+  }
+  @include media-breakpoint-up(md) {
+    width: 528px;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 430px;
+    min-height: 100vh;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 430px;
+  }
+  @include media-breakpoint-up(xxl) {
+    width: 510px;
+  }
 }
 #content {
   z-index: 2;
