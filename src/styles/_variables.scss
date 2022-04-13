@@ -15,3 +15,24 @@ $font-size-small : 16px;
 $font-size-medium : 16px;
 $font-size-large : 17px;
 $font-size-xxl : 18px;
+
+@font-face {
+    font-family: "Coco Gothic";
+    font-weight: 300;
+    font-style: normal;
+    src: url("~@/assets/fonts/COCO\ GOTHIC\ LIGHT-TRIAL.TTF") format("ttf");
+  }
+  
+  @font-face {
+    font-family: "Coco Gothic";
+    font-weight: 400;
+    font-style: normal;
+    src: url("~@/assets/fonts/COCO\ GOTHIC\ REGULAR-TRIAL.TTF") format("ttf");
+  }
+  
+  @font-face {
+    font-family: "Coco Gothic";
+    font-weight: 700;
+    font-style: normal;
+    src: url("~@/assets/fonts/COCO\ GOTHIC\ BOLD-TRIAL.TTF") format("ttf");
+  }
