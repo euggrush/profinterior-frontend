@@ -5,7 +5,7 @@
       <div class="row gx-4 gx-lg-5">
         <div class="col-md-10 col-lg-8 mx-auto text-center">
           <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-          <h2 class="text-white mb-5 text-capitalize">заявка на дизайн</h2>
+          <h2 class="text-white mb-5">заявка на дизайн</h2>
           <!-- * * * * * * * * * * * * * * *-->
           <!-- * * SB Forms Contact Form * *-->
           <!-- * * * * * * * * * * * * * * *-->

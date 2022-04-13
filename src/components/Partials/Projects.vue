@@ -16,7 +16,7 @@
           <div class="bg-black text-center h-100 project">
             <div class="d-flex h-100">
               <div class="project-text w-100 my-auto text-center text-lg-left">
-                <h4 class="text-white text-capitalize">{{ category.name }}</h4>
+                <h4 class="text-white">{{ category.name }}</h4>
 
                 <hr class="d-none d-lg-block mb-0 ms-0" />
               </div>

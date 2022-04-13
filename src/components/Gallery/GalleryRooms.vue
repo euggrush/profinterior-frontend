@@ -1,6 +1,6 @@
 <template>
   <section class="container-fluid ps-5 pe-5">
-    <h1 class="text-white text-capitalize">{{ title }}</h1>
+    <h1 class="text-white">{{ title }}</h1>
     <div class="row row-cols-auto row-cols-md-3 mt-5">
       <div
         v-for="(room, index) in roomsList"
@@ -8,8 +8,8 @@
         class="col"
         @click="getProject(room.id)"
       >
-        <p class="text-white text-capitalize fw-bold">{{ room.title }}</p>
-        <p class="text-white text-capitalize fst-italic fw-lighter">
+        <p class="text-white fw-bold">{{ room.title }}</p>
+        <p class="text-white fst-italic fw-lighter">
          {{room.description}}
         </p>
         <img :src="room.pictures[0].path" class="img-thumbnail" alt="image" />

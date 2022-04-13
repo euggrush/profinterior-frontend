@@ -34,12 +34,12 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="#" @click="scrollToContent(`header`)"
-              >О Нас</a
+              >главная страница</a
             >
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#" @click="scrollToContent(`projects`)"
-              >Проекты</a
+              >проекты</a
             >
           </li>
           <li class="nav-item">
