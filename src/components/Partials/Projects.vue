@@ -2,7 +2,7 @@
   <!-- Projects-->
   <section class="projects-section bg-light pt-5" id="projects">
     <div class="container px-4 px-lg-5">
-      <h2 class="fs-1 fst-italic text-center mb-lg-5">Галерея</h2>
+      <h2 class="text-center mb-lg-5">Галерея</h2>
       <div
         v-for="(category, index) in categoriesList"
         :key="index"

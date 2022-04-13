@@ -26,7 +26,7 @@ export default {
   padding: 30px;
 
   a {
-    font-weight: bold;
+    font-weight: 300;
     color: #2c3e50;
 
     &.router-link-exact-active {
@@ -95,7 +95,7 @@ export default {
     Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
     Segoe UI Symbol, Noto Color Emoji;
   --bs-body-font-size: 1rem;
-  --bs-body-font-weight: 400;
+  --bs-body-font-weight: 300;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
@@ -152,7 +152,7 @@ h1,
 .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-weight: 300;
   line-height: 1.2;
 }
 
@@ -264,7 +264,7 @@ blockquote {
 
 b,
 strong {
-  font-weight: bolder;
+  font-weight: 400;
 }
 
 small,
@@ -2266,7 +2266,7 @@ progress {
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
@@ -2495,7 +2495,7 @@ textarea.form-control-lg {
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
@@ -2857,7 +2857,7 @@ textarea.form-control-lg {
   align-items: center;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   text-align: center;
@@ -3121,7 +3121,7 @@ textarea.form-control.is-invalid {
 
 .btn {
   display: inline-block;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   text-align: center;
@@ -3911,7 +3911,7 @@ fieldset:disabled .btn {
 }
 
 .btn-link {
-  font-weight: 400;
+  font-weight: 300;
   color: #64a19d;
   text-decoration: underline;
 }
@@ -4209,7 +4209,7 @@ fieldset:disabled .btn {
   width: 100%;
   padding: 0.25rem 1rem;
   clear: both;
-  font-weight: 400;
+  font-weight: 300;
   color: #212529;
   text-align: inherit;
   text-decoration: none;
@@ -5353,7 +5353,7 @@ fieldset:disabled .btn {
   display: inline-block;
   padding: 0.35em 0.65em;
   font-size: 0.75em;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -5383,7 +5383,7 @@ fieldset:disabled .btn {
 }
 
 .alert-link {
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .alert-dismissible {
@@ -6301,7 +6301,7 @@ fieldset:disabled .btn {
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   text-align: left;
   text-align: start;
@@ -6417,7 +6417,7 @@ fieldset:disabled .btn {
     "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
     "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.5;
   text-align: left;
   text-align: start;
@@ -8241,11 +8241,11 @@ fieldset:disabled .btn {
 }
 
 .fw-normal {
-  font-weight: 400 !important;
+  font-weight: 300 !important;
 }
 
 .fw-bold {
-  font-weight: 700 !important;
+  font-weight: 400 !important;
 }
 
 .fw-bolder {
@@ -11929,7 +11929,7 @@ body {
 }
 #mainNav .navbar-brand {
   color: #000;
-  font-weight: 700;
+  font-weight: 400;
   padding: 0.9rem 0;
 }
 #mainNav .navbar-nav .nav-item:hover {
