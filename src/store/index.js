@@ -16,7 +16,7 @@ let ls = new SecureLS({
 });
 
 import {
-  BASE_URL
+  BASE_URL_API
 } from '../constants.js';
 
 // import CATEGORIES from '../../public/data/categories.json';
@@ -24,7 +24,11 @@ import {
 export const store = new Vuex.Store({
   state: {
     categories: [],
-    uploaded_file: []
+    uploaded_file: [],
+    status: ``,
+    token: ``,
+    user: ``,
+    my_role: ``,
   },
   plugins: [
     createLogger(),
@@ -41,6 +45,16 @@ export const store = new Vuex.Store({
     }),
   ],
   mutations: {
+    auth_success(state, payload) {
+      state.status = 'success'
+      state.token = payload.token
+      state.user = payload.user;
+      state.my_role = payload.role;
+      state.toke_expiration_time = payload.tokenExpirationTime;
+  },
+  auth_error(state) {
+      state.status = 'error'
+  },
     SET_GENERAL_ERRORS(state, payload) {
       if (payload.response) {
         state.general_errors = {
@@ -68,7 +82,7 @@ export const store = new Vuex.Store({
   },
   actions: {
     UPLOAD: async (context, payload) => {
-      Axios.post(`${BASE_URL}/pictures`, payload).then(
+      Axios.post(`${BASE_URL_API}/pictures`, payload).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_UPLOADED_FILE`, data);
@@ -91,25 +105,22 @@ export const store = new Vuex.Store({
     }, payload) {
       return new Promise((resolve, reject) => {
         Axios({
-            url: `${BASE_URL}/authorization`,
+            url: `${BASE_URL_API}/user/auth`,
             data: payload,
             method: `POST`
           })
           .then(resp => {
 
-            const token = resp.data.token;
-            const tokenExpirationTime = resp.data.tokenExpirationTime;
-            const user = resp.data;
-            const role = resp.data.role;
+            const token = resp.data.accessToken;
+            const user = resp.data.user;
+            const role = resp.data.user.role;
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             commit('auth_success', {
               token,
               user,
               role,
-              tokenExpirationTime
             });
-            commit(`SET_ORDERS`, []);
             resolve(resp);
           })
           .catch(err => {

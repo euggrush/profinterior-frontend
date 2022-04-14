@@ -6,6 +6,7 @@ import Home from '../views/Home.vue'
 import GalleryRooms from '../components/Gallery/GalleryRooms.vue'
 import ProjectSingle from '../components/ProjectSingle/ProjectSingle.vue'
 import Upload from '../components/ProjectSingle/Upload.vue'
+import LoginForm from '../components/Forms/LoginForm.vue'
 
 const routes = [{
     path: '/',
@@ -23,6 +24,10 @@ const routes = [{
   {
     path: '/upload',
     component: Upload
+  },
+  {
+    path: '/login',
+    component: LoginForm
   }
 ]
 
