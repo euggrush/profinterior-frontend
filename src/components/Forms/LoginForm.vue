@@ -44,7 +44,6 @@ export default {
         email: this.email,
         password: this.password,
       });
-      //   console.log(this.email, this.password);
     },
   },
 };

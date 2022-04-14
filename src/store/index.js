@@ -51,10 +51,10 @@ export const store = new Vuex.Store({
       state.user = payload.user;
       state.my_role = payload.role;
       state.toke_expiration_time = payload.tokenExpirationTime;
-  },
-  auth_error(state) {
-      state.status = 'error'
-  },
+    },
+    auth_error(state, payload) {
+      state.status = payload;
+    },
     SET_GENERAL_ERRORS(state, payload) {
       if (payload.response) {
         state.general_errors = {
@@ -124,7 +124,7 @@ export const store = new Vuex.Store({
             resolve(resp);
           })
           .catch(err => {
-            commit('auth_error')
+            commit('auth_error', err)
             reject(err)
           })
       })
