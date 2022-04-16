@@ -1,7 +1,18 @@
 <template>
   <section class="container-fluid">
     <h1 class="text-white text-center">Admin Panel</h1>
-    <div class="text-white">{{ projectssList }}</div>
+    <div class="row row-cols-auto">
+      <div
+        v-for="(project, index) in projectssList"
+        :key="index"
+        class="col border m-3 p-3"
+      >
+        <p class="text-white-50">{{ project.title }}</p>
+        <p class="text-white-50">{{ project.description }}</p>
+        <p class="text-white-50">Категория: {{ project.categories.name }}</p>
+        <div class="text-white-50">{{ project.pictures }}</div>
+      </div>
+    </div>
     <button
       type="button"
       class="btn btn-outline-warning rounded-pill"
