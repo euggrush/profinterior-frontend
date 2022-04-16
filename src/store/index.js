@@ -29,11 +29,12 @@ export const store = new Vuex.Store({
     token: ``,
     user: ``,
     my_role: ``,
+    users: []
   },
   plugins: [
     createLogger(),
     createPersistedState({
-      paths: ['categories'],
+      paths: ['my_role', 'token', 'user', 'status'],
       storage: {
         getItem: (key) => ls.get(key),
         setItem: (key, value) =>
@@ -79,6 +80,9 @@ export const store = new Vuex.Store({
     SET_UPLOADED_FILE(state, payload) {
       state.uploaded_file = payload;
     },
+    SET_USERS(state, payload) {
+      state.users = payload
+    }
   },
   actions: {
     UPLOAD: async (context, payload) => {
@@ -91,15 +95,18 @@ export const store = new Vuex.Store({
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
-    GET_CATEGORIES: async (context, payload) => {
-      let url = `../../public/data/categories.json`;
-
-      let categories = []
-      await fetch(url).then((r) => {
-        console.log(JSON.parse(r))
-      })
-      // context.commit('SET_CATEGORIES', categories);
+    GET_USERS: async (context, payload) => {
+      let {
+        data
+      } = await Axios.get(`${BASE_URL_API}/user`);
+      context.commit(`SET_USERS`, data);
     },
+    //   GET_VEHICLES: async (context, payload) => {
+    //     let {
+    //         data
+    //     } = await Axios.get(`${BASE_URL}/vehicles${payload}`);
+    //     context.commit(`SET_VEHICLES`, data);
+    // },
     LOGIN({
       commit
     }, payload) {

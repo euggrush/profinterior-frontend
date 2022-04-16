@@ -38,12 +38,29 @@ export default {
       password: ``,
     };
   },
+  // computed: {
+  //   accountsList() {
+  //     return this.$store.state.users;
+  //   },
+  // },
+  // mounted() {
+  //   this.$store.dispatch(`GET_USERS`);
+  // },
   methods: {
     login() {
-      this.$store.dispatch(`LOGIN`, {
-        email: this.email,
-        password: this.password,
-      });
+      this.$store
+        .dispatch(`LOGIN`, {
+          email: this.email,
+          password: this.password,
+        })
+        .then(() => {
+          let myRole = this.$store.state.my_role;
+          if (myRole === `admin`) {
+            this.$router.push(`/admin-panel`);
+          } else {
+            this.$router.push(`/my-account`);
+          }
+        });
     },
   },
 };

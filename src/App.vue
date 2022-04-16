@@ -11998,7 +11998,7 @@ body {
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
-  border: 0;
+  // border: 0;
 }
 
 .masthead {
