@@ -38,14 +38,6 @@ export default {
       password: ``,
     };
   },
-  // computed: {
-  //   accountsList() {
-  //     return this.$store.state.users;
-  //   },
-  // },
-  // mounted() {
-  //   this.$store.dispatch(`GET_USERS`);
-  // },
   methods: {
     login() {
       this.$store

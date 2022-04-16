@@ -1,6 +1,7 @@
 <template>
   <section class="container-fluid">
     <h1 class="text-white text-center">Admin Panel</h1>
+    <div class="text-white">{{ projectssList }}</div>
     <button
       type="button"
       class="btn btn-outline-warning rounded-pill"
@@ -14,6 +15,21 @@
         class="border border-warning rounded mt-3 p-5"
         v-if="show"
       >
+        <select
+          class="form-select mb-3"
+          aria-label="Default select example"
+          v-model="selectedCategory"
+          required
+        >
+          <option selected disabled value="">Категория...</option>
+          <option
+            v-for="(category, index) in categoriesList"
+            :key="index"
+            :value="category.id"
+          >
+            {{ category.name }}
+          </option>
+        </select>
         <div class="mb-3">
           <label for="exampleFormControlInput1" class="form-label text-white-50"
             >Название проекта</label
@@ -24,9 +40,10 @@
             id="exampleFormControlInput1"
             placeholder="название проекта..."
             v-model="projectTitle"
+            required
           />
         </div>
-        <div class="mb-3">
+        <div class="mb-5">
           <label
             for="exampleFormControlTextarea1"
             class="form-label text-white-50"
@@ -38,6 +55,7 @@
             rows="3"
             placeholder="Описание..."
             v-model="projectDescription"
+            required
           ></textarea>
         </div>
         <button type="submit" class="btn btn-outline-info rounded-pill mt-3">
@@ -55,10 +73,34 @@ export default {
       show: false,
       projectTitle: ``,
       projectDescription: ``,
+      selectedCategory: `Категория...`,
     };
   },
+  computed: {
+    categoriesList() {
+      return this.$store.state.categories;
+    },
+    projectssList() {
+      return this.$store.state.projects;
+    },
+  },
+  mounted() {
+    this.$store.dispatch(`GET_CATEGORIES`).then(() => {
+      this.$store.dispatch(`GET_PROJECTS`);
+    });
+  },
   methods: {
-    createProject() {},
+    createProject() {
+      this.$store
+        .dispatch(`CREATE_PROJECT`, {
+          title: this.projectTitle,
+          description: this.projectDescription,
+          category_id: this.selectedCategory,
+        })
+        .then(() => {
+          this.$store.dispatch(`GET_PROJECTS`);
+        });
+    },
   },
 };
 </script>

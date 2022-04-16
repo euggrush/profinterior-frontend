@@ -29,7 +29,8 @@ export const store = new Vuex.Store({
     token: ``,
     user: ``,
     my_role: ``,
-    users: []
+    users: [],
+    projects: []
   },
   plugins: [
     createLogger(),
@@ -82,9 +83,23 @@ export const store = new Vuex.Store({
     },
     SET_USERS(state, payload) {
       state.users = payload
+    },
+    SET_PROJECTS(state, payload) {
+      state.projects = payload;
     }
   },
   actions: {
+    GET_PROJECTS: async (context, payload) => {
+      let {
+        data
+      } = await Axios.get(`${BASE_URL_API}/projects`);
+      context.commit(`SET_PROJECTS`, data);
+    },
+    CREATE_PROJECT: async (context, payload) => {
+      Axios.post(`${BASE_URL_API}/projects`, payload).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
     UPLOAD: async (context, payload) => {
       Axios.post(`${BASE_URL_API}/pictures`, payload).then(
         resp => {
@@ -101,12 +116,12 @@ export const store = new Vuex.Store({
       } = await Axios.get(`${BASE_URL_API}/user`);
       context.commit(`SET_USERS`, data);
     },
-    //   GET_VEHICLES: async (context, payload) => {
-    //     let {
-    //         data
-    //     } = await Axios.get(`${BASE_URL}/vehicles${payload}`);
-    //     context.commit(`SET_VEHICLES`, data);
-    // },
+    GET_CATEGORIES: async (context, payload) => {
+      let {
+        data
+      } = await Axios.get(`${BASE_URL_API}/categories`);
+      context.commit(`SET_CATEGORIES`, data);
+    },
     LOGIN({
       commit
     }, payload) {
