@@ -1,7 +1,7 @@
 <template>
   <section class="container-fluid">
     <h1 class="text-white text-center">Admin Panel</h1>
-    <div class="row row-cols-auto">
+    <div class="row row-cols-auto project-item">
       <div
         v-for="(project, index) in projectssList"
         :key="index"
@@ -10,7 +10,26 @@
         <p class="text-white-50">{{ project.title }}</p>
         <p class="text-white-50">{{ project.description }}</p>
         <p class="text-white-50">Категория: {{ project.categories.name }}</p>
-        <div class="text-white-50">{{ project.pictures }}</div>
+        <div class="row row-cols-auto gap-1">
+          <img
+            v-for="(picture, index) in project.pictures"
+            :key="index"
+            :src="`${FILE_URL}${picture.path}`"
+            class="img-thumbnail col"
+            alt="picture"
+          />
+        </div>
+        <div class="mt-3 mb-3">
+          <label for="formFile" class="form-label text-white-50"
+            >Default file input example</label
+          >
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            @change="uploadPrijectPicture($event, project)"
+          />
+        </div>
       </div>
     </div>
     <button
@@ -78,6 +97,8 @@
 </template>
 
 <script>
+import { FILE_URL } from "../../constants";
+
 export default {
   data() {
     return {
@@ -85,6 +106,7 @@ export default {
       projectTitle: ``,
       projectDescription: ``,
       selectedCategory: `Категория...`,
+      FILE_URL: FILE_URL,
     };
   },
   computed: {
@@ -112,6 +134,23 @@ export default {
           this.$store.dispatch(`GET_PROJECTS`);
         });
     },
+
+    uploadPrijectPicture(event, project) {
+      let picture = event.target.files[0];
+      const formData = new FormData();
+      formData.append(
+        `meta`,
+        JSON.stringify({
+          project_id: project.id,
+        })
+      );
+      formData.append("upload", picture);
+      this.$store.dispatch(`UPLOAD`, formData).then(() => {
+        setTimeout(() => {
+          this.$store.dispatch(`GET_PROJECTS`);
+        }, 1000);
+      });
+    },
   },
 };
 </script>
@@ -134,5 +173,8 @@ export default {
 .slide-fade-leave-to {
   transform: translateX(20px);
   opacity: 0;
+}
+.project-item {
+  max-width: 320px;
 }
 </style>
