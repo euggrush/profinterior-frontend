@@ -1,37 +1,6 @@
 <template>
   <section class="container-fluid">
     <h1 class="text-white text-center">Admin Panel</h1>
-    <div class="row row-cols-auto project-item">
-      <div
-        v-for="(project, index) in projectssList"
-        :key="index"
-        class="col border m-3 p-3"
-      >
-        <p class="text-white-50">{{ project.title }}</p>
-        <p class="text-white-50">{{ project.description }}</p>
-        <p class="text-white-50">Категория: {{ project.categories.name }}</p>
-        <div class="row row-cols-auto gap-1">
-          <img
-            v-for="(picture, index) in project.pictures"
-            :key="index"
-            :src="`${FILE_URL}${picture.path}`"
-            class="img-thumbnail col"
-            alt="picture"
-          />
-        </div>
-        <div class="mt-3 mb-3">
-          <label for="formFile" class="form-label text-white-50"
-            >Default file input example</label
-          >
-          <input
-            class="form-control"
-            type="file"
-            id="formFile"
-            @change="uploadPrijectPicture($event, project)"
-          />
-        </div>
-      </div>
-    </div>
     <button
       type="button"
       class="btn btn-outline-warning rounded-pill"
@@ -93,11 +62,42 @@
         </button>
       </form>
     </Transition>
+    <div class="row row-cols-auto project-item mt-3">
+      <div
+        v-for="(project, index) in projectssList"
+        :key="index"
+        class="col border m-3 p-3"
+      >
+        <p class="text-white-50">{{ project.title }}</p>
+        <p class="text-white-50">{{ project.description }}</p>
+        <p class="text-white-50">Категория: {{ project.categories.name }}</p>
+        <div class="row row-cols-auto gap-1">
+          <img
+            v-for="(picture, index) in project.pictures"
+            :key="index"
+            :src="`${FILE_URL}${picture.path}`"
+            class="img-thumbnail col"
+            alt="picture"
+          />
+        </div>
+        <div v-if="project.pictures.length < 5" class="mt-3 mb-3">
+          <label for="formFile" class="form-label text-white-50"
+            >Default file input example</label
+          >
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            @change="uploadPrijectPicture($event, project)"
+          />
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
 <script>
-import { FILE_URL } from "../../constants";
+import { BASE_URL_API } from "../../constants";
 
 export default {
   data() {
@@ -106,7 +106,7 @@ export default {
       projectTitle: ``,
       projectDescription: ``,
       selectedCategory: `Категория...`,
-      FILE_URL: FILE_URL,
+      FILE_URL: `${BASE_URL_API}/upload`,
     };
   },
   computed: {
@@ -175,6 +175,10 @@ export default {
   opacity: 0;
 }
 .project-item {
-  max-width: 320px;
+  width: 100%;
+  // max-width: 320px;
+}
+img {
+  width: 100%;
 }
 </style>

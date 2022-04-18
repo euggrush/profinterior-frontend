@@ -101,7 +101,7 @@ export const store = new Vuex.Store({
       })
     },
     UPLOAD: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/pictures`, payload).then(
+      Axios.post(`${BASE_URL_API}/upload`, payload).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_UPLOADED_FILE`, data);
