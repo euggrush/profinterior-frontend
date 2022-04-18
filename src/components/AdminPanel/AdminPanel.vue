@@ -80,7 +80,7 @@
             alt="picture"
           />
         </div>
-        <div v-if="project.pictures.length < 5" class="mt-3 mb-3">
+        <div v-if="project.pictures.length < 6" class="mt-3 mb-3">
           <label for="formFile" class="form-label text-white-50"
             >Default file input example</label
           >
@@ -179,6 +179,6 @@ export default {
   // max-width: 320px;
 }
 img {
-  width: 100%;
+  width: 33%;
 }
 </style>
