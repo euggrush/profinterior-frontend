@@ -61,7 +61,7 @@ export default {
         })
       );
       formData.append("upload", picture);
-      this.$store.dispatch(`UPLOAD`, formData).then(() => {
+      this.$store.dispatch(`UPLOAD_CATEGORY_PICTURE`, formData).then(() => {
         setTimeout(() => {
           this.$store.dispatch(`GET_CATEGORIES`);
         }, 1000);

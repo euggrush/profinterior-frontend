@@ -115,6 +115,16 @@ export const store = new Vuex.Store({
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
+    UPLOAD_CATEGORY_PICTURE: async (context, payload) => {
+      Axios.post(`${BASE_URL_API}/upload/category-picture`, payload).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_UPLOADED_FILE`, data);
+        }
+      ).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
     GET_USERS: async (context, payload) => {
       let {
         data
