@@ -76,7 +76,7 @@ h1 {
     width: 430px;
   }
   @include media-breakpoint-up(xxl) {
-    width: 510px;
+    width: 700px;
   }
 }
 #content {

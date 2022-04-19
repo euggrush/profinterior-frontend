@@ -12112,7 +12112,7 @@ body {
       rgba(0, 0, 0, 0.5) 75%,
       #000 100%
     ),
-    url("./assets/img/bg-signup.jpg");
+    url("./assets/img/bg-signup2.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
