@@ -11,7 +11,7 @@
     <Transition name="slide-fade">
       <CreateCategoryForm v-if="showCategory" />
     </Transition>
-    <ProjectsList />
+    <CategoriesList />
 
     <button
       type="button"
@@ -31,8 +31,14 @@
 import CreateProjectForm from "../Forms/CreateProjectForm.vue";
 import CreateCategoryForm from "../Forms/CreateCategoryForm.vue";
 import ProjectsList from "../AdminPanel/ProjectsList.vue";
+import CategoriesList from "../AdminPanel/CategoriesList.vue";
 export default {
-  components: { CreateProjectForm, ProjectsList, CreateCategoryForm },
+  components: {
+    CreateProjectForm,
+    ProjectsList,
+    CreateCategoryForm,
+    CategoriesList,
+  },
   data() {
     return {
       showProject: false,
