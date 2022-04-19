@@ -33,8 +33,13 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#" @click="scrollToContent(`header`)"
-              >главная страница</a
+            <a class="nav-link" href="#" @click="scrollToContent(`about`)"
+              >про меня</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" @click="scrollToContent(`signup`)"
+              >cостав проекта</a
             >
           </li>
           <li class="nav-item">
