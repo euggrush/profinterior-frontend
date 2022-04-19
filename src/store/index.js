@@ -95,6 +95,11 @@ export const store = new Vuex.Store({
       } = await Axios.get(`${BASE_URL_API}/projects`);
       context.commit(`SET_PROJECTS`, data);
     },
+    CREATE_CATEGORY: async (context, payload) => {
+      Axios.post(`${BASE_URL_API}/categories`, payload).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
     CREATE_PROJECT: async (context, payload) => {
       Axios.post(`${BASE_URL_API}/projects`, payload).catch((error) => {
         context.commit(`SET_GENERAL_ERRORS`, error);
