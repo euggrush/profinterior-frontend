@@ -79,6 +79,19 @@ export default {
       showCategory: false,
     };
   },
+  // watch: {
+  //   generalErrors() {
+  //     alert(this.$store.state.general_errors.data.message);
+  //   },
+  // },
+  computed: {
+    generalErrors() {
+      if (this.$store.state.general_errors) {
+        return this.$store.state.general_errors.data.message;
+      }
+      return ``;
+    },
+  },
   methods: {
     showCategories() {
       this.categoriesActive = true;

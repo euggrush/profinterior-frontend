@@ -69,7 +69,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch(`GET_CATEGORIES`).then(() => {
-      this.$store.dispatch(`GET_PROJECTS`);
+      this.$store.dispatch(`GET_PROJECTS`, ``);
     });
   },
   methods: {
@@ -84,13 +84,13 @@ export default {
           this.projectTitle = ``;
           this.projectDescription = ``;
           this.selectedCategory = ``;
-          this.$store.dispatch(`GET_PROJECTS`);
+          this.$store.dispatch(`GET_PROJECTS`, ``);
         })
         .catch((err) => {
           console.log(err);
         })
         .then(() => {
-          this.$store.dispatch(`GET_PROJECTS`);
+          this.$store.dispatch(`GET_PROJECTS`, ``);
         });
     },
   },

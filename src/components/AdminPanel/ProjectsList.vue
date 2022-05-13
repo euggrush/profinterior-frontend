@@ -1,4 +1,5 @@
 <template>
+  <ProjectsTabs />
   <div class="row row-cols-auto mt-3">
     <div
       v-for="(project, index) in projectssList"
@@ -43,8 +44,10 @@
 
 <script>
 import { BASE_URL_API } from "../../constants";
+import ProjectsTabs from "../Partials/Tabs/ProjectsTabs.vue";
 
 export default {
+  components: { ProjectsTabs },
   data() {
     return {
       FILE_URL: `${BASE_URL_API}/upload`,
@@ -56,7 +59,7 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch(`GET_PROJECTS`);
+    this.$store.dispatch(`GET_PROJECTS`, ``);
   },
   methods: {
     uploadPrijectPicture(event, project) {
@@ -71,7 +74,7 @@ export default {
       formData.append("upload", picture);
       this.$store.dispatch(`UPLOAD`, formData).then(() => {
         setTimeout(() => {
-          this.$store.dispatch(`GET_PROJECTS`);
+          this.$store.dispatch(`GET_PROJECTS`, ``);
         }, 1000);
       });
     },

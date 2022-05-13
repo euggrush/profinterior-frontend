@@ -97,7 +97,7 @@ export const store = new Vuex.Store({
     GET_PROJECTS: async (context, payload) => {
       let {
         data
-      } = await Axios.get(`${BASE_URL_API}/projects`);
+      } = await Axios.get(`${BASE_URL_API}/projects${payload}`);
       context.commit(`SET_PROJECTS`, data);
     },
     CREATE_CATEGORY: async (context, payload) => {
@@ -107,6 +107,7 @@ export const store = new Vuex.Store({
     },
     DELETE_CATEGORY: async (context, payload) => {
       Axios.delete(`${BASE_URL_API}/categories${payload}`).catch((error) => {
+        alert(`something went wrong, please try again`);
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },

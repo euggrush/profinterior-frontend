@@ -82,7 +82,9 @@ export default {
       if (isExecuted) {
         this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
           this.fetchCategories();
-        });
+        }).catch((err)=>{
+          alert(err)
+        })
       }
     },
   },
