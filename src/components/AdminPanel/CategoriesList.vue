@@ -9,6 +9,7 @@
         type="button"
         class="btn-close btn-close-white float-end p-0"
         aria-label="Close"
+        @click="deleteCategory(category.id)"
       ></button>
 
       <p class="text-white-50">{{ category.name }}</p>
@@ -54,9 +55,12 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch(`GET_CATEGORIES`);
+    this.fetchCategories();
   },
   methods: {
+    fetchCategories() {
+      this.$store.dispatch(`GET_CATEGORIES`);
+    },
     uploadCategoryPicture(event, category) {
       let picture = event.target.files[0];
       const formData = new FormData();
@@ -69,9 +73,17 @@ export default {
       formData.append("upload", picture);
       this.$store.dispatch(`UPLOAD_CATEGORY_PICTURE`, formData).then(() => {
         setTimeout(() => {
-          this.$store.dispatch(`GET_CATEGORIES`);
+          this.fetchCategories();
         }, 1000);
       });
+    },
+    deleteCategory(id) {
+      let isExecuted = confirm("Удалить категонию?");
+      if (isExecuted) {
+        this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
+          this.fetchCategories();
+        });
+      }
     },
   },
 };

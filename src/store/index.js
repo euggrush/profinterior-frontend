@@ -100,6 +100,11 @@ export const store = new Vuex.Store({
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
+    DELETE_CATEGORY: async (context, payload) => {
+      Axios.delete(`${BASE_URL_API}/categories${payload}`).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
     CREATE_PROJECT: async (context, payload) => {
       Axios.post(`${BASE_URL_API}/projects`, payload).catch((error) => {
         context.commit(`SET_GENERAL_ERRORS`, error);
