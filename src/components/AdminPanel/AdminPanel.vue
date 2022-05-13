@@ -1,7 +1,6 @@
 <template>
   <section class="container-fluid position-relative">
     <h1 class="text-white text-center">Admin Panel</h1>
-
     <!-- Tabs -->
     <ul class="nav nav-pills nav-fill mt-3 mb-3">
       <li class="nav-item">

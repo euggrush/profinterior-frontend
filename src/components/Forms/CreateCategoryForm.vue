@@ -46,6 +46,12 @@ export default {
         .then(() => {
           this.categoryName = ``;
           this.$store.dispatch(`GET_CATEGORIES`);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .then(() => {
+          this.$store.dispatch(`GET_CATEGORIES`);
         });
     },
   },

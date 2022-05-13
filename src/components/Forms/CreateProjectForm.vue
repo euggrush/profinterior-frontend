@@ -9,7 +9,7 @@
       v-model="selectedCategory"
       required
     >
-      <option selected disabled value="">Категория...</option>
+      <option selected disabled value="Категория...">Категория...</option>
       <option
         v-for="(category, index) in categoriesList"
         :key="index"
@@ -61,7 +61,7 @@ export default {
   },
   computed: {
     categoriesList() {
-      return this.$store.state.categories;
+      return this.$store.state.categories.categories;
     },
     projectssList() {
       return this.$store.state.projects;
@@ -78,7 +78,16 @@ export default {
         .dispatch(`CREATE_PROJECT`, {
           title: this.projectTitle,
           description: this.projectDescription,
-          category_id: this.selectedCategory,
+          categoryId: this.selectedCategory,
+        })
+        .then(() => {
+          this.projectTitle = ``;
+          this.projectDescription = ``;
+          this.selectedCategory = ``;
+          this.$store.dispatch(`GET_PROJECTS`);
+        })
+        .catch((err) => {
+          console.log(err);
         })
         .then(() => {
           this.$store.dispatch(`GET_PROJECTS`);

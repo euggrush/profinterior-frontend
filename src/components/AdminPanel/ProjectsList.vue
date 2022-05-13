@@ -1,9 +1,9 @@
 <template>
-  <div class="row mt-3">
+  <div class="row row-cols-auto mt-3">
     <div
       v-for="(project, index) in projectssList"
       :key="index"
-      class="col border m-1 p-3"
+      class="col border m-1 p-3 project-item"
     >
       <button
         type="button"
@@ -80,4 +80,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.project-item {
+  width: 97%;
+  @include media-breakpoint-up(md) {
+    width: 48%;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 49%;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 32%;
+  }
+  @include media-breakpoint-up(xxl) {
+    width: 32%;
+  }
+}
 </style>
