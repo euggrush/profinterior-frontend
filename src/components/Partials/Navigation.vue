@@ -34,7 +34,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="#" @click="scrollToContent(`about`)"
-              >про меня</a
+              >дизайн</a
             >
           </li>
           <li class="nav-item">

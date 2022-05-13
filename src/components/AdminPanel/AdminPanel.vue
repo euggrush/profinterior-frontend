@@ -1,29 +1,61 @@
 <template>
   <section class="container-fluid">
     <h1 class="text-white text-center">Admin Panel</h1>
-    <button
-      type="button"
-      class="btn btn-outline-warning rounded-pill"
-      @click="showCategory = !showCategory"
-    >
-      Добавить категорию
-    </button>
-    <Transition name="slide-fade">
-      <CreateCategoryForm v-if="showCategory" />
-    </Transition>
-    <CategoriesList />
+    <!-- Tabs -->
+    <ul class="nav nav-pills nav-fill mt-3 mb-3">
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          :class="{ active: categoriesActive }"
+          type="button"
+          @click="showCategories"
+        >
+          Categories
+        </button>
+      </li>
+      <li class="nav-item">
+        <button
+          class="nav-link"
+          :class="{ active: projectsActive }"
+          type="button"
+          @click="showProjects"
+        >
+          Projects
+        </button>
+      </li>
+    </ul>
+    <!-- Tabs End -->
+    <!-- CATEGORIES SECTION -->
+    <section v-if="categoriesActive" class="categories-wrapper">
+      <button
+        type="button"
+        class="btn btn-outline-warning rounded-pill"
+        @click="showCategory = !showCategory"
+      >
+        Добавить категорию
+      </button>
+      <Transition name="slide-fade">
+        <CreateCategoryForm v-if="showCategory" />
+      </Transition>
+      <CategoriesList />
+    </section>
+    <!-- CATEGORIES SECTION END -->
 
-    <button
-      type="button"
-      class="btn btn-outline-warning rounded-pill"
-      @click="showProject = !showProject"
-    >
-      Добавить проект
-    </button>
-    <Transition name="slide-fade">
-      <CreateProjectForm v-if="showProject" />
-    </Transition>
-    <ProjectsList />
+    <!-- PROJECTS SECTION -->
+    <section v-if="projectsActive" class="projects-wrapper">
+      <button
+        type="button"
+        class="btn btn-outline-warning rounded-pill"
+        @click="showProject = !showProject"
+      >
+        Добавить проект
+      </button>
+      <Transition name="slide-fade">
+        <CreateProjectForm v-if="showProject" />
+      </Transition>
+      <ProjectsList />
+    </section>
+    <!-- PROJECTS SECTION END -->
   </section>
 </template>
 
@@ -41,9 +73,21 @@ export default {
   },
   data() {
     return {
+      categoriesActive: true,
+      projectsActive: false,
       showProject: false,
       showCategory: false,
     };
+  },
+  methods: {
+    showCategories() {
+      this.categoriesActive = true;
+      this.projectsActive = false;
+    },
+    showProjects() {
+      this.categoriesActive = false;
+      this.projectsActive = true;
+    },
   },
 };
 </script>
@@ -67,14 +111,11 @@ export default {
   transform: translateX(20px);
   opacity: 0;
 }
-.project-item {
-  width: 100%;
-}
 img {
   width: 33%;
   height: auto;
 }
-.btn {
-  min-width: 20em;
+.btn-outline-warning {
+  min-width: 23em;
 }
 </style>

@@ -52,7 +52,7 @@ export const store = new Vuex.Store({
       state.token = payload.token
       state.user = payload.user;
       state.my_role = payload.role;
-      state.toke_expiration_time = payload.tokenExpirationTime;
+      // state.toke_expiration_time = payload.tokenExpirationTime;
     },
     auth_error(state, payload) {
       state.status = payload;
@@ -142,15 +142,15 @@ export const store = new Vuex.Store({
     }, payload) {
       return new Promise((resolve, reject) => {
         Axios({
-            url: `${BASE_URL_API}/user/auth`,
+            url: `${BASE_URL_API}/authorization`,
             data: payload,
             method: `POST`
           })
           .then(resp => {
-
-            const token = resp.data.accessToken;
-            const user = resp.data.user;
-            const role = resp.data.user.role;
+            console.log(resp)
+            const token = resp.data.token;
+            const user = resp.data.name;
+            const role = resp.data.role;
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             commit('auth_success', {

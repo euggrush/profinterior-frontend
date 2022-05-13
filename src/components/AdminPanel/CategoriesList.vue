@@ -1,10 +1,16 @@
 <template>
-  <div class="row row-cols-auto mt-3 mb-3 ms-0 me-0">
+  <div class="row mt-3">
     <div
       v-for="(category, index) in categoriesList"
       :key="index"
-      class="col border m-1 p-1 category-item"
+      class="col border m-1 p-3"
     >
+      <button
+        type="button"
+        class="btn-close btn-close-white float-end p-0"
+        aria-label="Close"
+      ></button>
+
       <p class="text-white-50">{{ category.name }}</p>
       <div class="row row-cols-auto gap-1">
         <img
@@ -20,7 +26,7 @@
         class="mt-3 mb-3"
       >
         <label for="formFile" class="form-label text-white-50"
-          >Default file input example</label
+          >Add category picture</label
         >
         <input
           class="form-control"
@@ -44,7 +50,7 @@ export default {
   },
   computed: {
     categoriesList() {
-      return this.$store.state.categories;
+      return this.$store.state.categories.categories;
     },
   },
   mounted() {
@@ -72,8 +78,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.category-item {
-  width: 32%;
-  // outline: solid 3px red;
-}
 </style>

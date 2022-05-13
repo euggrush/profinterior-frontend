@@ -1,14 +1,20 @@
 <template>
-  <div class="row row-cols-auto project-item mt-3">
+  <div class="row mt-3">
     <div
       v-for="(project, index) in projectssList"
       :key="index"
-      class="col border m-3 p-3"
+      class="col border m-1 p-3"
     >
+      <button
+        type="button"
+        class="btn-close btn-close-white float-end p-0"
+        aria-label="Close"
+      ></button>
+
       <p class="text-white-50">{{ project.title }}</p>
       <p class="text-white-50">{{ project.description }}</p>
-      <p class="text-white-50">Категория: {{ project.categories.name }}</p>
-      <div class="row row-cols-auto gap-1">
+      <p class="text-white-50">Категория: {{ project.categoryName }}</p>
+      <div v-if="project.pictures" class="row row-cols-auto gap-1">
         <img
           v-for="(picture, index) in project.pictures"
           :key="index"
@@ -17,7 +23,10 @@
           alt="picture"
         />
       </div>
-      <div v-if="project.pictures.length < 6" class="mt-3 mb-3">
+      <div
+        v-if="!project.pictures || project.pictures.length < 6"
+        class="mt-3 mb-3"
+      >
         <label for="formFile" class="form-label text-white-50"
           >Default file input example</label
         >
@@ -43,7 +52,7 @@ export default {
   },
   computed: {
     projectssList() {
-      return this.$store.state.projects;
+      return this.$store.state.projects.projects ?? [];
     },
   },
   mounted() {
