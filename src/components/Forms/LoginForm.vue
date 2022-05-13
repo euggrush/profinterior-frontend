@@ -25,7 +25,16 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        :class="{ shake: disabled }"
+      >
+        Submit
+      </button>
+      <span v-if="disabled" class="ms-3 text-danger fw-bold">{{
+        errorMsg
+      }}</span>
     </form>
   </section>
 </template>
@@ -36,9 +45,19 @@ export default {
     return {
       email: ``,
       password: ``,
+      disabled: false,
+      errorMsg: ``,
     };
   },
   methods: {
+    warnDisabled(arg) {
+      this.disabled = true;
+      this.errorMsg = arg;
+      setTimeout(() => {
+        this.disabled = false;
+        this.errorMsg = ``;
+      }, 1500);
+    },
     login() {
       this.$store
         .dispatch(`LOGIN`, {
@@ -52,6 +71,9 @@ export default {
           } else {
             this.$router.push(`/my-account`);
           }
+        })
+        .catch((err) => {
+          this.warnDisabled(err.response.data.message);
         });
     },
   },
@@ -67,5 +89,32 @@ export default {
 form {
   margin: 0 auto;
   width: 50%;
+}
+.shake {
+  animation: shake 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%,
+  80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%,
+  50%,
+  70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%,
+  60% {
+    transform: translate3d(4px, 0, 0);
+  }
 }
 </style>

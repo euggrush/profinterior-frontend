@@ -52,7 +52,12 @@
           </li>
           <li v-if="this.$store.state.status === 'success'" class="nav-item">
             <button type="button" class="nav-link btn" @click="logout">
-              Logout
+              выход
+            </button>
+          </li>
+          <li v-else class="nav-item">
+            <button type="button" class="nav-link btn" @click="login">
+              вход
             </button>
           </li>
         </ul>
@@ -64,6 +69,9 @@
 <script>
 export default {
   methods: {
+    login() {
+      this.$router.push(`/login`);
+    },
     logout() {
       this.$store.dispatch(`LOGOUT`).then(() => {
         this.$router.push(`/login`);
