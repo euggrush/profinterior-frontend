@@ -52,10 +52,15 @@ export const store = new Vuex.Store({
       state.token = payload.token
       state.user = payload.user;
       state.my_role = payload.role;
-      // state.toke_expiration_time = payload.tokenExpirationTime;
     },
     auth_error(state, payload) {
       state.status = payload;
+    },
+    logout(state) {
+      state.status = ``;
+      state.token = ``;
+      state.user = ``;
+      state.my_role = ``;
     },
     SET_GENERAL_ERRORS(state, payload) {
       if (payload.response) {

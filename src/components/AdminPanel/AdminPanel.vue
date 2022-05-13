@@ -1,6 +1,7 @@
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid position-relative">
     <h1 class="text-white text-center">Admin Panel</h1>
+
     <!-- Tabs -->
     <ul class="nav nav-pills nav-fill mt-3 mb-3">
       <li class="nav-item">
@@ -118,4 +119,16 @@ img {
 .btn-outline-warning {
   min-width: 23em;
 }
+// .btn-logout {
+//   position: absolute;
+//   right: 0;
+//   transform: translate(-13%, -94%);
+//   padding: 10px;
+//   @include media-breakpoint-up(md) {
+//     transform: translate(-20%, 0%);
+//   }
+//   @include media-breakpoint-up(xl) {
+//     transform: translate(-90%, 0%);
+//   }
+// }
 </style>
