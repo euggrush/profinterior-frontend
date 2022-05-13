@@ -2,14 +2,15 @@
   <ProjectsTabs />
   <div class="row row-cols-auto mt-3">
     <div
-      v-for="(project, index) in projectssList"
-      :key="index"
+      v-for="project in projectssList"
+      :key="project.projectId"
       class="col border m-1 p-3 project-item"
     >
       <button
         type="button"
         class="btn-close btn-close-white float-end p-0"
         aria-label="Close"
+        @click="deletePriject(project.projectId)"
       ></button>
 
       <p class="text-white-50">{{ project.title }}</p>
@@ -59,9 +60,12 @@ export default {
     },
   },
   mounted() {
-    this.$store.dispatch(`GET_PROJECTS`, ``);
+    this.fetchProjects();
   },
   methods: {
+    fetchProjects() {
+      this.$store.dispatch(`GET_PROJECTS`, ``);
+    },
     uploadPrijectPicture(event, project) {
       let picture = event.target.files[0];
       const formData = new FormData();
@@ -74,9 +78,25 @@ export default {
       formData.append("upload", picture);
       this.$store.dispatch(`UPLOAD`, formData).then(() => {
         setTimeout(() => {
-          this.$store.dispatch(`GET_PROJECTS`, ``);
+          this.fetchProjects();
         }, 1000);
       });
+    },
+    deletePriject(id) {
+      let isExecuted = confirm("Удалить проект?");
+      if (isExecuted) {
+        this.$store
+          .dispatch(`DELETE_PROJECT`, `?projectId=${id}`)
+          .then(() => {
+            this.fetchProjects();
+          })
+          .catch((err) => {
+            alert(err);
+          })
+          .then(() => {
+            this.fetchProjects();
+          });
+      }
     },
   },
 };

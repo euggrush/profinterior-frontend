@@ -94,11 +94,30 @@ export const store = new Vuex.Store({
     }
   },
   actions: {
+    // PROJECTS
     GET_PROJECTS: async (context, payload) => {
       let {
         data
       } = await Axios.get(`${BASE_URL_API}/projects${payload}`);
       context.commit(`SET_PROJECTS`, data);
+    },
+    CREATE_PROJECT: async (context, payload) => {
+      Axios.post(`${BASE_URL_API}/projects`, payload).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
+    DELETE_PROJECT: async (context, payload) => {
+      Axios.delete(`${BASE_URL_API}/projects${payload}`).catch((error) => {
+        alert(`something went wrong, please try again`);
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
+    // CETEGORIES
+    GET_CATEGORIES: async (context, payload) => {
+      let {
+        data
+      } = await Axios.get(`${BASE_URL_API}/categories`);
+      context.commit(`SET_CATEGORIES`, data);
     },
     CREATE_CATEGORY: async (context, payload) => {
       Axios.post(`${BASE_URL_API}/categories`, payload).catch((error) => {
@@ -111,11 +130,7 @@ export const store = new Vuex.Store({
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
-    CREATE_PROJECT: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/projects`, payload).catch((error) => {
-        context.commit(`SET_GENERAL_ERRORS`, error);
-      })
-    },
+
     UPLOAD: async (context, payload) => {
       Axios.post(`${BASE_URL_API}/upload`, payload).then(
         resp => {
@@ -142,12 +157,7 @@ export const store = new Vuex.Store({
       } = await Axios.get(`${BASE_URL_API}/user`);
       context.commit(`SET_USERS`, data);
     },
-    GET_CATEGORIES: async (context, payload) => {
-      let {
-        data
-      } = await Axios.get(`${BASE_URL_API}/categories`);
-      context.commit(`SET_CATEGORIES`, data);
-    },
+
     LOGIN({
       commit
     }, payload) {
