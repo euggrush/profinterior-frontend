@@ -3,7 +3,7 @@
     <div
       v-for="(category, index) in categoriesList"
       :key="index"
-      class="col border m-1 p-3 category-item"
+      class="col bg-dark bg-gradient rounded m-1 p-3 category-item"
     >
       <button
         type="button"
@@ -80,11 +80,14 @@ export default {
     deleteCategory(id) {
       let isExecuted = confirm("Удалить категонию?");
       if (isExecuted) {
-        this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
-          this.fetchCategories();
-        }).catch((err)=>{
-          alert(err)
-        })
+        this.$store
+          .dispatch(`DELETE_CATEGORY`, `?id=${id}`)
+          .then(() => {
+            this.fetchCategories();
+          })
+          .catch((err) => {
+            alert(err);
+          });
       }
     },
   },
@@ -104,7 +107,12 @@ export default {
     width: 32%;
   }
   @include media-breakpoint-up(xxl) {
-    width: 32%;
+    width: 32.5%;
   }
+}
+.category-item:hover {
+  box-shadow: 0px 0px 50px rgba(149, 30, 30, 0.6);
+  font-weight: bold;
+  cursor: pointer;
 }
 </style>

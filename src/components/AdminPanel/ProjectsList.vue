@@ -1,10 +1,10 @@
 <template>
   <ProjectsTabs />
-  <div class="row row-cols-auto row-cols-md-2 mt-3 p-1">
+  <div class="row row-cols-auto mt-3 p-1">
     <div
       v-for="project in projectssList"
       :key="project.projectId"
-      class="col border m-md-1 p-3"
+      class="col m-1 p-3 bg-dark bg-gradient rounded project-item"
     >
       <button
         type="button"
@@ -103,19 +103,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// .project-item {
-//   width: 97%;
-//   @include media-breakpoint-up(md) {
-//     width: 48%;
-//   }
-//   @include media-breakpoint-up(lg) {
-//     width: 49%;
-//   }
-//   @include media-breakpoint-up(xl) {
-//     width: 32%;
-//   }
-//   @include media-breakpoint-up(xxl) {
-//     width: 32%;
-//   }
-// }
+.project-item {
+  width: 97%;
+  @include media-breakpoint-up(md) {
+    width: 48%;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 49%;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 32%;
+  }
+  @include media-breakpoint-up(xxl) {
+    width: 32.5%;
+  }
+}
+.project-item:hover {
+  box-shadow: 0px 0px 50px rgba(149, 30, 30, 0.6);
+  font-weight: bold;
+  cursor: pointer;
+}
 </style>
