@@ -1,10 +1,10 @@
 <template>
   <ProjectsTabs />
-  <div class="row row-cols-auto mt-3">
+  <div class="row row-cols-auto row-cols-md-2 mt-3 p-1">
     <div
       v-for="project in projectssList"
       :key="project.projectId"
-      class="col border m-1 p-3 project-item"
+      class="col border m-md-1 p-3"
     >
       <button
         type="button"
@@ -30,7 +30,7 @@
         class="mt-3 mb-3"
       >
         <label for="formFile" class="form-label text-white-50"
-          >Default file input example</label
+          >Add pictures</label
         >
         <input
           class="form-control"
@@ -103,19 +103,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.project-item {
-  width: 97%;
-  @include media-breakpoint-up(md) {
-    width: 48%;
-  }
-  @include media-breakpoint-up(lg) {
-    width: 49%;
-  }
-  @include media-breakpoint-up(xl) {
-    width: 32%;
-  }
-  @include media-breakpoint-up(xxl) {
-    width: 32%;
-  }
-}
+// .project-item {
+//   width: 97%;
+//   @include media-breakpoint-up(md) {
+//     width: 48%;
+//   }
+//   @include media-breakpoint-up(lg) {
+//     width: 49%;
+//   }
+//   @include media-breakpoint-up(xl) {
+//     width: 32%;
+//   }
+//   @include media-breakpoint-up(xxl) {
+//     width: 32%;
+//   }
+// }
 </style>

@@ -83,7 +83,7 @@ export default {
         .then(() => {
           this.projectTitle = ``;
           this.projectDescription = ``;
-          this.selectedCategory = ``;
+          this.selectedCategory = `Категория...`;
           this.$store.dispatch(`GET_PROJECTS`, ``);
         })
         .catch((err) => {
