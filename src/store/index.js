@@ -142,12 +142,13 @@ export const store = new Vuex.Store({
       })
     },
     UPLOAD_CATEGORY_PICTURE: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/upload/category-picture`, payload).then(
+      Axios.post(`${BASE_URL_API}/upload?act=category&categoryId=${payload.id}`, payload.asset).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_UPLOADED_FILE`, data);
         }
       ).catch((error) => {
+        alert(`something went wrong, please try again`);
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },

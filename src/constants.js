@@ -17,4 +17,5 @@ export const URL_IMAGES = [
     `https://i.ibb.co/cC3x1gK/demo-image-01.jpg`,
     `https://i.ibb.co/nPPdNGW/bg-signup.jpg`,
     `https://i.ibb.co/VgYchH8/bg-masthead.jpg`
-]
+];
+export const BASE_FILE_URL = `https://superapi.rest/`;
