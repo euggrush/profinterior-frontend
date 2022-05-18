@@ -3,36 +3,38 @@
     <h1>{{ projectData.title }}</h1>
     <div class="row row-cols-auto row-cols-md-2">
       <div
-        v-for="(pictire, index) in projectData.pictures"
-        :key="index"
+        v-for="picture in projectData.pictures"
+        :key="picture.pictureId"
         class="col mt-3"
       >
-        <img :src="pictire.path" class="img-fluid" alt="image" />
+        <img
+          :src="`${FILE_URL}${picture.fullPath}`"
+          class="img-fluid"
+          alt="image"
+        />
       </div>
     </div>
   </section>
 </template>
 
 <script>
+import { BASE_FILE_URL } from "../../constants";
 export default {
   data() {
     return {
-      projectId: ``,
-      title: ``,
+      FILE_URL: BASE_FILE_URL,
       projectData: {},
-      project: ``,
     };
   },
   mounted() {
-    this.project = this.$route.query.project;
-    this.projectId = this.$route.query.id;
-    this.fetchData(`./data/project/project-${this.project}.json`).then((r) => {
-      r.map((item) => {
-        if (item.id == this.projectId) {
-          this.projectData = item;
-        }
+    this.fetchProjects(this.$route.query.id);
+  },
+  methods: {
+    fetchProjects(id) {
+      this.$store.dispatch(`GET_PROJECTS`, `?projectId=${id}`).then(() => {
+        this.projectData = this.$store.state.projects.projects[0];
       });
-    });
+    },
   },
 };
 </script>

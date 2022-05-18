@@ -4,13 +4,17 @@
     <div class="container px-4 px-lg-5">
       <h2 class="text-center mb-lg-5">Галерея</h2>
       <div
-        v-for="(category, index) in categoriesList"
+        v-for="(category, index) in categoriesList.categories"
         :key="index"
         class="row gx-0 mt-5 mt-lg-0 justify-content-center"
-        @click="getRooms(category.name)"
+        @click="getRooms(category)"
       >
         <div class="col-lg-6">
-          <img class="img-fluid w-100" :src="category.image" alt="image" />
+          <img
+            class="img-fluid w-100"
+            :src="`${FILE_URL}${category.picture}`"
+            alt="image"
+          />
         </div>
         <div class="col-lg-6" :class="{ 'order-lg-first': index % 2 !== 0 }">
           <div class="bg-black text-center h-100 project">
@@ -29,42 +33,31 @@
 </template>
 
 <script>
+import { BASE_FILE_URL } from "../../constants";
+
 export default {
   data() {
     return {
       categories: [],
+      FILE_URL: `${BASE_FILE_URL}`,
     };
   },
   computed: {
     categoriesList() {
-      return this.categories;
+      return this.$store.state.categories;
     },
   },
   mounted() {
-    this.fetchData(`./data/categories.json`).then((r) => {
-      this.categories = r;
-    });
+    this.fetchCategories();
   },
   methods: {
-    getRooms(arg) {
-      switch (arg) {
-        case `Гостиные`:
-          this.getGallery({ title: `Гостиные`, query: `livingroom` });
-          break;
-        case `Ванные комнаты`:
-          this.getGallery({ title: `Ванные комнаты`, query: `bathroom` });
-          break;
-        case `Спальни`:
-          this.getGallery({ title: `Спальни`, query: `bedroom` });
-          break;
-        default:
-          return;
-      }
+    fetchCategories() {
+      this.$store.dispatch(`GET_CATEGORIES`);
     },
-    getGallery(arg) {
+    getRooms(arg) {
       this.$router.push({
         path: "/gallery",
-        query: { title: arg.title, rooms: arg.query },
+        query: { name: arg.name, id: arg.categoryId },
       });
     },
   },
@@ -75,12 +68,12 @@ export default {
 .row {
   cursor: pointer;
 }
-img{
+img {
   transition: all 2s ease-in-out;
   box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
 }
 
-img:hover{
+img:hover {
   transform: scale(1.1);
-} 
+}
 </style>
