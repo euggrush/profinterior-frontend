@@ -152,6 +152,23 @@ export const store = new Vuex.Store({
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
+    UPLOAD_PROJECT_IMAGES: async (context, payload) => {
+      Axios.post(`${BASE_URL_API}/upload?act=project&projectId=${payload.id}`, payload.asset).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_UPLOADED_FILE`, data);
+        }
+      ).catch((error) => {
+        alert(`something went wrong, please try again`);
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
+    DELETE_PROJECT_IMAGE: async (context, payload) => {
+      Axios.delete(`${BASE_URL_API}/pictures?pictureId=${payload}`).catch((error) => {
+        alert(`something went wrong, please try again`);
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
     GET_USERS: async (context, payload) => {
       let {
         data

@@ -1,14 +1,14 @@
 <template>
   <div class="mt-3 mb-3">
     <label for="formFile" class="form-label text-white-50"
-      >Add or change category picture</label
+      >Add or change project pictures</label
     >
     <input
       class="form-control"
       type="file"
       id="formFile"
       accept="image/*"
-      @change="uploadCategoryPicture($event, categoryData)"
+      @change="uploadProjectPictures($event, projectData)"
     />
   </div>
 </template>
@@ -16,24 +16,24 @@
 <script>
 export default {
   props: {
-    categoryData: {
+    projectData: {
       type: Object,
       default: () => {},
     },
   },
   methods: {
-    uploadCategoryPicture(event, category) {
+    uploadProjectPictures(event, project) {
       let picture = event.target.files[0];
       const formData = new FormData();
       formData.append(`asset`, picture);
       this.$store
-        .dispatch(`UPLOAD_CATEGORY_PICTURE`, {
+        .dispatch(`UPLOAD_PROJECT_IMAGES`, {
           asset: formData,
-          id: category.categoryId,
+          id: project.projectId,
         })
         .then(() => {
           // eslint-disable-next-line vue/custom-event-name-casing
-          this.$emit("imageUploaded");
+          // this.$emit("imageUploaded");
         });
     },
   },

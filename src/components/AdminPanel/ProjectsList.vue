@@ -4,7 +4,7 @@
     <div
       v-for="project in projectssList"
       :key="project.projectId"
-      class="col m-1 p-3 bg-dark bg-gradient rounded project-item"
+      class="col m-1 p-3 bg-dark bg-gradient rounded w-100 project-item"
     >
       <button
         type="button"
@@ -17,41 +17,50 @@
       <p class="text-white-50">{{ project.description }}</p>
       <p class="text-white-50">Категория: {{ project.categoryName }}</p>
       <div v-if="project.pictures" class="row row-cols-auto gap-1">
-        <img
+        <div
           v-for="(picture, index) in project.pictures"
           :key="index"
-          :src="`${FILE_URL}${picture.path}`"
-          class="img-thumbnail col"
-          alt="picture"
-        />
-      </div>
-      <div
-        v-if="!project.pictures || project.pictures.length < 6"
-        class="mt-3 mb-3"
-      >
-        <label for="formFile" class="form-label text-white-50"
-          >Add pictures</label
+          class="project-image m-1 col w-25 position-relative"
         >
-        <input
-          class="form-control"
-          type="file"
-          id="formFile"
-          @change="uploadPrijectPicture($event, project)"
-        />
+          <button
+            class="
+              position-absolute
+              top-0
+              start-100
+              translate-middle
+              btn btn-outline-danger
+              p-1
+              rounded-circle
+            "
+            @click="deleteImage(picture.pictureId)"
+          >
+            X
+          </button>
+          <img
+            :src="`${FILE_URL}${picture.fullPath}`"
+            class="img-thumbnail p-0 border-0"
+            alt="picture"
+          />
+        </div>
       </div>
+      <UploadProjectImages
+        v-if="project.pictures.length < 10"
+        :projectData="project"
+      />
     </div>
   </div>
 </template>
 
 <script>
-import { BASE_URL_API } from "../../constants";
+import { BASE_FILE_URL } from "../../constants";
 import ProjectsTabs from "../Partials/Tabs/ProjectsTabs.vue";
+import UploadProjectImages from "../Forms/UploadProjectImages.vue";
 
 export default {
-  components: { ProjectsTabs },
+  components: { ProjectsTabs, UploadProjectImages },
   data() {
     return {
-      FILE_URL: `${BASE_URL_API}/upload`,
+      FILE_URL: `${BASE_FILE_URL}`,
     };
   },
   computed: {
@@ -98,29 +107,29 @@ export default {
           });
       }
     },
+    deleteImage(id) {
+      let isExecuted = confirm("Удалить картинку?");
+      if (isExecuted) {
+        this.$store.dispatch(`DELETE_PROJECT_IMAGE`, id).then(() => {
+          this.fetchProjects();
+        });
+      }
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.project-item {
-  width: 97%;
-  @include media-breakpoint-up(md) {
-    width: 48%;
-  }
-  @include media-breakpoint-up(lg) {
-    width: 49%;
-  }
-  @include media-breakpoint-up(xl) {
-    width: 32%;
-  }
-  @include media-breakpoint-up(xxl) {
-    width: 32.5%;
-  }
-}
 .project-item:hover {
   box-shadow: 0px 0px 50px rgba(149, 30, 30, 0.6);
   font-weight: bold;
   cursor: pointer;
+}
+.project-image img:hover {
+  opacity: 0.6;
+}
+.btn {
+  width: 30px;
+  height: 30px;
 }
 </style>

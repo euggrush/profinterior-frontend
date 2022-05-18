@@ -1,11 +1,11 @@
 <template>
   <ul class="nav nav-tabs mt-3">
-    <li v-for="category in categoriesList" :key="category.id" class="nav-item">
+    <li v-for="category in categoriesList" :key="category.categoryId" class="nav-item">
       <button
         class="nav-link"
         aria-current="page"
         type="button"
-        @click="getProjectsByCategory(category.id)"
+        @click="getProjectsByCategory(category.categoryId)"
       >
         {{ category.name }}
       </button>
