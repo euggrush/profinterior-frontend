@@ -19,6 +19,7 @@
     <li class="nav-item">
       <button
         class="nav-link"
+        :class="{ active: defaultActive == `ALL` }"
         aria-current="page"
         type="button"
         @click="getAllProjects"
@@ -63,6 +64,7 @@ export default {
       this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
     },
     getAllProjects() {
+      this.defaultActive = `ALL`;
       this.$store.dispatch(`GET_PROJECTS`, ``);
     },
   },

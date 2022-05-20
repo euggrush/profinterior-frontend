@@ -112,46 +112,6 @@ export const store = new Vuex.Store({
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
-    // CETEGORIES
-    GET_CATEGORIES: async (context, payload) => {
-      let {
-        data
-      } = await Axios.get(`${BASE_URL_API}/categories`);
-      context.commit(`SET_CATEGORIES`, data);
-    },
-    CREATE_CATEGORY: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/categories`, payload).catch((error) => {
-        context.commit(`SET_GENERAL_ERRORS`, error);
-      })
-    },
-    DELETE_CATEGORY: async (context, payload) => {
-      Axios.delete(`${BASE_URL_API}/categories${payload}`).catch((error) => {
-        alert(`something went wrong, please try again`);
-        context.commit(`SET_GENERAL_ERRORS`, error);
-      })
-    },
-
-    UPLOAD: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/upload`, payload).then(
-        resp => {
-          let data = resp.data;
-          context.commit(`SET_UPLOADED_FILE`, data);
-        }
-      ).catch((error) => {
-        context.commit(`SET_GENERAL_ERRORS`, error);
-      })
-    },
-    UPLOAD_CATEGORY_PICTURE: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/upload?act=category&categoryId=${payload.id}`, payload.asset).then(
-        resp => {
-          let data = resp.data;
-          context.commit(`SET_UPLOADED_FILE`, data);
-        }
-      ).catch((error) => {
-        alert(`something went wrong, please try again`);
-        context.commit(`SET_GENERAL_ERRORS`, error);
-      })
-    },
     UPLOAD_PROJECT_IMAGES: async (context, payload) => {
       Axios.post(`${BASE_URL_API}/upload?act=project&projectId=${payload.id}`, payload.asset).then(
         resp => {
@@ -169,6 +129,49 @@ export const store = new Vuex.Store({
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
+    // CETEGORIES
+
+    GET_CATEGORIES: async (context, payload) => {
+      let {
+        data
+      } = await Axios.get(`${BASE_URL_API}/categories`);
+      context.commit(`SET_CATEGORIES`, data);
+    },
+    CREATE_CATEGORY: async (context, payload) => {
+      Axios.post(`${BASE_URL_API}/categories`, payload).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
+    DELETE_CATEGORY: async (context, payload) => {
+      Axios.delete(`${BASE_URL_API}/categories${payload}`).catch((error) => {
+        alert(`something went wrong, please try again`);
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
+    MODIFY_CATEGORY: async (context, payload) => {
+      Axios.put(`${BASE_URL_API}/categories`, payload).catch((error) => {
+        context.commit(`SET_GENERAL_ERRORS`, error);
+        alert(`something went wrong, please try again`);
+      })
+    },
+    UPLOAD_CATEGORY_PICTURE: async (context, payload) => {
+      Axios.post(`${BASE_URL_API}/upload?act=category&categoryId=${payload.id}`, payload.asset).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_UPLOADED_FILE`, data);
+        }
+      ).catch((error) => {
+        alert(`something went wrong, please try again`);
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
+    DELETE_CATEGORY_IMAGE: async (context, payload) => {
+      Axios.delete(`${BASE_URL_API}/categories?pictureId=${payload}`).catch((error) => {
+        alert(`something went wrong, please try again`);
+        context.commit(`SET_GENERAL_ERRORS`, error);
+      })
+    },
+
     GET_USERS: async (context, payload) => {
       let {
         data

@@ -5,13 +5,6 @@
       :key="category.categoryId"
       class="col bg-dark bg-gradient rounded m-1 p-3 category-item"
     >
-      <button
-        type="button"
-        class="btn-close btn-close-white float-end p-0"
-        aria-label="Close"
-        @click="deleteCategory(category.id)"
-      ></button>
-
       <p class="text-white-50">{{ category.name }}</p>
       <div class="row row-cols-auto gap-1">
         <img
@@ -24,6 +17,26 @@
         :categoryData="category"
         @imageUploaded="rerenderCategiriesList"
       />
+      <button
+        type="button"
+        class="btn btn-outline-danger w-100"
+        @click="deleteCategory(category.categoryId)"
+      >
+        Удалить
+      </button>
+      <Transition name="bounce">
+        <EditCategoryForm
+          :myProps="category.categoryId"
+          v-if="showEditForm == category.categoryId"
+        />
+      </Transition>
+      <button
+        type="button"
+        class="btn btn-outline-info w-100 mt-3"
+        @click="getEditForm(category.categoryId)"
+      >
+        Редактировать
+      </button>
     </div>
   </div>
 </template>
@@ -31,12 +44,15 @@
 <script>
 import { BASE_FILE_URL } from "../../constants";
 import UploadCategoryImage from "../Forms/UploadCategoryImage.vue";
+import EditCategoryForm from "../Forms/EditCategoryForm.vue";
 
 export default {
-  components: { UploadCategoryImage },
+  components: { UploadCategoryImage, EditCategoryForm },
   data() {
     return {
       FILE_URL: `${BASE_FILE_URL}`,
+      showEditForm: false,
+      categoryName: ``,
     };
   },
   computed: {
@@ -55,16 +71,23 @@ export default {
       this.$store.dispatch(`GET_CATEGORIES`);
     },
     deleteCategory(id) {
+      console.log(id);
       let isExecuted = confirm("Удалить категонию?");
       if (isExecuted) {
-        this.$store
-          .dispatch(`DELETE_CATEGORY`, `?id=${id}`)
-          .then(() => {
-            this.fetchCategories();
-          })
-          .catch((err) => {
-            alert(err);
-          });
+        alert(`Ошибка`);
+        // this.$store.dispatch(`DELETE_CATEGORY_IMAGE`, id)
+        // .then(() => {
+        //   this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
+        //     this.fetchCategories();
+        //   });
+        // });
+      }
+    },
+    getEditForm(id) {
+      if (this.showEditForm != id) {
+        this.showEditForm = id;
+      } else {
+        this.showEditForm = false;
       }
     },
   },
