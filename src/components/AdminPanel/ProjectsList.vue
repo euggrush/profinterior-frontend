@@ -68,9 +68,9 @@ export default {
       return this.$store.state.projects.projects ?? [];
     },
   },
-  mounted() {
-    this.fetchProjects();
-  },
+  // mounted() {
+  //   this.fetchProjects();
+  // },
   methods: {
     fetchProjects() {
       this.$store.dispatch(`GET_PROJECTS`, ``);
