@@ -1,20 +1,21 @@
 <template>
   <section class="container-fluid ps-5 pe-5">
     <h1 class="text-white">{{ title }}</h1>
-    <div class="row row-cols-auto row-cols-md-3 mt-5">
+    <div class="row row-cols-auto row-cols-lg-2 mt-5">
       <div
         v-for="(project, index) in projectssList"
         :key="index"
-        class="col"
+        class="col p-5"
         @click="getProject(project)"
       >
-        <p class="text-white fw-bold">{{ project.title }}</p>
-        <p class="text-white fst-italic fw-lighter">
+        <p class="text-light fw-lighter">{{ project.title }}</p>
+        <p class="text-light fst-italic fw-lighter">
           {{ project.description }}
         </p>
         <img
+          v-if="project.pictures.length > 0"
           :src="`${FILE_URL}${project.pictures[0].fullPath}`"
-          class="img-thumbnail"
+          class="img-thumbnail p-0"
           alt="image"
         />
       </div>
@@ -75,5 +76,8 @@ img {
 
 img:hover {
   transform: scale(1.1);
+}
+.col {
+  min-height: 550px;
 }
 </style>
