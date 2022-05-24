@@ -1,22 +1,17 @@
 <template>
   <div class="row row-cols-auto mt-3">
     <div
-      v-for="category in categoriesList.categories"
+      v-for="category in categoriesList"
       :key="category.categoryId"
       class="col bg-dark bg-gradient rounded m-1 p-3 category-item"
     >
       <p class="text-white-50">{{ category.name }}</p>
-      <div class="row row-cols-auto gap-1">
-        <img
-          :src="`${FILE_URL}${category.picture}`"
-          class="img-thumbnail col border-0 p-0"
-          alt="picture"
-        />
-      </div>
-      <UploadCategoryImage
-        :categoryData="category"
-        @imageUploaded="rerenderCategiriesList"
+      <img
+        :src="`${FILE_URL}${category.picture}`"
+        class="img-thumbnail border-0 p-0"
+        alt="picture"
       />
+      <UploadCategoryImage :categoryData="category" />
       <button
         type="button"
         class="btn btn-outline-danger w-100"
@@ -34,6 +29,7 @@
         type="button"
         class="btn btn-outline-info w-100 mt-3"
         @click="getEditForm(category.categoryId)"
+        disabled
       >
         Редактировать
       </button>
@@ -42,6 +38,8 @@
 </template>
 
 <script>
+// import { mapGetters } from "vuex";
+
 import { BASE_FILE_URL } from "../../constants";
 import UploadCategoryImage from "../Forms/UploadCategoryImage.vue";
 import EditCategoryForm from "../Forms/EditCategoryForm.vue";
@@ -50,37 +48,39 @@ export default {
   components: { UploadCategoryImage, EditCategoryForm },
   data() {
     return {
+      categoriesData: [],
       FILE_URL: `${BASE_FILE_URL}`,
       showEditForm: false,
       categoryName: ``,
     };
   },
+  watch: {
+    isImageUploaded() {
+      this.fetchCategories();
+    },
+  },
   computed: {
     categoriesList() {
-      return this.$store.state.categories;
+      return this.$store.state.categories.categories;
+    },
+    isImageUploaded() {
+      return this.$store.state.is_file_uploaded;
     },
   },
   mounted() {
     this.fetchCategories();
   },
   methods: {
-    rerenderCategiriesList() {
-      this.fetchCategories();
-    },
     fetchCategories() {
-      this.$store.dispatch(`GET_CATEGORIES`);
+      this.$store.dispatch(`GET_CATEGORIES`, ``);
     },
     deleteCategory(id) {
       console.log(id);
       let isExecuted = confirm("Удалить категонию?");
       if (isExecuted) {
-        alert(`Ошибка`);
-        // this.$store.dispatch(`DELETE_CATEGORY_IMAGE`, id)
-        // .then(() => {
-        //   this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
-        //     this.fetchCategories();
-        //   });
-        // });
+        this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
+          this.fetchCategories();
+        });
       }
     },
     getEditForm(id) {

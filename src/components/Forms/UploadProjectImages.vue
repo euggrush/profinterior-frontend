@@ -26,15 +26,10 @@ export default {
       let picture = event.target.files[0];
       const formData = new FormData();
       formData.append(`asset`, picture);
-      this.$store
-        .dispatch(`UPLOAD_PROJECT_IMAGES`, {
-          asset: formData,
-          id: project.projectId,
-        })
-        .then(() => {
-          // eslint-disable-next-line vue/custom-event-name-casing
-          // this.$emit("imageUploaded");
-        });
+      this.$store.dispatch(`UPLOAD_PROJECT_IMAGES`, {
+        asset: formData,
+        id: project.projectId,
+      });
     },
   },
 };

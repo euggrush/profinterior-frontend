@@ -1,10 +1,10 @@
 <template>
   <ProjectsTabs />
-  <div class="row row-cols-auto mt-3 p-1">
+  <div class="mt-3 p-1">
     <div
       v-for="project in projectssList"
       :key="project.projectId"
-      class="col m-1 p-3 bg-dark bg-gradient rounded w-100 project-item"
+      class="m-1 p-3 bg-dark bg-gradient rounded w-100 project-item"
     >
       <button
         type="button"
@@ -16,31 +16,23 @@
       <p class="text-white-50">{{ project.title }}</p>
       <p class="text-white-50">{{ project.description }}</p>
       <p class="text-white-50">Категория: {{ project.categoryName }}</p>
-      <div v-if="project.pictures" class="row row-cols-auto gap-1">
+      <div v-if="project.pictures" class="row row-cols-auto row-cols-lg-4">
         <div
           v-for="(picture, index) in project.pictures"
           :key="index"
-          class="project-image m-1 col w-25 position-relative"
+          class="project-image col"
         >
-          <button
-            class="
-              position-absolute
-              top-0
-              start-100
-              translate-middle
-              btn btn-outline-danger
-              p-1
-              rounded-circle
-            "
-            @click="deleteImage(picture.pictureId)"
-          >
-            X
-          </button>
           <img
             :src="`${FILE_URL}${picture.fullPath}`"
             class="img-thumbnail p-0 border-0"
             alt="picture"
           />
+          <button
+            class="btn btn-outline-danger w-100 mt-3"
+            @click="deleteImage(picture.pictureId)"
+          >
+            Удалить фото
+          </button>
         </div>
       </div>
       <UploadProjectImages
@@ -63,33 +55,22 @@ export default {
       FILE_URL: `${BASE_FILE_URL}`,
     };
   },
+  watch: {
+    isImageUploaded() {
+      this.fetchProjects();
+    },
+  },
   computed: {
+    isImageUploaded() {
+      return this.$store.state.is_file_uploaded;
+    },
     projectssList() {
       return this.$store.state.projects.projects ?? [];
     },
   },
-  // mounted() {
-  //   this.fetchProjects();
-  // },
   methods: {
     fetchProjects() {
       this.$store.dispatch(`GET_PROJECTS`, ``);
-    },
-    uploadPrijectPicture(event, project) {
-      let picture = event.target.files[0];
-      const formData = new FormData();
-      formData.append(
-        `meta`,
-        JSON.stringify({
-          project_id: project.id,
-        })
-      );
-      formData.append("upload", picture);
-      this.$store.dispatch(`UPLOAD`, formData).then(() => {
-        setTimeout(() => {
-          this.fetchProjects();
-        }, 1000);
-      });
     },
     deletePriject(id) {
       let isExecuted = confirm("Удалить проект?");
@@ -127,9 +108,5 @@ export default {
 }
 .project-image img:hover {
   opacity: 0.6;
-}
-.btn {
-  width: 30px;
-  height: 30px;
 }
 </style>

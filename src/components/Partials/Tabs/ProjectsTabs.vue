@@ -50,10 +50,9 @@ export default {
   },
   methods: {
     getDefaultTab() {
-      let catId = this.$store.state.categories.categories[0].categoryId ?? ``;
       setTimeout(() => {
-        this.defaultActive = catId;
-        this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${catId}`);
+        this.defaultActive = `ALL`;
+        this.$store.dispatch(`GET_PROJECTS`, ``);
       }, 100);
     },
     fetchCategories() {

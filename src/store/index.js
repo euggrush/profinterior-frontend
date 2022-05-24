@@ -19,12 +19,13 @@ import {
   BASE_URL_API
 } from '../constants.js';
 
-// import CATEGORIES from '../../public/data/categories.json';
-
 export const store = new Vuex.Store({
   state: {
     categories: [],
-    uploaded_file: [],
+    uploaded_file: {
+      state: `no`
+    },
+    is_file_uploaded: false,
     status: ``,
     token: ``,
     user: ``,
@@ -84,7 +85,18 @@ export const store = new Vuex.Store({
       state.categories = payload;
     },
     SET_UPLOADED_FILE(state, payload) {
-      state.uploaded_file = payload;
+      const delay = (time) => {
+        return new Promise((resolve, reject) => setTimeout(resolve, time))
+      }
+      delay(50)
+        .then(() => {
+          state.uploaded_file = payload;
+          return delay(50)
+        })
+        .then(() => {
+          state.is_file_uploaded = !state.is_file_uploaded;
+          return delay(50)
+        })
     },
     SET_USERS(state, payload) {
       state.users = payload
