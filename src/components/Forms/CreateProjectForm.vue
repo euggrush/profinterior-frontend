@@ -13,7 +13,7 @@
       <option
         v-for="(category, index) in categoriesList"
         :key="index"
-        :value="category.id"
+        :value="category.categoryId"
       >
         {{ category.name }}
       </option>
@@ -84,13 +84,10 @@ export default {
           this.projectTitle = ``;
           this.projectDescription = ``;
           this.selectedCategory = `Категория...`;
-          this.$store.dispatch(`GET_PROJECTS`, ``);
+          // this.$store.dispatch(`GET_PROJECTS`, ``);
         })
         .catch((err) => {
           console.log(err);
-        })
-        .then(() => {
-          this.$store.dispatch(`GET_PROJECTS`, ``);
         });
     },
   },

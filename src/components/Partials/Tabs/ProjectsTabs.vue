@@ -50,19 +50,19 @@ export default {
   },
   methods: {
     getDefaultTab() {
-      setTimeout(() => {
-        this.defaultActive = `ALL`;
-        this.$store.dispatch(`GET_PROJECTS`, ``);
-      }, 100);
+      this.defaultActive = `ALL`;
+      this.$store.dispatch(`GET_PROJECTS`, ``);
     },
     fetchCategories() {
       this.$store.dispatch(`GET_CATEGORIES`);
     },
     getProjectsByCategory(id) {
+      this.$store.commit(`SET_PICKED_CATEGORY_ID`, id);
       this.defaultActive = id;
       this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
     },
     getAllProjects() {
+      this.$store.commit(`SET_PICKED_CATEGORY_ID`, `ALL`);
       this.defaultActive = `ALL`;
       this.$store.dispatch(`GET_PROJECTS`, ``);
     },

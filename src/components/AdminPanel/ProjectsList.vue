@@ -56,21 +56,28 @@ export default {
     };
   },
   watch: {
-    isImageUploaded() {
-      this.fetchProjects();
+    isChangesNeede() {
+      this.fetchProjects(this.$store.state.picked_category_id);
     },
   },
   computed: {
-    isImageUploaded() {
-      return this.$store.state.is_file_uploaded;
+    getPicketCategoryId() {
+      return this.$store.state.picked_category_id;
+    },
+    isChangesNeede() {
+      return this.$store.state.is_changes_needed;
     },
     projectssList() {
       return this.$store.state.projects.projects ?? [];
     },
   },
   methods: {
-    fetchProjects() {
-      this.$store.dispatch(`GET_PROJECTS`, ``);
+    fetchProjects(id) {
+      if (id) {
+        this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
+      } else {
+        this.$store.dispatch(`GET_PROJECTS`, ``);
+      }
     },
     deletePriject(id) {
       let isExecuted = confirm("Удалить проект?");
@@ -78,13 +85,13 @@ export default {
         this.$store
           .dispatch(`DELETE_PROJECT`, `?projectId=${id}`)
           .then(() => {
-            this.fetchProjects();
+            this.fetchProjects(this.getPicketCategoryId);
           })
           .catch((err) => {
             alert(err);
           })
           .then(() => {
-            this.fetchProjects();
+            this.fetchProjects(this.getPicketCategoryId);
           });
       }
     },

@@ -55,7 +55,7 @@ export default {
     };
   },
   watch: {
-    isImageUploaded() {
+    isChangesNeede() {
       this.fetchCategories();
     },
   },
@@ -63,8 +63,8 @@ export default {
     categoriesList() {
       return this.$store.state.categories.categories;
     },
-    isImageUploaded() {
-      return this.$store.state.is_file_uploaded;
+    isChangesNeede() {
+      return this.$store.state.is_changes_needed;
     },
   },
   mounted() {

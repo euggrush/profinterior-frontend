@@ -25,13 +25,14 @@ export const store = new Vuex.Store({
     uploaded_file: {
       state: `no`
     },
-    is_file_uploaded: false,
+    is_changes_needed: false,
     status: ``,
     token: ``,
     user: ``,
     my_role: ``,
     users: [],
-    projects: []
+    projects: [],
+    picked_category_id: ``
   },
   plugins: [
     createLogger(),
@@ -84,7 +85,7 @@ export const store = new Vuex.Store({
     SET_CATEGORIES(state, payload) {
       state.categories = payload;
     },
-    SET_UPLOADED_FILE(state, payload) {
+    SET_NEEDED_CHANGES(state, payload) {
       const delay = (time) => {
         return new Promise((resolve, reject) => setTimeout(resolve, time))
       }
@@ -94,7 +95,7 @@ export const store = new Vuex.Store({
           return delay(50)
         })
         .then(() => {
-          state.is_file_uploaded = !state.is_file_uploaded;
+          state.is_changes_needed = !state.is_changes_needed;
           return delay(50)
         })
     },
@@ -103,6 +104,9 @@ export const store = new Vuex.Store({
     },
     SET_PROJECTS(state, payload) {
       state.projects = payload;
+    },
+    SET_PICKED_CATEGORY_ID(state, payload) {
+      state.picked_category_id = payload;
     }
   },
   actions: {
@@ -114,7 +118,12 @@ export const store = new Vuex.Store({
       context.commit(`SET_PROJECTS`, data);
     },
     CREATE_PROJECT: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/projects`, payload).catch((error) => {
+      Axios.post(`${BASE_URL_API}/projects`, payload).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_NEEDED_CHANGES`, data);
+        }
+      ).catch((error) => {
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
@@ -128,7 +137,7 @@ export const store = new Vuex.Store({
       Axios.post(`${BASE_URL_API}/upload?act=project&projectId=${payload.id}`, payload.asset).then(
         resp => {
           let data = resp.data;
-          context.commit(`SET_UPLOADED_FILE`, data);
+          context.commit(`SET_NEEDED_CHANGES`, data);
         }
       ).catch((error) => {
         alert(`something went wrong, please try again`);
@@ -136,7 +145,12 @@ export const store = new Vuex.Store({
       })
     },
     DELETE_PROJECT_IMAGE: async (context, payload) => {
-      Axios.delete(`${BASE_URL_API}/pictures?pictureId=${payload}`).catch((error) => {
+      Axios.delete(`${BASE_URL_API}/pictures?pictureId=${payload}`).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_NEEDED_CHANGES`, data);
+        }
+      ).catch((error) => {
         alert(`something went wrong, please try again`);
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
@@ -170,7 +184,7 @@ export const store = new Vuex.Store({
       Axios.post(`${BASE_URL_API}/upload?act=category&categoryId=${payload.id}`, payload.asset).then(
         resp => {
           let data = resp.data;
-          context.commit(`SET_UPLOADED_FILE`, data);
+          context.commit(`SET_NEEDED_CHANGES`, data);
         }
       ).catch((error) => {
         alert(`something went wrong, please try again`);
