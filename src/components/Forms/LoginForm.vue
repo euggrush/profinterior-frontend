@@ -32,9 +32,7 @@
       >
         Submit
       </button>
-      <span v-if="disabled" class="ms-3 text-danger fw-bold">{{
-        errorMsg
-      }}</span>
+      <span v-if="disabled" class="ms-3 text-danger">{{ errorMsg }}</span>
     </form>
   </section>
 </template>

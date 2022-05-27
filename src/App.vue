@@ -81,11 +81,11 @@ export default {
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  // --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+  //   "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+  //   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  // --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+  //   "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.15),
@@ -12063,20 +12063,6 @@ body {
     font-size: 1.25rem;
   }
 }
-
-.about-section {
-  padding-top: 10rem;
-  background: linear-gradient(
-    to bottom,
-    #000 0%,
-    rgba(0, 0, 0, 0.9) 75%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
-}
-.about-section p {
-  margin-bottom: 5rem;
-}
-
 .projects-section {
   padding: 10rem 0;
 }

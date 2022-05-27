@@ -4,14 +4,15 @@
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5">
         <div class="col-md-10 col-lg-8 mx-auto text-center">
-          <h2 class="text-white">Состав дизайн-проекта</h2>
-          <p class="text-white">
-            Любой проект выполняемый в нашей студии обязательно проходит через
-            несколько стадий проектирования, и на каждой стадии на выходе клиент
-            получает готовые результаты на руки, будь-то это эскизы, чертежи или
-            визуализации. Здесь описан типовой состав дизайн-проекта, по
-            необходимости он может дополняться и варьироваться в соответствии с
-            конкретными нуждами для каждого проекта индивидуально.
+          <!-- <h2 class="text-white">Состав дизайн-проекта</h2> -->
+          <p class="text-white fw-lighter">Дизайн интерьера как искусство</p>
+          <p class="text-white fw-lighter">Индивидуальный подход</p>
+          <p class="text-white fw-lighter">Идея и реализация</p>
+          <p class="text-white fw-lighter">Авторский надзор</p>
+          <p class="text-white fw-lighter">Комплектация</p>
+          <p class="text-white fw-lighter">Планировочные решения</p>
+          <p class="text-white fw-lighter">
+            Создание неповторимого образа жизни
           </p>
           <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
           <h2 class="text-white mt-5 mb-5">заявка на дизайн</h2>
@@ -67,7 +68,7 @@
             <!-- has successfully submitted-->
             <div class="d-none" id="submitSuccessMessage">
               <div class="text-center mb-3 mt-2 text-white">
-                <div class="fw-bolder">Form submission successful!</div>
+                <div>Form submission successful!</div>
                 To activate this form, sign up at
                 <br />
                 <a href="https://startbootstrap.com/solution/contact-forms"
