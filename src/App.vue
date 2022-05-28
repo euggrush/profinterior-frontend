@@ -26,7 +26,6 @@ export default {
   padding: 30px;
 
   a {
-    font-weight: 300;
     color: #2c3e50;
 
     &.router-link-exact-active {
@@ -81,21 +80,12 @@ export default {
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  // --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
-  //   "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
-  //   "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  // --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-  //   "Liberation Mono", "Courier New", monospace;
   --bs-gradient: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.15),
     rgba(255, 255, 255, 0)
   );
-  --bs-body-font-family: Coco Gothic, -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
-    Segoe UI Symbol, Noto Color Emoji;
   --bs-body-font-size: 1rem;
-  --bs-body-font-weight: 300;
   --bs-body-line-height: 1.5;
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
@@ -115,9 +105,9 @@ export default {
 
 body {
   margin: 0;
-  font-family: var(--bs-body-font-family);
+  font-family: "Coco Gothic", "arial", "san-serif";
   font-size: var(--bs-body-font-size);
-  font-weight: var(--bs-body-font-weight);
+  font-weight: 300;
   line-height: var(--bs-body-line-height);
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
@@ -249,10 +239,6 @@ ul ol {
   margin-bottom: 0;
 }
 
-dt {
-  font-weight: 700;
-}
-
 dd {
   margin-bottom: 0.5rem;
   margin-left: 0;
@@ -260,11 +246,6 @@ dd {
 
 blockquote {
   margin: 0 0 1rem;
-}
-
-b,
-strong {
-  font-weight: 400;
 }
 
 small,
@@ -312,7 +293,6 @@ pre,
 code,
 kbd,
 samp {
-  font-family: var(--bs-font-monospace);
   font-size: 1em;
   direction: ltr /* rtl:ignore */;
   unicode-bidi: bidi-override;
@@ -350,7 +330,6 @@ kbd {
 kbd kbd {
   padding: 0;
   font-size: 1em;
-  font-weight: 700;
 }
 
 figure {
@@ -408,7 +387,6 @@ select,
 optgroup,
 textarea {
   margin: 0;
-  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
 }
@@ -550,12 +528,10 @@ progress {
 
 .lead {
   font-size: 1.25rem;
-  font-weight: 300;
 }
 
 .display-1 {
   font-size: calc(1.625rem + 4.5vw);
-  font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -566,7 +542,6 @@ progress {
 
 .display-2 {
   font-size: calc(1.575rem + 3.9vw);
-  font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -577,7 +552,6 @@ progress {
 
 .display-3 {
   font-size: calc(1.525rem + 3.3vw);
-  font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -588,7 +562,6 @@ progress {
 
 .display-4 {
   font-size: calc(1.475rem + 2.7vw);
-  font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -599,7 +572,6 @@ progress {
 
 .display-5 {
   font-size: calc(1.425rem + 2.1vw);
-  font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -610,7 +582,6 @@ progress {
 
 .display-6 {
   font-size: calc(1.375rem + 1.5vw);
-  font-weight: 300;
   line-height: 1.2;
 }
 @media (min-width: 1200px) {
@@ -2266,7 +2237,6 @@ progress {
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
@@ -2495,7 +2465,6 @@ textarea.form-control-lg {
   padding: 0.375rem 2.25rem 0.375rem 0.75rem;
   -moz-padding-start: calc(0.75rem - 3px);
   font-size: 1rem;
-  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   background-color: #fff;
@@ -2857,7 +2826,6 @@ textarea.form-control-lg {
   align-items: center;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
-  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   text-align: center;
@@ -3121,7 +3089,6 @@ textarea.form-control.is-invalid {
 
 .btn {
   display: inline-block;
-  font-weight: 300;
   line-height: 1.5;
   color: #212529;
   text-align: center;
@@ -3911,7 +3878,6 @@ fieldset:disabled .btn {
 }
 
 .btn-link {
-  font-weight: 300;
   color: #64a19d;
   text-decoration: underline;
 }
@@ -4209,7 +4175,6 @@ fieldset:disabled .btn {
   width: 100%;
   padding: 0.25rem 1rem;
   clear: both;
-  font-weight: 300;
   color: #212529;
   text-align: inherit;
   text-decoration: none;
@@ -5353,7 +5318,6 @@ fieldset:disabled .btn {
   display: inline-block;
   padding: 0.35em 0.65em;
   font-size: 0.75em;
-  font-weight: 400;
   line-height: 1;
   color: #fff;
   text-align: center;
@@ -5380,10 +5344,6 @@ fieldset:disabled .btn {
 
 .alert-heading {
   color: inherit;
-}
-
-.alert-link {
-  font-weight: 400;
 }
 
 .alert-dismissible {
@@ -6297,11 +6257,7 @@ fieldset:disabled .btn {
   z-index: 1080;
   display: block;
   margin: 0;
-  font-family: "Coco Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
-  font-weight: 300;
   line-height: 1.5;
   text-align: left;
   text-align: start;
@@ -6413,11 +6369,7 @@ fieldset:disabled .btn {
   z-index: 1070;
   display: block;
   max-width: 276px;
-  font-family: "Coco Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
   font-style: normal;
-  font-weight: 300;
   line-height: 1.5;
   text-align: left;
   text-align: start;
@@ -8196,10 +8148,6 @@ fieldset:disabled .btn {
   padding-left: 3rem !important;
 }
 
-.font-monospace {
-  font-family: var(--bs-font-monospace) !important;
-}
-
 .fs-1 {
   font-size: calc(1.375rem + 1.5vw) !important;
 }
@@ -8230,26 +8178,6 @@ fieldset:disabled .btn {
 
 .fst-normal {
   font-style: normal !important;
-}
-
-.fw-light {
-  font-weight: 300 !important;
-}
-
-.fw-lighter {
-  font-weight: lighter !important;
-}
-
-.fw-normal {
-  font-weight: 300 !important;
-}
-
-.fw-bold {
-  font-weight: 400 !important;
-}
-
-.fw-bolder {
-  font-weight: bolder !important;
 }
 
 .lh-1 {
@@ -11929,7 +11857,6 @@ body {
 }
 #mainNav .navbar-brand {
   color: #000;
-  font-weight: 400;
   padding: 0.9rem 0;
 }
 #mainNav .navbar-nav .nav-item:hover {
@@ -11992,13 +11919,9 @@ body {
 .btn {
   box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
   padding: 1.25rem 2rem;
-  font-family: "Coco Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
-  // border: 0;
 }
 
 .masthead {
@@ -12008,13 +11931,6 @@ body {
   min-height: 35rem;
   padding: 15rem 0;
   background-color: $mainBlack;
-  // background: linear-gradient(
-  //     to bottom,
-  //     rgba(0, 0, 0, 0.3) 0%,
-  //     rgba(0, 0, 0, 0.7) 75%,
-  //     #000 100%
-  //   ),
-  //   url("./assets/img/bg-masthead.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
@@ -12022,9 +11938,6 @@ body {
 }
 .masthead h1,
 .masthead .h1 {
-  font-family: "Coco Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 2.5rem;
   line-height: 2.5rem;
   letter-spacing: 0.8rem;
@@ -12089,34 +12002,6 @@ body {
     width: 30%;
   }
 }
-
-.signup-section {
-  padding: 10rem 0;
-  background: linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0.1) 0%,
-      rgba(0, 0, 0, 0.5) 75%,
-      #000 100%
-    ),
-    url("./assets/img/bg-signup2.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
-.signup-section .form-signup input {
-  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
-  padding: 1.25rem 2rem;
-  height: auto;
-  font-family: "Coco Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-size: 80%;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-  border: 0;
-}
-
 .contact-section {
   padding-top: 5rem;
 }
@@ -12127,9 +12012,6 @@ body {
 .contact-section .card h4,
 .contact-section .card .h4 {
   font-size: 0.8rem;
-  font-family: "Coco Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   text-transform: uppercase;
   letter-spacing: 0.15rem;
 }

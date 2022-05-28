@@ -8,8 +8,8 @@
         class="col p-5"
         @click="getProject(project)"
       >
-        <p class="text-light fw-lighter">{{ project.title }}</p>
-        <p class="text-light fst-italic fw-lighter">
+        <p class="text-light">{{ project.title }}</p>
+        <p class="text-light fst-italic">
           {{ project.description }}
         </p>
         <img
