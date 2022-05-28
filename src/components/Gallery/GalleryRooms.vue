@@ -1,5 +1,26 @@
 <template>
-  <section class="container-fluid ps-lg-5 pe-lg-5">
+  <section
+    class="container-fluid ps-lg-5 pe-lg-5 position-relative"
+    @click.self="hideLargePhoto"
+    tabindex="0"
+    @keydown.esc="hideLargePhoto"
+  >
+    <img
+      v-if="showLargeImage"
+      :src="largeImageUrl"
+      class="
+        large-image
+        img-fluid
+        position-absolute
+        top-0
+        start-50
+        translate-middle-x
+        p-0
+      "
+      alt="image"
+      v-click-outside="hideLargePhoto"
+      @click="hideLargePhoto"
+    />
     <h1 class="text-white">{{ title }}</h1>
     <div
       class="mt-5 p-3 border"
@@ -13,10 +34,11 @@
       <div class="row gap-3" v-if="project.pictures.length > 0">
         <img
           v-for="picture in project.pictures"
-          :key="picture"
+          :key="picture.pictureId"
           :src="`${FILE_URL}${picture.fullPath}`"
           class="img-thumbnail p-0 col"
           alt="image"
+          @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
         />
       </div>
     </div>
@@ -24,11 +46,15 @@
 </template>
 
 <script>
+import ClickOutside from "vue-click-outside";
+
 import { BASE_FILE_URL } from "../../constants";
 
 export default {
   data() {
     return {
+      showLargeImage: false,
+      largeImageUrl: ``,
       FILE_URL: `${BASE_FILE_URL}`,
       title: ``,
     };
@@ -41,17 +67,27 @@ export default {
   mounted() {
     this.title = this.$route.query.name;
     this.getProjectsByCategory(this.$route.query.id);
+    this.popupItem = this.$el;
+  },
+  directives: {
+    ClickOutside,
   },
   methods: {
+    hideLargePhoto() {
+      this.showLargeImage = false;
+      this.largeImageUrl = ``;
+    },
+    enlargePhoto(arg) {
+      this.scrollToTop();
+      this.showLargeImage = true;
+      this.largeImageUrl = arg;
+      // this.$nextTick(function () {
+      //   this.$refs.modal.focus();
+      // });
+    },
     getProjectsByCategory(id) {
       this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
     },
-    // getProject(arg) {
-    //   this.$router.push({
-    //     path: `/gallery/${arg}`,
-    //     query: { id: arg.projectId, project: arg.title },
-    //   });
-    // },
   },
 };
 </script>
@@ -66,23 +102,22 @@ export default {
   background-color: $mainBlack !important;
   border: none !important;
 }
-.col {
-  cursor: pointer;
-}
+
 img {
   width: 100%;
-  // height: auto;
   transition: all 2s ease-in-out;
   box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
+  cursor: pointer;
+
   @include media-breakpoint-up(lg) {
     width: 10%;
   }
 }
-
-// img:hover {
-//   transform: scale(1.1);
-// }
-// .col {
-//   min-height: 550px;
-// }
+.large-image {
+  display: block;
+  width: auto;
+  height: 96vh;
+  // min-height: 100vh;
+  margin-top: 1em;
+}
 </style>
