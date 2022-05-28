@@ -1,9 +1,9 @@
 $grid-breakpoints: (xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 992px,
-    xl: 1200px,
-    xxl: 1400px);
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px);
 
 $mainWhite: #fff;
 $mainBlack: #000;
@@ -16,22 +16,29 @@ $font-size-large : 17px;
 $font-size-xxl : 18px;
 
 @font-face {
-    font-family: "Coco Gothic";
-    font-weight: 300;
-    font-style: normal;
-    src: url("~@/assets/fonts/COCO\ GOTHIC\ LIGHT-TRIAL.TTF") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Coco Gothic";
-    font-weight: 400;
-    font-style: normal;
-    src: url("~@/assets/fonts/COCO\ GOTHIC\ REGULAR-TRIAL.TTF") format("opentype");
-  }
-  
-  @font-face {
-    font-family: "Coco Gothic";
-    font-weight: 700;
-    font-style: normal;
-    src: url("~@/assets/fonts/COCO\ GOTHIC\ BOLD-TRIAL.TTF") format("opentype");
-  }
+  font-family: "Coco Gothic";
+  font-weight: 100;
+  font-style: normal;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ ULTRALIGHT-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 300;
+  font-style: normal;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ LIGHT-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 400;
+  font-style: normal;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ REGULAR-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 700;
+  font-style: normal;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ BOLD-TRIAL.TTF") format("opentype");
+}

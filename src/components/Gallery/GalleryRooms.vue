@@ -1,21 +1,21 @@
 <template>
-  <section class="container-fluid ps-5 pe-5">
+  <section class="container-fluid ps-lg-5 pe-lg-5">
     <h1 class="text-white">{{ title }}</h1>
-    <div class="row row-cols-auto row-cols-lg-2 mt-5">
-      <div
-        v-for="(project, index) in projectssList"
-        :key="index"
-        class="col p-5"
-        @click="getProject(project)"
-      >
-        <p class="text-light">{{ project.title }}</p>
-        <p class="text-light fst-italic">
-          {{ project.description }}
-        </p>
+    <div
+      class="mt-5 p-3 border"
+      v-for="project in projectssList"
+      :key="project.id"
+    >
+      <h2 class="text-light">{{ project.title }}</h2>
+      <p class="text-light fst-italic mt-3">
+        {{ project.description }}
+      </p>
+      <div class="row gap-3" v-if="project.pictures.length > 0">
         <img
-          v-if="project.pictures.length > 0"
-          :src="`${FILE_URL}${project.pictures[0].fullPath}`"
-          class="img-thumbnail p-0"
+          v-for="picture in project.pictures"
+          :key="picture"
+          :src="`${FILE_URL}${picture.fullPath}`"
+          class="img-thumbnail p-0 col"
           alt="image"
         />
       </div>
@@ -46,12 +46,12 @@ export default {
     getProjectsByCategory(id) {
       this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
     },
-    getProject(arg) {
-      this.$router.push({
-        path: `/gallery/${arg}`,
-        query: { id: arg.projectId, project: arg.title },
-      });
-    },
+    // getProject(arg) {
+    //   this.$router.push({
+    //     path: `/gallery/${arg}`,
+    //     query: { id: arg.projectId, project: arg.title },
+    //   });
+    // },
   },
 };
 </script>
@@ -70,14 +70,19 @@ export default {
   cursor: pointer;
 }
 img {
+  width: 100%;
+  // height: auto;
   transition: all 2s ease-in-out;
   box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
+  @include media-breakpoint-up(lg) {
+    width: 10%;
+  }
 }
 
-img:hover {
-  transform: scale(1.1);
-}
-.col {
-  min-height: 550px;
-}
+// img:hover {
+//   transform: scale(1.1);
+// }
+// .col {
+//   min-height: 550px;
+// }
 </style>

@@ -105,7 +105,7 @@ export default {
 
 body {
   margin: 0;
-  font-family: "Coco Gothic", "arial", "san-serif";
+  font-family: "Coco Gothic", "Verdana", "Tahoma", "Helvetica", "sans-serif";
   font-size: var(--bs-body-font-size);
   font-weight: 300;
   line-height: var(--bs-body-line-height);
@@ -114,6 +114,9 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.numbers {
+  font-family: "Coco Gothic", "Verdana", "Tahoma", "Helvetica", "sans-serif";
 }
 
 hr {
