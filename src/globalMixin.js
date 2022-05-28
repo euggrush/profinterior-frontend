@@ -28,7 +28,22 @@ export default {
         getDate(date) {
             return dayjs(date).format("MMMM D, YYYY h:mm A");
         },
-
+        fadePage(arg1, arg2){
+            let page = document.querySelector(arg1);
+            let pics = document.querySelectorAll(arg2);
+            page.classList.add(`faded-page`);
+            pics.forEach((item)=>{
+                item.classList.add(`faded-image`)
+            })
+        },
+        unfadePage(arg1, arg2){
+            let page = document.querySelector(arg1);
+            let pics = page.querySelectorAll(arg2);
+            page.classList.remove(`faded-page`);
+            pics.forEach((item)=>{
+                item.classList.remove(`faded-image`)
+            })
+        },
         getMenuWork() {
             window.addEventListener('DOMContentLoaded', event => {
 

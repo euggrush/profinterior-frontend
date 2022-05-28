@@ -109,6 +109,7 @@ body {
   font-size: var(--bs-body-font-size);
   font-weight: 300;
   line-height: var(--bs-body-line-height);
+  letter-spacing: 0.0625em;
   color: var(--bs-body-color);
   text-align: var(--bs-body-text-align);
   background-color: var(--bs-body-bg);
@@ -11841,10 +11842,6 @@ html {
   scroll-padding-top: calc(4.5rem - 1px);
 }
 
-body {
-  letter-spacing: 0.0625em;
-}
-
 #mainNav {
   min-height: 3.5rem;
   background-color: #fff;
@@ -12071,5 +12068,11 @@ body {
   100% {
     transform: scale(1);
   }
+}
+.faded-page {
+  background: rgba(0, 0, 0, 0.3) !important;
+}
+.faded-image {
+  opacity: 0.3;
 }
 </style>

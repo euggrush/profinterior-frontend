@@ -1,6 +1,6 @@
 <template>
   <section
-    class="container-fluid ps-lg-5 pe-lg-5 position-relative"
+    class="container-fluid gallery-page ps-lg-5 pe-lg-5 position-relative"
     @click.self="hideLargePhoto"
     tabindex="0"
     @keydown.esc="hideLargePhoto"
@@ -23,7 +23,7 @@
     />
     <h1 class="text-white">{{ title }}</h1>
     <div
-      class="mt-5 p-3 border"
+      class="mt-5 p-3 border-top border-bottom"
       v-for="project in projectssList"
       :key="project.id"
     >
@@ -36,7 +36,7 @@
           v-for="picture in project.pictures"
           :key="picture.pictureId"
           :src="`${FILE_URL}${picture.fullPath}`"
-          class="img-thumbnail p-0 col"
+          class="img-thumbnail p-0 col gallery-images"
           alt="image"
           @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
         />
@@ -65,9 +65,11 @@ export default {
     },
   },
   mounted() {
+    this.scrollToTop();
     this.title = this.$route.query.name;
     this.getProjectsByCategory(this.$route.query.id);
     this.popupItem = this.$el;
+    this.unfadePage(`.gallery-page`, `.gallery-images`);
   },
   directives: {
     ClickOutside,
@@ -76,14 +78,13 @@ export default {
     hideLargePhoto() {
       this.showLargeImage = false;
       this.largeImageUrl = ``;
+      this.unfadePage(`.gallery-page`, `.gallery-images`);
     },
     enlargePhoto(arg) {
       this.scrollToTop();
+      this.fadePage(`.gallery-page`, `.gallery-images`);
       this.showLargeImage = true;
       this.largeImageUrl = arg;
-      // this.$nextTick(function () {
-      //   this.$refs.modal.focus();
-      // });
     },
     getProjectsByCategory(id) {
       this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
@@ -117,7 +118,20 @@ img {
   display: block;
   width: auto;
   height: 96vh;
-  // min-height: 100vh;
   margin-top: 1em;
+  z-index: 2;
 }
+// .fade {
+//   animation: fadeInAnimation ease 3s;
+//   animation-iteration-count: 1;
+//   animation-fill-mode: forwards;
+// }
+// @keyframes fadeInAnimation {
+//   0% {
+//     opacity: 0;
+//   }
+//   100% {
+//     opacity: 1;
+//   }
+// }
 </style>
