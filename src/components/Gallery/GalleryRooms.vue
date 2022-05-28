@@ -11,7 +11,7 @@
       class="
         large-image
         img-fluid
-        position-absolute
+        fixed-top
         top-0
         start-50
         translate-middle-x

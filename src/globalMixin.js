@@ -31,6 +31,8 @@ export default {
         fadePage(arg1, arg2){
             let page = document.querySelector(arg1);
             let pics = document.querySelectorAll(arg2);
+            let navBar = document.querySelector(`.navbar`);
+            navBar.classList.add(`visually-hidden`);
             page.classList.add(`faded-page`);
             pics.forEach((item)=>{
                 item.classList.add(`faded-image`)
@@ -39,6 +41,8 @@ export default {
         unfadePage(arg1, arg2){
             let page = document.querySelector(arg1);
             let pics = page.querySelectorAll(arg2);
+            let navBar = document.querySelector(`.navbar`);
+            navBar.classList.remove(`visually-hidden`);
             page.classList.remove(`faded-page`);
             pics.forEach((item)=>{
                 item.classList.remove(`faded-image`)
