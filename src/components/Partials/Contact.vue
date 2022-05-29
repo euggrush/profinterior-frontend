@@ -39,9 +39,10 @@
         </div>
       </div>
       <div class="social d-flex justify-content-center">
-        <a class="mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-        <a class="mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-        <a class="mx-2" href="#!"><i class="fab fa-github"></i></a>
+        <a class="mx-2 social-behance" href="#"></a>
+        <a class="mx-2 social-instargram" href="#"></a>
+        <a class="mx-2 social-vk" href="#"></a>
+        <a class="mx-2 social-pinterest" href="#"></a>
       </div>
     </div>
   </section>

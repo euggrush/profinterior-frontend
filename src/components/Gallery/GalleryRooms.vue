@@ -21,9 +21,9 @@
       v-click-outside="hideLargePhoto"
       @click="hideLargePhoto"
     />
-    <h1 class="text-white">{{ title }}</h1>
+    <h1 class="text-white border-bottom pb-3">{{ title }}</h1>
     <div
-      class="mt-5 p-3 border-top border-bottom"
+      class="p-3 border-bottom"
       v-for="project in projectssList"
       :key="project.id"
     >
