@@ -69,15 +69,15 @@ h1 {
     width: 528px;
   }
   @include media-breakpoint-up(lg) {
-    width: 430px;
+    width: 50%;
     min-height: 100vh;
   }
-  @include media-breakpoint-up(xl) {
-    width: 430px;
-  }
-  @include media-breakpoint-up(xxl) {
-    width: 700px;
-  }
+  // @include media-breakpoint-up(xl) {
+  //   width: 430px;
+  // }
+  // @include media-breakpoint-up(xxl) {
+  //   width: 700px;
+  // }
 }
 #content {
   z-index: 2;
@@ -92,14 +92,14 @@ h1 {
     width: 66vw;
   }
   @include media-breakpoint-up(lg) {
-    width: 40vw;
+    width: 47%;
   }
-  @include media-breakpoint-up(xl) {
-    width: 34vw;
-  }
-  @include media-breakpoint-up(xxl) {
-    width: 35vw;
-  }
+  // @include media-breakpoint-up(xl) {
+  //   width: 34vw;
+  // }
+  // @include media-breakpoint-up(xxl) {
+  //   width: 35vw;
+  // }
 }
 .design-quote-image {
   width: 80vw;

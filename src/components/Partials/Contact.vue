@@ -2,19 +2,7 @@
   <!-- Contact-->
   <section class="contact-section bg-black">
     <div class="container px-4 px-lg-5">
-      <div class="row gx-4 gx-lg-5">
-        <div class="col-md-4 mb-3 mb-md-0">
-          <div class="card py-4 h-100">
-            <div class="card-body text-center">
-              <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-              <h4 class="text-uppercase m-0">Address</h4>
-              <hr class="my-4 mx-auto" />
-              <div class="small text-black-50 numbers">
-                4923 Market Street, Orlando FL
-              </div>
-            </div>
-          </div>
-        </div>
+      <div class="row gx-4 gx-lg-5 justify-content-md-center">
         <div class="col-md-4 mb-3 mb-md-0">
           <div class="card py-4 h-100">
             <div class="card-body text-center">
@@ -22,7 +10,9 @@
               <h4 class="text-uppercase m-0">Электронная почта</h4>
               <hr class="my-4 mx-auto" />
               <div class="small text-black-50">
-                <a class="numbers" href="#!">hello@yourdomain.com</a>
+                <a class="numbers" href="mailto:larionova_aleksa@mail.ru"
+                  >larionova_aleksa@mail.ru</a
+                >
               </div>
             </div>
           </div>
@@ -33,7 +23,11 @@
               <i class="fas fa-mobile-alt text-primary mb-2"></i>
               <h4 class="text-uppercase m-0">Телефон</h4>
               <hr class="my-4 mx-auto" />
-              <div class="small text-black-50 numbers">+7 (919) 612-38-12</div>
+              <div class="small text-black-50">
+                <a class="numbers" href="tel:+79196123812"
+                  >+7 (919) 612-38-12</a
+                >
+              </div>
             </div>
           </div>
         </div>
