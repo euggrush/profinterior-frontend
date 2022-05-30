@@ -21,20 +21,20 @@
       v-click-outside="hideLargePhoto"
       @click="hideLargePhoto"
     />
-    <h1 class="text-white border-bottom pb-3">{{ title }}</h1>
+    <h3 class="text-light border-bottom pb-3">{{ title }}</h3>
     <div
       class="p-3 border-bottom"
       v-for="project in projectssList"
       :key="project.id"
     >
-      <h2 class="text-light">{{ project.title }}</h2>
-      <p class="text-light fst-italic mt-3">
+      <h4 class="text-light">{{ project.title }}</h4>
+      <p class="text-light mt-3">
         {{ project.description }}
       </p>
-      <div class="row gap-3" v-if="project.pictures.length > 0">
+      <div class="row m-0 gap-3" v-if="project.pictures.length > 0">
         <img
           v-for="picture in project.pictures"
-          :key="picture.pictureId"
+          :key="`${FILE_URL}${picture.fullPath}`"
           :src="`${FILE_URL}${picture.fullPath}`"
           class="img-thumbnail p-0 col gallery-images"
           alt="image"
@@ -94,9 +94,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.gallery-page {
+  font-size: $font-size-micro;
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-mobile;
+  }
+}
 .container-fluid {
   background-color: $mainBlack;
-  padding-top: 10em;
+  padding-top: 6em;
   min-height: 100vh;
 }
 .img-thumbnail {
