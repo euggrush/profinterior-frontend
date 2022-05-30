@@ -42,3 +42,47 @@ $font-size-xxl : 18px;
   font-style: normal;
   src: url("~@/assets/fonts/COCO\ GOTHIC\ BOLD-TRIAL.TTF") format("opentype");
 }
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 900;
+  font-style: normal;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ HEAVY-TRIAL.TTF") format("opentype");
+}
+
+// ITALIC
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 100;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ ULTRALIGHT\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 300;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ LIGHT\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 400;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 700;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ BOLD\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 900;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ HEAVY\ ITALIC-TRIAL.TTF") format("opentype");
+}

@@ -105,7 +105,7 @@ export default {
 
 body {
   margin: 0;
-  font-family: "Coco Gothic", "Verdana", "Tahoma", "Helvetica", "sans-serif";
+  font-family: "Coco Gothic", "sans-serif", "Verdana", "Tahoma", "Helvetica";
   font-size: var(--bs-body-font-size);
   font-weight: 300;
   line-height: var(--bs-body-line-height);
@@ -117,7 +117,7 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 .numbers {
-  font-family: "Coco Gothic", "Verdana", "Tahoma", "Helvetica", "sans-serif";
+  font-family: "sans-serif", "Verdana", "Tahoma", "Helvetica";
 }
 
 hr {
@@ -12001,42 +12001,6 @@ html {
     border-width: 0.25rem;
     width: 30%;
   }
-}
-.contact-section {
-  padding-top: 5rem;
-}
-.contact-section .card {
-  border: 0;
-  border-bottom: 0.25rem solid #64a19d;
-}
-.contact-section .card h4,
-.contact-section .card .h4 {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15rem;
-}
-.contact-section .card hr {
-  border-color: #64a19d;
-  border-width: 0.25rem;
-  width: 3rem;
-}
-.contact-section .social {
-  margin-top: 5rem;
-}
-.contact-section .social a {
-  text-align: center;
-  height: 3rem;
-  width: 3rem;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 100%;
-  line-height: 3rem;
-  color: rgba(255, 255, 255, 0.3);
-}
-.contact-section .social a:hover {
-  color: rgba(255, 255, 255, 0.5);
-}
-.contact-section .social a:active {
-  color: #fff;
 }
 
 .footer {
