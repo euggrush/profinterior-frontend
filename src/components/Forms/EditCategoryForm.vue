@@ -1,8 +1,5 @@
 <template>
-  <form
-    @submit.prevent="modifyCategory"
-    class="border border-info mt-3 mb-1 p-3"
-  >
+  <form @submit.prevent="modifyCategory">
     <input
       type="text"
       class="form-control"
@@ -27,8 +24,8 @@ export default {
   },
   props: {
     myProps: {
-      type: String,
-      default: ``,
+      type: Number,
+      default: 0,
     },
   },
   methods: {
@@ -40,6 +37,7 @@ export default {
         })
         .then(() => {
           this.name = ``;
+          this.$emit(`closeForm`, { close: true });
         });
     },
   },

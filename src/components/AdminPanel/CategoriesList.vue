@@ -3,7 +3,15 @@
     <div
       v-for="category in categoriesList"
       :key="category.categoryId"
-      class="col bg-dark bg-gradient rounded m-1 p-3 category-item"
+      class="
+        col
+        bg-dark bg-gradient
+        rounded
+        m-1
+        p-3
+        category-item
+        position-relative
+      "
     >
       <p class="text-white-50">{{ category.name }}</p>
       <img
@@ -20,16 +28,35 @@
         Удалить
       </button>
       <Transition name="bounce">
-        <EditCategoryForm
-          :myProps="category.categoryId"
+        <div
           v-if="showEditForm == category.categoryId"
-        />
+          class="
+            position-absolute
+            bottom-0
+            start-0
+            w-100
+            bg-light
+            p-3
+            border border-info
+            mb-3
+          "
+        >
+          <button
+            type="button"
+            class="btn-close float-end mb-3"
+            aria-label="Close"
+            @click="closeEditForm"
+          ></button>
+          <EditCategoryForm
+            :myProps="category.categoryId"
+            @closeForm="closeEditForm"
+          />
+        </div>
       </Transition>
       <button
         type="button"
         class="btn btn-outline-info w-100 mt-3"
         @click="getEditForm(category.categoryId)"
-        disabled
       >
         Редактировать
       </button>
@@ -78,9 +105,11 @@ export default {
       console.log(id);
       let isExecuted = confirm("Удалить категонию?");
       if (isExecuted) {
-        this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
-          this.fetchCategories();
-        });
+        this.$store
+          .dispatch(`DELETE_CATEGORY`, `?categoryId=${id}`)
+          .then(() => {
+            this.fetchCategories();
+          });
       }
     },
     getEditForm(id) {
@@ -89,6 +118,9 @@ export default {
       } else {
         this.showEditForm = false;
       }
+    },
+    closeEditForm() {
+      this.showEditForm = false;
     },
   },
 };

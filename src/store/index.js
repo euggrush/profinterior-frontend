@@ -169,13 +169,23 @@ export const store = new Vuex.Store({
       })
     },
     DELETE_CATEGORY: async (context, payload) => {
-      Axios.delete(`${BASE_URL_API}/categories${payload}`).catch((error) => {
+      Axios.delete(`${BASE_URL_API}/categories${payload}`).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_NEEDED_CHANGES`, data);
+        }
+      ).catch((error) => {
         alert(`something went wrong, please try again`);
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
     MODIFY_CATEGORY: async (context, payload) => {
-      Axios.put(`${BASE_URL_API}/categories`, payload).catch((error) => {
+      Axios.put(`${BASE_URL_API}/categories`, payload).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_NEEDED_CHANGES`, data);
+        }
+      ).catch((error) => {
         context.commit(`SET_GENERAL_ERRORS`, error);
         alert(`something went wrong, please try again`);
       })
