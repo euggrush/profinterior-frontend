@@ -1,0 +1,17 @@
+[
+    {
+        "id": "1",
+        "name": "Гостиные",
+        "image": "https://i.ibb.co/cT4F7Ch/livingroom1.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Ванные комнаты",
+        "image": "https://i.ibb.co/6Z3hQc3/gallery-bathroom.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Спальни",
+        "image": "https://i.ibb.co/b6HKNSp/gallery-bedroom2.jpg"
+    }
+]
