@@ -144,7 +144,6 @@ export default {
 }
 .category-item:hover {
   box-shadow: 0px 0px 50px rgba(149, 30, 30, 0.6);
-  font-weight: bold;
   cursor: pointer;
 }
 </style>

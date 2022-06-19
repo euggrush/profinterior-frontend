@@ -48,7 +48,7 @@ export default {
 
 body {
   margin: 0;
-  font-family: "Coco Gothic", "sans-serif", "Verdana", "Tahoma", "Helvetica";
+  font-family: "Montserrat", "sans-serif", "Verdana", "Tahoma", "Helvetica";
   font-size: var(--bs-body-font-size);
   font-weight: 300;
   line-height: var(--bs-body-line-height);
@@ -59,14 +59,6 @@ body {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-.numbers {
-  font-family: "sans-serif", "Verdana", "Tahoma", "Helvetica";
-  font-size: 13px;
-  font-weight: 100;
-  line-height: 24px;
-  opacity: 0.8;
-}
-
 hr {
   margin: 1rem 0;
   color: inherit;
@@ -11864,8 +11856,8 @@ html {
 }
 
 .btn {
-  box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
-  padding: 1.25rem 2rem;
+  // box-shadow: 0 0.1875rem 0.1875rem 0 rgba(0, 0, 0, 0.1) !important;
+  // padding: 1.25rem 2rem;
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.15rem;
