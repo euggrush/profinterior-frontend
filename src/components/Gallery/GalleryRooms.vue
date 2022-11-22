@@ -25,22 +25,34 @@
     <div
       class="p-3 border-bottom"
       v-for="project in projectssList"
-      :key="project.id"
+      :key="project.projectId"
     >
       <h4 class="text-light">{{ project.title }}</h4>
-      <p class="text-light mt-3">
-        {{ project.description }}
-      </p>
-      <div class="row m-0 gap-3" v-if="project.pictures.length > 0">
-        <img
-          v-for="picture in project.pictures"
-          :key="`${FILE_URL}${picture.fullPath}`"
-          :src="`${FILE_URL}${picture.fullPath}`"
-          class="img-thumbnail p-0 col gallery-images"
-          alt="image"
-          @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
-        />
-      </div>
+      <button
+        type="button"
+        class="btn btn-outline-warning"
+        @click="getProjectInfo(project.projectId)"
+      >
+        <span v-if="showProjectInfo == project.projectId">Скрыть описание</span>
+        <span v-else>Показать описание</span>
+      </button>
+      <Transition>
+        <article v-if="showProjectInfo == project.projectId">
+          <p class="text-light mt-3">
+            {{ project.description }}
+          </p>
+          <div class="row m-0 gap-3" v-if="project.pictures.length > 0">
+            <img
+              v-for="picture in project.pictures"
+              :key="`${FILE_URL}${picture.fullPath}`"
+              :src="`${FILE_URL}${picture.fullPath}`"
+              class="img-thumbnail p-0 col gallery-images"
+              alt="image"
+              @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
+            />
+          </div>
+        </article>
+      </Transition>
     </div>
   </section>
 </template>
@@ -53,6 +65,7 @@ import { BASE_FILE_URL } from "../../constants";
 export default {
   data() {
     return {
+      showProjectInfo: false,
       showLargeImage: false,
       largeImageUrl: ``,
       FILE_URL: `${BASE_FILE_URL}`,
@@ -88,6 +101,13 @@ export default {
     },
     getProjectsByCategory(id) {
       this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
+    },
+    getProjectInfo(id) {
+      if (this.showProjectInfo !== id) {
+        this.showProjectInfo = id;
+      } else {
+        this.showProjectInfo = false;
+      }
     },
   },
 };
@@ -126,6 +146,14 @@ img {
   height: 96vh;
   margin-top: 1em;
   z-index: 2;
+}
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }
 // .fade {
 //   animation: fadeInAnimation ease 3s;
