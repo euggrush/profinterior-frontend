@@ -30,7 +30,7 @@
       <h4 class="text-light">{{ project.title }}</h4>
       <button
         type="button"
-        class="btn btn-outline-warning"
+        class="btn btn-outline-light"
         @click="getProjectInfo(project.projectId)"
       >
         <span v-if="showProjectInfo == project.projectId">Скрыть описание</span>
