@@ -27,26 +27,41 @@
       v-for="project in projectssList"
       :key="project.projectId"
     >
-      <h4 class="text-light">{{ project.title }}</h4>
       <button
+        class="btn text-start"
+        type="button"
+        @click="getProjectInfo(project.projectId)"
+      >
+        <img
+          class="project-main-image"
+          :src="`${FILE_URL}${project.pictures[0].fullPath}`"
+          width="300"
+          alt="image"
+        />
+        <p class="mt-3 text-light">{{ project.title }}</p>
+      </button>
+      <!-- <button
         type="button"
         class="btn btn-outline-light"
         @click="getProjectInfo(project.projectId)"
       >
         <span v-if="showProjectInfo == project.projectId">Скрыть описание</span>
         <span v-else>Показать описание</span>
-      </button>
+      </button> -->
       <Transition>
         <article v-if="showProjectInfo == project.projectId">
           <p class="text-light mt-3">
             {{ project.description }}
           </p>
-          <div class="row m-0 gap-3" v-if="project.pictures.length > 0">
+          <div
+            class="m-0 d-flex flex-wrap justify-content-around"
+            v-if="project.pictures.length > 0"
+          >
             <img
               v-for="picture in project.pictures"
               :key="`${FILE_URL}${picture.fullPath}`"
               :src="`${FILE_URL}${picture.fullPath}`"
-              class="img-thumbnail p-0 col gallery-images"
+              class="img-thumbnail mb-3 mb-lg-0 p-0 gallery-images"
               alt="image"
               @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
             />
@@ -94,7 +109,7 @@ export default {
       this.unfadePage(`.gallery-page`, `.gallery-images`);
     },
     enlargePhoto(arg) {
-      this.scrollToTop();
+      // this.scrollToTop();
       this.fadePage(`.gallery-page`, `.gallery-images`);
       this.showLargeImage = true;
       this.largeImageUrl = arg;
@@ -125,20 +140,24 @@ export default {
   padding-top: 6em;
   min-height: 100vh;
 }
-.img-thumbnail {
+.project-main-image {
+  width: auto;
+  max-width: 300px;
+  height: auto;
+  max-height: 300px;
+  @include media-breakpoint-up(lg) {
+    max-width: 500px;
+    max-height: 800px;
+  }
+}
+.gallery-images {
   background-color: $mainBlack !important;
   border: none !important;
-}
-
-img {
-  width: 100%;
+  width: auto;
+  max-height: 330px;
   transition: all 2s ease-in-out;
   box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
   cursor: pointer;
-
-  @include media-breakpoint-up(lg) {
-    width: 10%;
-  }
 }
 .large-image {
   display: block;
@@ -155,17 +174,8 @@ img {
 .v-leave-to {
   opacity: 0;
 }
-// .fade {
-//   animation: fadeInAnimation ease 3s;
-//   animation-iteration-count: 1;
-//   animation-fill-mode: forwards;
-// }
-// @keyframes fadeInAnimation {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: none;
+}
 </style>
