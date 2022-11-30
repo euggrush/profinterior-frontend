@@ -23,12 +23,12 @@
     />
     <h3 class="text-light border-bottom pb-3">{{ title }}</h3>
     <div
-      class="p-3 border-bottom"
+      class="p-3 border-bottom text-center text-center"
       v-for="project in projectssList"
       :key="project.projectId"
     >
       <button
-        class="btn text-start"
+        class="btn text-center"
         type="button"
         @click="getProjectInfo(project.projectId)"
       >
@@ -40,28 +40,20 @@
         />
         <p class="mt-3 text-light">{{ project.title }}</p>
       </button>
-      <!-- <button
-        type="button"
-        class="btn btn-outline-light"
-        @click="getProjectInfo(project.projectId)"
-      >
-        <span v-if="showProjectInfo == project.projectId">Скрыть описание</span>
-        <span v-else>Показать описание</span>
-      </button> -->
       <Transition>
         <article v-if="showProjectInfo == project.projectId">
           <p class="text-light mt-3">
             {{ project.description }}
           </p>
           <div
-            class="m-0 d-flex flex-wrap justify-content-around"
+            class="m-0 d-flex flex-wrap justify-content-center"
             v-if="project.pictures.length > 0"
           >
             <img
               v-for="picture in project.pictures"
               :key="`${FILE_URL}${picture.fullPath}`"
               :src="`${FILE_URL}${picture.fullPath}`"
-              class="img-thumbnail mb-3 mb-lg-0 p-0 gallery-images"
+              class="img-thumbnail m-3 mb-lg-0 p-0 gallery-images"
               alt="image"
               @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
             />
