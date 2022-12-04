@@ -21,14 +21,14 @@
       v-click-outside="hideLargePhoto"
       @click="hideLargePhoto"
     />
-    <h3 class="text-light border-bottom pb-3">{{ title }}</h3>
+    <h3 class="text-light border-bottom">{{ title }}</h3>
     <div
-      class="p-3 border-bottom text-center text-center"
+      class="mt-3 border-bottom text-center text-center"
       v-for="project in projectssList"
       :key="project.projectId"
     >
       <button
-        class="btn text-center"
+        class="btn text-center p-0"
         type="button"
         @click="getProjectInfo(project.projectId)"
       >
@@ -41,8 +41,8 @@
         <p class="mt-3 text-light">{{ project.title }}</p>
       </button>
       <Transition>
-        <article v-if="showProjectInfo == project.projectId">
-          <p class="text-light mt-3">
+        <article v-if="showProjectInfo == project.projectId" class="pb-3">
+          <p class="text-light project-description">
             {{ project.description }}
           </p>
           <div
@@ -146,7 +146,7 @@ export default {
   background-color: $mainBlack !important;
   border: none !important;
   width: auto;
-  max-height: 330px;
+  max-height: 600px;
   transition: all 2s ease-in-out;
   box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
   cursor: pointer;
@@ -169,5 +169,11 @@ export default {
 .btn-check:focus + .btn,
 .btn:focus {
   box-shadow: none;
+}
+.project-description {
+  @include media-breakpoint-up(lg) {
+    width: 50%;
+    margin: 0 auto;
+  }
 }
 </style>
