@@ -75,7 +75,7 @@ export default {
   methods: {
     fetchProjects(id) {
       if (id) {
-        this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
+        this.$store.dispatch(`GET_PROJECTS`, `?category_id=${id}`);
       } else {
         this.$store.dispatch(`GET_PROJECTS`, ``);
       }
