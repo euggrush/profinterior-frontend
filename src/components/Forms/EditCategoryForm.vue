@@ -32,7 +32,7 @@ export default {
     modifyCategory() {
       this.$store
         .dispatch(`MODIFY_CATEGORY`, {
-          categoryId: this.myProps,
+          id: this.myProps,
           name: this.categoryName,
         })
         .then(() => {

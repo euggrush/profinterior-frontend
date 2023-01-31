@@ -2,7 +2,7 @@
   <div class="row row-cols-auto mt-3">
     <div
       v-for="category in categoriesList"
-      :key="category.categoryId"
+      :key="category.id"
       class="
         col
         bg-dark bg-gradient
@@ -30,7 +30,7 @@
       </button>
       <Transition name="bounce">
         <div
-          v-if="showEditForm == category.categoryId"
+          v-if="showEditForm == category.id"
           class="
             position-absolute
             bottom-0
@@ -49,7 +49,7 @@
             @click="closeEditForm"
           ></button>
           <EditCategoryForm
-            :myProps="category.categoryId"
+            :myProps="category.id"
             @closeForm="closeEditForm"
           />
         </div>
@@ -57,7 +57,7 @@
       <button
         type="button"
         class="btn btn-outline-info w-100 mt-3"
-        @click="getEditForm(category.categoryId)"
+        @click="getEditForm(category.id)"
       >
         Редактировать
       </button>

@@ -25,23 +25,23 @@
     <div
       class="mt-3 border-bottom text-center text-center"
       v-for="project in projectssList"
-      :key="project.projectId"
+      :key="project.id"
     >
       <button
         class="btn text-center p-0"
         type="button"
-        @click="getProjectInfo(project.projectId)"
+        @click="getProjectInfo(project.id)"
       >
         <img
           class="project-main-image"
-          :src="`${FILE_URL}${project.pictures[0].fullPath}`"
+          :src="`${FILE_URL}${project.pictures[0].path}`"
           width="300"
           alt="image"
         />
         <p class="mt-3 text-light">{{ project.title }}</p>
       </button>
       <Transition>
-        <article v-if="showProjectInfo == project.projectId" class="pb-3">
+        <article v-if="showProjectInfo == project.id" class="pb-3">
           <p class="text-light project-description">
             {{ project.description }}
           </p>
@@ -51,11 +51,11 @@
           >
             <img
               v-for="picture in project.pictures"
-              :key="`${FILE_URL}${picture.fullPath}`"
-              :src="`${FILE_URL}${picture.fullPath}`"
+              :key="`${FILE_URL}${picture.path}`"
+              :src="`${FILE_URL}${picture.path}`"
               class="img-thumbnail m-3 mb-lg-0 p-0 gallery-images"
               alt="image"
-              @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
+              @click="enlargePhoto(`${FILE_URL}${picture.path}`)"
             />
           </div>
         </article>
@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     projectssList() {
-      return this.$store.state.projects.projects ?? [];
+      return this.$store.state.projects ?? [];
     },
   },
   mounted() {
@@ -107,7 +107,7 @@ export default {
       this.largeImageUrl = arg;
     },
     getProjectsByCategory(id) {
-      this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
+      this.$store.dispatch(`GET_PROJECTS`, `?category_id=${id}`);
     },
     getProjectInfo(id) {
       if (this.showProjectInfo !== id) {

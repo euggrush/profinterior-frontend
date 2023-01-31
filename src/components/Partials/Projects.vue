@@ -57,7 +57,7 @@ export default {
     getRooms(arg) {
       this.$router.push({
         path: "/gallery",
-        query: { name: arg.name, id: arg.categoryId },
+        query: { name: arg.name, id: arg.id },
       });
     },
   },
