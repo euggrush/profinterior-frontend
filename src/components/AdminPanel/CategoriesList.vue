@@ -15,6 +15,7 @@
     >
       <p class="text-white-50">{{ category.name }}</p>
       <img
+        v-if="category.category_images.length > 0"
         :src="`${FILE_URL}${category.category_images[0].path}`"
         class="img-thumbnail border-0 p-0"
         alt="picture"
