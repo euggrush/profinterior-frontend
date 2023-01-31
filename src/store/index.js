@@ -134,7 +134,7 @@ export const store = new Vuex.Store({
       })
     },
     UPLOAD_PROJECT_IMAGES: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/upload?act=project&projectId=${payload.id}`, payload.asset).then(
+      Axios.post(`${BASE_URL_API}/upload`, payload).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_NEEDED_CHANGES`, data);
@@ -145,7 +145,7 @@ export const store = new Vuex.Store({
       })
     },
     DELETE_PROJECT_IMAGE: async (context, payload) => {
-      Axios.delete(`${BASE_URL_API}/pictures?pictureId=${payload}`).then(
+      Axios.delete(`${BASE_URL_API}/pictures/${payload}`).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_NEEDED_CHANGES`, data);

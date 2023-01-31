@@ -1,16 +1,12 @@
 <template>
   <ul class="nav nav-tabs mt-3">
-    <li
-      v-for="category in categoriesList"
-      :key="category.categoryId"
-      class="nav-item"
-    >
+    <li v-for="category in categoriesList" :key="category.id" class="nav-item">
       <button
         class="nav-link"
-        :class="{ active: defaultActive == category.categoryId }"
+        :class="{ active: defaultActive == category.id }"
         aria-current="page"
         type="button"
-        @click="getProjectsByCategory(category.categoryId)"
+        @click="getProjectsByCategory(category.id)"
       >
         {{ category.name }}
       </button>
@@ -39,7 +35,7 @@ export default {
   },
   computed: {
     categoriesList() {
-      return this.$store.state.categories.categories;
+      return this.$store.state.categories;
     },
   },
   mounted() {
@@ -59,7 +55,7 @@ export default {
     getProjectsByCategory(id) {
       this.$store.commit(`SET_PICKED_CATEGORY_ID`, id);
       this.defaultActive = id;
-      this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
+      this.$store.dispatch(`GET_PROJECTS`, `?category_id=${id}`);
     },
     getAllProjects() {
       this.$store.commit(`SET_PICKED_CATEGORY_ID`, `ALL`);

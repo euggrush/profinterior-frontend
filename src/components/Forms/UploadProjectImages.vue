@@ -23,13 +23,15 @@ export default {
   },
   methods: {
     uploadProjectPictures(event, project) {
-      let picture = event.target.files[0];
       const formData = new FormData();
-      formData.append(`asset`, picture);
-      this.$store.dispatch(`UPLOAD_PROJECT_IMAGES`, {
-        asset: formData,
-        id: project.projectId,
-      });
+
+      formData.append(`upload`, event.target.files[0]);
+
+      let meta = JSON.stringify({ project_id: project.id });
+
+      formData.append(`meta`, meta);
+
+      this.$store.dispatch(`UPLOAD_PROJECT_IMAGES`, formData);
     },
   },
 };

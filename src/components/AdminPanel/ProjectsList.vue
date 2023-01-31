@@ -10,26 +10,27 @@
         type="button"
         class="btn-close btn-close-white float-end p-0"
         aria-label="Close"
-        @click="deletePriject(project.projectId)"
+        @click="deleteProject(project.id)"
       ></button>
 
       <p class="text-white-50">{{ project.title }}</p>
       <p class="text-white-50">{{ project.description }}</p>
-      <p class="text-white-50">Категория: {{ project.categoryName }}</p>
-      <div v-if="project.pictures" class="row row-cols-auto row-cols-lg-4">
+      <p class="text-white-50">Категория: {{ project.categories.name }}</p>
+      <div class="row row-cols-auto row-cols-lg-4">
+        <!-- <div class="text-white">{{project}}</div> -->
         <div
           v-for="(picture, index) in project.pictures"
           :key="index"
           class="project-image col"
         >
           <img
-            :src="`${FILE_URL}${picture.fullPath}`"
+            :src="`${FILE_URL}${picture.path}`"
             class="img-thumbnail p-0 border-0"
             alt="picture"
           />
           <button
             class="btn btn-outline-danger w-100 mt-3"
-            @click="deleteImage(picture.pictureId)"
+            @click="deleteImage(picture.id)"
           >
             Удалить фото
           </button>
@@ -68,7 +69,7 @@ export default {
       return this.$store.state.is_changes_needed;
     },
     projectssList() {
-      return this.$store.state.projects.projects ?? [];
+      return this.$store.state.projects ?? [];
     },
   },
   methods: {
@@ -79,11 +80,11 @@ export default {
         this.$store.dispatch(`GET_PROJECTS`, ``);
       }
     },
-    deletePriject(id) {
+    deleteProject(id) {
       let isExecuted = confirm("Удалить проект?");
       if (isExecuted) {
         this.$store
-          .dispatch(`DELETE_PROJECT`, `?projectId=${id}`)
+          .dispatch(`DELETE_PROJECT`, `/${id}`)
           .then(() => {
             this.fetchProjects(this.getPicketCategoryId);
           })
