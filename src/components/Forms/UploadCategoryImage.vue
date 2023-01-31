@@ -25,10 +25,10 @@ export default {
     uploadCategoryPicture(event, category) {
       let picture = event.target.files[0];
       const formData = new FormData();
-      formData.append(`asset`, picture);
+      formData.append(`upload`, picture);
       this.$store.dispatch(`UPLOAD_CATEGORY_PICTURE`, {
-        asset: formData,
-        id: category.categoryId,
+        upload: formData,
+        category_id: category.id,
       });
     },
   },

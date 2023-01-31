@@ -15,7 +15,7 @@
     >
       <p class="text-white-50">{{ category.name }}</p>
       <img
-        :src="`${FILE_URL}${category.picture}`"
+        :src="`${FILE_URL}${category.category_images[0].path}`"
         class="img-thumbnail border-0 p-0"
         alt="picture"
       />
@@ -23,7 +23,7 @@
       <button
         type="button"
         class="btn btn-outline-danger w-100"
-        @click="deleteCategory(category.categoryId)"
+        @click="deleteCategory(category.id)"
       >
         Удалить
       </button>
@@ -88,7 +88,7 @@ export default {
   },
   computed: {
     categoriesList() {
-      return this.$store.state.categories.categories;
+      return this.$store.state.categories;
     },
     isChangesNeede() {
       return this.$store.state.is_changes_needed;
@@ -105,11 +105,9 @@ export default {
       console.log(id);
       let isExecuted = confirm("Удалить категонию?");
       if (isExecuted) {
-        this.$store
-          .dispatch(`DELETE_CATEGORY`, `?categoryId=${id}`)
-          .then(() => {
-            this.fetchCategories();
-          });
+        this.$store.dispatch(`DELETE_CATEGORY`, `/${id}`).then(() => {
+          this.fetchCategories();
+        });
       }
     },
     getEditForm(id) {

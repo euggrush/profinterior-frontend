@@ -191,7 +191,7 @@ export const store = new Vuex.Store({
       })
     },
     UPLOAD_CATEGORY_PICTURE: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/upload?act=category&categoryId=${payload.id}`, payload.asset).then(
+      Axios.post(`${BASE_URL_API}/upload/category-picture`, payload).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_NEEDED_CHANGES`, data);
@@ -220,15 +220,15 @@ export const store = new Vuex.Store({
     }, payload) {
       return new Promise((resolve, reject) => {
         Axios({
-            url: `${BASE_URL_API}/authorization`,
+            url: `${BASE_URL_API}/user/auth`,
             data: payload,
             method: `POST`
           })
           .then(resp => {
-            console.log(resp)
-            const token = resp.data.token;
-            const user = resp.data.name;
-            const role = resp.data.role;
+            // console.log(resp)
+            const token = resp.data.accessToken;
+            const user = resp.data.user.name;
+            const role = resp.data.user.role;
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             commit('auth_success', {
