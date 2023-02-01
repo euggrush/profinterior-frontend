@@ -30,10 +30,16 @@ export default {
   },
   methods: {
     modifyCategory() {
+      const yourKeyVariable = `name`;
+      const someValueArray = this.categoryName;
+
+      const payloadBody = {
+        [yourKeyVariable]: someValueArray,
+      };
       this.$store
         .dispatch(`MODIFY_CATEGORY`, {
           id: this.myProps,
-          name: this.categoryName,
+          body: payloadBody,
         })
         .then(() => {
           this.name = ``;

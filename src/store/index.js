@@ -180,7 +180,7 @@ export const store = new Vuex.Store({
       })
     },
     MODIFY_CATEGORY: async (context, payload) => {
-      Axios.put(`${BASE_URL_API}/categories`, payload).then(
+      Axios.put(`${BASE_URL_API}/categories/${payload.id}`, payload.body).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_NEEDED_CHANGES`, data);
