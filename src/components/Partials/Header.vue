@@ -47,7 +47,7 @@ export default {
         0,
         document.getElementById(`signup`).getBoundingClientRect().y +
           window.scrollY -
-          120
+          120 || null
       );
     },
   },

@@ -48,7 +48,9 @@
             >
           </li>
           <li class="nav-item">
-            <a class="nav-link numbers" href="tel:+79196123812">+7 (919) 612-38-12</a>
+            <a class="nav-link numbers" href="tel:+79196123812"
+              >+7 (919) 612-38-12</a
+            >
           </li>
           <li v-if="this.$store.state.status === 'success'" class="nav-item">
             <button type="button" class="nav-link btn" @click="logout">
@@ -82,7 +84,7 @@ export default {
         0,
         document.getElementById(arg).getBoundingClientRect().y +
           window.scrollY -
-          60
+          60 || null
       );
     },
   },
