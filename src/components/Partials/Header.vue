@@ -14,7 +14,7 @@
       playsinline
       loop
     >
-      <source src="../../assets/video/header-backgound.mp4" type="video/mp4" />
+      <source :src="`${FILE_URL}/img/header-backgound.mp4`" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="text-center" id="content">
@@ -40,7 +40,14 @@
 </template>
 
 <script>
+import { BASE_FILE_URL } from "../../constants";
+
 export default {
+  data() {
+    return {
+      FILE_URL: `${BASE_FILE_URL}`,
+    };
+  },
   methods: {
     scrollToContent() {
       window.scrollTo(
