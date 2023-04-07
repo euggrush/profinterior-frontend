@@ -2814,7 +2814,9 @@ textarea.form-control-lg {
   border-bottom-right-radius: 0;
 }
 .input-group
-  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {
+  > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(
+    .valid-feedback
+  ):not(.invalid-tooltip):not(.invalid-feedback) {
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
@@ -11875,45 +11877,12 @@ html {
   background-attachment: scroll;
   background-size: cover;
 }
-// .masthead h1,
-// .masthead .h1 {
-//   font-size: 2.5rem;
-//   line-height: 2.5rem;
-//   letter-spacing: 0.8rem;
-//   background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
-//   -webkit-text-fill-color: transparent;
-//   -webkit-background-clip: text;
-//   background-clip: text;
-// }
-// .masthead h2,
-// .masthead .h2 {
-//   max-width: 20rem;
-//   font-size: 1rem;
-// }
-// @media (min-width: 768px) {
-//   .masthead h1,
-//   .masthead .h1 {
-//     font-size: 4rem;
-//     line-height: 4rem;
-//   }
-// }
 @media (min-width: 992px) {
   .masthead {
     height: 100vh;
     min-height: 100vh;
     padding: 0;
   }
-  // .masthead h1,
-  // .masthead .h1 {
-  //   font-size: 6.5rem;
-  //   line-height: 6.5rem;
-  //   letter-spacing: 0.8rem;
-  // }
-  // .masthead h2,
-  // .masthead .h2 {
-  //   max-width: 30rem;
-  //   font-size: 1.25rem;
-  // }
 }
 .projects-section {
   padding: 10rem 0;
