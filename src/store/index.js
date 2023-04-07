@@ -134,7 +134,7 @@ export const store = new Vuex.Store({
       })
     },
     UPLOAD_PROJECT_IMAGES: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/upload?act=project&projectId=${payload.id}`, payload.asset).then(
+      Axios.post(`${BASE_URL_API}/upload`, payload).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_NEEDED_CHANGES`, data);
@@ -145,7 +145,7 @@ export const store = new Vuex.Store({
       })
     },
     DELETE_PROJECT_IMAGE: async (context, payload) => {
-      Axios.delete(`${BASE_URL_API}/pictures?pictureId=${payload}`).then(
+      Axios.delete(`${BASE_URL_API}/pictures/${payload}`).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_NEEDED_CHANGES`, data);
@@ -169,19 +169,29 @@ export const store = new Vuex.Store({
       })
     },
     DELETE_CATEGORY: async (context, payload) => {
-      Axios.delete(`${BASE_URL_API}/categories${payload}`).catch((error) => {
+      Axios.delete(`${BASE_URL_API}/categories${payload}`).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_NEEDED_CHANGES`, data);
+        }
+      ).catch((error) => {
         alert(`something went wrong, please try again`);
         context.commit(`SET_GENERAL_ERRORS`, error);
       })
     },
     MODIFY_CATEGORY: async (context, payload) => {
-      Axios.put(`${BASE_URL_API}/categories`, payload).catch((error) => {
+      Axios.put(`${BASE_URL_API}/categories/${payload.id}`, payload.body).then(
+        resp => {
+          let data = resp.data;
+          context.commit(`SET_NEEDED_CHANGES`, data);
+        }
+      ).catch((error) => {
         context.commit(`SET_GENERAL_ERRORS`, error);
         alert(`something went wrong, please try again`);
       })
     },
     UPLOAD_CATEGORY_PICTURE: async (context, payload) => {
-      Axios.post(`${BASE_URL_API}/upload?act=category&categoryId=${payload.id}`, payload.asset).then(
+      Axios.post(`${BASE_URL_API}/upload/category-picture`, payload).then(
         resp => {
           let data = resp.data;
           context.commit(`SET_NEEDED_CHANGES`, data);
@@ -210,15 +220,15 @@ export const store = new Vuex.Store({
     }, payload) {
       return new Promise((resolve, reject) => {
         Axios({
-            url: `${BASE_URL_API}/authorization`,
+            url: `${BASE_URL_API}/user/auth`,
             data: payload,
             method: `POST`
           })
           .then(resp => {
-            console.log(resp)
-            const token = resp.data.token;
-            const user = resp.data.name;
-            const role = resp.data.role;
+            // console.log(resp)
+            const token = resp.data.accessToken;
+            const user = resp.data.user.name;
+            const role = resp.data.user.role;
             Axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
             commit('auth_success', {

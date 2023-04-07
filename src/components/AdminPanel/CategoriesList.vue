@@ -2,12 +2,21 @@
   <div class="row row-cols-auto mt-3">
     <div
       v-for="category in categoriesList"
-      :key="category.categoryId"
-      class="col bg-dark bg-gradient rounded m-1 p-3 category-item"
+      :key="category.id"
+      class="
+        col
+        bg-dark bg-gradient
+        rounded
+        m-1
+        p-3
+        category-item
+        position-relative
+      "
     >
       <p class="text-white-50">{{ category.name }}</p>
       <img
-        :src="`${FILE_URL}${category.picture}`"
+        v-if="category.category_images.length > 0"
+        :src="`${FILE_URL}${category.category_images[0].path}`"
         class="img-thumbnail border-0 p-0"
         alt="picture"
       />
@@ -15,21 +24,40 @@
       <button
         type="button"
         class="btn btn-outline-danger w-100"
-        @click="deleteCategory(category.categoryId)"
+        @click="deleteCategory(category.id)"
       >
         Удалить
       </button>
       <Transition name="bounce">
-        <EditCategoryForm
-          :myProps="category.categoryId"
-          v-if="showEditForm == category.categoryId"
-        />
+        <div
+          v-if="showEditForm == category.id"
+          class="
+            position-absolute
+            bottom-0
+            start-0
+            w-100
+            bg-light
+            p-3
+            border border-info
+            mb-3
+          "
+        >
+          <button
+            type="button"
+            class="btn-close float-end mb-3"
+            aria-label="Close"
+            @click="closeEditForm"
+          ></button>
+          <EditCategoryForm
+            :myProps="category.id"
+            @closeForm="closeEditForm"
+          />
+        </div>
       </Transition>
       <button
         type="button"
         class="btn btn-outline-info w-100 mt-3"
-        @click="getEditForm(category.categoryId)"
-        disabled
+        @click="getEditForm(category.id)"
       >
         Редактировать
       </button>
@@ -61,7 +89,7 @@ export default {
   },
   computed: {
     categoriesList() {
-      return this.$store.state.categories.categories;
+      return this.$store.state.categories;
     },
     isChangesNeede() {
       return this.$store.state.is_changes_needed;
@@ -78,7 +106,7 @@ export default {
       console.log(id);
       let isExecuted = confirm("Удалить категонию?");
       if (isExecuted) {
-        this.$store.dispatch(`DELETE_CATEGORY`, `?id=${id}`).then(() => {
+        this.$store.dispatch(`DELETE_CATEGORY`, `/${id}`).then(() => {
           this.fetchCategories();
         });
       }
@@ -89,6 +117,9 @@ export default {
       } else {
         this.showEditForm = false;
       }
+    },
+    closeEditForm() {
+      this.showEditForm = false;
     },
   },
 };
@@ -112,7 +143,6 @@ export default {
 }
 .category-item:hover {
   box-shadow: 0px 0px 50px rgba(149, 30, 30, 0.6);
-  font-weight: bold;
   cursor: pointer;
 }
 </style>

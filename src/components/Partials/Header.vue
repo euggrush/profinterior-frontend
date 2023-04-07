@@ -14,7 +14,7 @@
       playsinline
       loop
     >
-      <source src="../../assets/video/header-backgound.mp4" type="video/mp4" />
+      <source :src="`${FILE_URL}/img/header-backgound.mp4`" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
     <div class="text-center" id="content">
@@ -40,14 +40,21 @@
 </template>
 
 <script>
+import { BASE_FILE_URL } from "../../constants";
+
 export default {
+  data() {
+    return {
+      FILE_URL: `${BASE_FILE_URL}`,
+    };
+  },
   methods: {
     scrollToContent() {
       window.scrollTo(
         0,
         document.getElementById(`signup`).getBoundingClientRect().y +
           window.scrollY -
-          120
+          120 || null
       );
     },
   },
@@ -69,15 +76,15 @@ h1 {
     width: 528px;
   }
   @include media-breakpoint-up(lg) {
-    width: 430px;
+    width: 50%;
     min-height: 100vh;
   }
-  @include media-breakpoint-up(xl) {
-    width: 430px;
-  }
-  @include media-breakpoint-up(xxl) {
-    width: 700px;
-  }
+  // @include media-breakpoint-up(xl) {
+  //   width: 430px;
+  // }
+  // @include media-breakpoint-up(xxl) {
+  //   width: 700px;
+  // }
 }
 #content {
   z-index: 2;
@@ -92,14 +99,14 @@ h1 {
     width: 66vw;
   }
   @include media-breakpoint-up(lg) {
-    width: 40vw;
+    width: 47%;
   }
-  @include media-breakpoint-up(xl) {
-    width: 34vw;
-  }
-  @include media-breakpoint-up(xxl) {
-    width: 35vw;
-  }
+  // @include media-breakpoint-up(xl) {
+  //   width: 34vw;
+  // }
+  // @include media-breakpoint-up(xxl) {
+  //   width: 35vw;
+  // }
 }
 .design-quote-image {
   width: 80vw;

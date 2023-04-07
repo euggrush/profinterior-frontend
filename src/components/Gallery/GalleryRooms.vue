@@ -21,26 +21,45 @@
       v-click-outside="hideLargePhoto"
       @click="hideLargePhoto"
     />
-    <h1 class="text-white border-bottom pb-3">{{ title }}</h1>
+    <h3 class="text-light border-bottom">{{ title }}</h3>
     <div
-      class="p-3 border-bottom"
+      class="mt-3 border-bottom text-center text-center"
       v-for="project in projectssList"
       :key="project.id"
     >
-      <h2 class="text-light">{{ project.title }}</h2>
-      <p class="text-light fst-italic mt-3">
-        {{ project.description }}
-      </p>
-      <div class="row gap-3" v-if="project.pictures.length > 0">
+      <button
+        class="btn text-center p-0"
+        type="button"
+        @click="getProjectInfo(project.id)"
+      >
         <img
-          v-for="picture in project.pictures"
-          :key="picture.pictureId"
-          :src="`${FILE_URL}${picture.fullPath}`"
-          class="img-thumbnail p-0 col gallery-images"
+          class="project-main-image"
+          :src="`${FILE_URL}${project.pictures[0].path}`"
+          width="300"
           alt="image"
-          @click="enlargePhoto(`${FILE_URL}${picture.fullPath}`)"
         />
-      </div>
+        <p class="mt-3 text-light">{{ project.title }}</p>
+      </button>
+      <Transition>
+        <article v-if="showProjectInfo == project.id" class="pb-3">
+          <p class="text-light project-description">
+            {{ project.description }}
+          </p>
+          <div
+            class="m-0 d-flex flex-wrap justify-content-center"
+            v-if="project.pictures.length > 0"
+          >
+            <img
+              v-for="picture in project.pictures"
+              :key="`${FILE_URL}${picture.path}`"
+              :src="`${FILE_URL}${picture.path}`"
+              class="img-thumbnail m-3 mb-lg-0 p-0 gallery-images"
+              alt="image"
+              @click="enlargePhoto(`${FILE_URL}${picture.path}`)"
+            />
+          </div>
+        </article>
+      </Transition>
     </div>
   </section>
 </template>
@@ -53,6 +72,7 @@ import { BASE_FILE_URL } from "../../constants";
 export default {
   data() {
     return {
+      showProjectInfo: false,
       showLargeImage: false,
       largeImageUrl: ``,
       FILE_URL: `${BASE_FILE_URL}`,
@@ -61,7 +81,7 @@ export default {
   },
   computed: {
     projectssList() {
-      return this.$store.state.projects.projects ?? [];
+      return this.$store.state.projects ?? [];
     },
   },
   mounted() {
@@ -81,38 +101,55 @@ export default {
       this.unfadePage(`.gallery-page`, `.gallery-images`);
     },
     enlargePhoto(arg) {
-      this.scrollToTop();
+      // this.scrollToTop();
       this.fadePage(`.gallery-page`, `.gallery-images`);
       this.showLargeImage = true;
       this.largeImageUrl = arg;
     },
     getProjectsByCategory(id) {
-      this.$store.dispatch(`GET_PROJECTS`, `?categoryId=${id}`);
+      this.$store.dispatch(`GET_PROJECTS`, `?category_id=${id}`);
+    },
+    getProjectInfo(id) {
+      if (this.showProjectInfo !== id) {
+        this.showProjectInfo = id;
+      } else {
+        this.showProjectInfo = false;
+      }
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.gallery-page {
+  font-size: $font-size-micro;
+  @include media-breakpoint-up(md) {
+    font-size: $font-size-mobile;
+  }
+}
 .container-fluid {
   background-color: $mainBlack;
-  padding-top: 10em;
+  padding-top: 6em;
   min-height: 100vh;
 }
-.img-thumbnail {
+.project-main-image {
+  width: auto;
+  max-width: 300px;
+  height: auto;
+  max-height: 300px;
+  @include media-breakpoint-up(lg) {
+    max-width: 500px;
+    max-height: 800px;
+  }
+}
+.gallery-images {
   background-color: $mainBlack !important;
   border: none !important;
-}
-
-img {
-  width: 100%;
+  width: auto;
+  max-height: 600px;
   transition: all 2s ease-in-out;
   box-shadow: 0 8px 16px rgb(0 0 0 / 76%);
   cursor: pointer;
-
-  @include media-breakpoint-up(lg) {
-    width: 10%;
-  }
 }
 .large-image {
   display: block;
@@ -121,17 +158,22 @@ img {
   margin-top: 1em;
   z-index: 2;
 }
-// .fade {
-//   animation: fadeInAnimation ease 3s;
-//   animation-iteration-count: 1;
-//   animation-fill-mode: forwards;
-// }
-// @keyframes fadeInAnimation {
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// }
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+.btn-check:focus + .btn,
+.btn:focus {
+  box-shadow: none;
+}
+.project-description {
+  @include media-breakpoint-up(lg) {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
 </style>

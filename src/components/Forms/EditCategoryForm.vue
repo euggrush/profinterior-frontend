@@ -1,8 +1,5 @@
 <template>
-  <form
-    @submit.prevent="modifyCategory"
-    class="border border-info mt-3 mb-1 p-3"
-  >
+  <form @submit.prevent="modifyCategory">
     <input
       type="text"
       class="form-control"
@@ -27,19 +24,26 @@ export default {
   },
   props: {
     myProps: {
-      type: String,
-      default: ``,
+      type: Number,
+      default: 0,
     },
   },
   methods: {
     modifyCategory() {
+      const yourKeyVariable = `name`;
+      const someValueArray = this.categoryName;
+
+      const payloadBody = {
+        [yourKeyVariable]: someValueArray,
+      };
       this.$store
         .dispatch(`MODIFY_CATEGORY`, {
-          categoryId: this.myProps,
-          name: this.categoryName,
+          id: this.myProps,
+          body: payloadBody,
         })
         .then(() => {
           this.name = ``;
+          this.$emit(`closeForm`, { close: true });
         });
     },
   },

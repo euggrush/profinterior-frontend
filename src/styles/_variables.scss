@@ -1,3 +1,59 @@
+:root {
+  --bs-blue: #0d6efd;
+  --bs-indigo: #6610f2;
+  --bs-purple: #7464a1;
+  --bs-pink: #d63384;
+  --bs-red: #a16468;
+  --bs-orange: #fd7e14;
+  --bs-yellow: #e4c662;
+  --bs-green: #67c29c;
+  --bs-teal: #64a19d;
+  --bs-cyan: #1cabc4;
+  --bs-white: #fff;
+  --bs-gray: #6c757d;
+  --bs-gray-dark: #343a40;
+  --bs-gray-100: #f8f9fa;
+  --bs-gray-200: #e9ecef;
+  --bs-gray-300: #dee2e6;
+  --bs-gray-400: #ced4da;
+  --bs-gray-500: #adb5bd;
+  --bs-gray-600: #6c757d;
+  --bs-gray-700: #495057;
+  --bs-gray-800: #343a40;
+  --bs-gray-900: #212529;
+  --bs-primary: #64a19d;
+  --bs-secondary: #7464a1;
+  --bs-success: #67c29c;
+  --bs-info: #1cabc4;
+  --bs-warning: #e4c662;
+  --bs-danger: #a16468;
+  --bs-light: #f8f9fa;
+  --bs-dark: #212529;
+  --bs-black: #000;
+  --bs-white: #fff;
+  --bs-primary-rgb: 100, 161, 157;
+  --bs-secondary-rgb: 116, 100, 161;
+  --bs-success-rgb: 103, 194, 156;
+  --bs-info-rgb: 28, 171, 196;
+  --bs-warning-rgb: 228, 198, 98;
+  --bs-danger-rgb: 161, 100, 104;
+  --bs-light-rgb: 248, 249, 250;
+  --bs-dark-rgb: 33, 37, 41;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-body-color-rgb: 33, 37, 41;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-gradient: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0));
+  --bs-body-font-size: 1rem;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #212529;
+  --bs-body-bg: #fff;
+}
+
 $grid-breakpoints: (xs: 0,
   sm: 576px,
   md: 768px,
@@ -8,7 +64,7 @@ $grid-breakpoints: (xs: 0,
 $mainWhite: #fff;
 $mainBlack: #000;
 $mainGray: rgb(51, 51, 53);
-$font-size-micro : 10px;
+$font-size-micro : 12px;
 $font-size-mobile : 14px;
 $font-size-small : 16px;
 $font-size-medium : 16px;
@@ -30,6 +86,13 @@ $font-size-xxl : 18px;
 }
 
 @font-face {
+  font-family: "Montserrat";
+  font-weight: 300;
+  font-style: normal;
+  src: url("~@/assets/fonts/MONTSERRAT-LIGHT.TTF") format("opentype");
+}
+
+@font-face {
   font-family: "Coco Gothic";
   font-weight: 400;
   font-style: normal;
@@ -41,4 +104,48 @@ $font-size-xxl : 18px;
   font-weight: 700;
   font-style: normal;
   src: url("~@/assets/fonts/COCO\ GOTHIC\ BOLD-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 900;
+  font-style: normal;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ HEAVY-TRIAL.TTF") format("opentype");
+}
+
+// ITALIC
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 100;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ ULTRALIGHT\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 300;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ LIGHT\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 400;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 700;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ BOLD\ ITALIC-TRIAL.TTF") format("opentype");
+}
+
+@font-face {
+  font-family: "Coco Gothic";
+  font-weight: 900;
+  font-style: italic;
+  src: url("~@/assets/fonts/COCO\ GOTHIC\ HEAVY\ ITALIC-TRIAL.TTF") format("opentype");
 }

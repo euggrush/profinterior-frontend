@@ -4,7 +4,7 @@
     <div class="container px-4 px-lg-5">
       <h2 class="text-center mb-lg-5">Галерея</h2>
       <div
-        v-for="(category, index) in categoriesList.categories"
+        v-for="(category, index) in categoriesList"
         :key="index"
         class="row gx-0 mt-5 mt-lg-0 justify-content-center"
         @click="getRooms(category)"
@@ -12,7 +12,7 @@
         <div class="col-lg-6">
           <img
             class="img-fluid w-100"
-            :src="`${FILE_URL}${category.picture}`"
+            :src="`${FILE_URL}${category.category_images[0].path}`"
             alt="image"
           />
         </div>
@@ -57,7 +57,7 @@ export default {
     getRooms(arg) {
       this.$router.push({
         path: "/gallery",
-        query: { name: arg.name, id: arg.categoryId },
+        query: { name: arg.name, id: arg.id },
       });
     },
   },

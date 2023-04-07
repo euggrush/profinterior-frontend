@@ -23,13 +23,15 @@ export default {
   },
   methods: {
     uploadCategoryPicture(event, category) {
-      let picture = event.target.files[0];
       const formData = new FormData();
-      formData.append(`asset`, picture);
-      this.$store.dispatch(`UPLOAD_CATEGORY_PICTURE`, {
-        asset: formData,
-        id: category.categoryId,
-      });
+
+      formData.append(`upload`, event.target.files[0]);
+
+      let meta = JSON.stringify({ category_id: category.id });
+
+      formData.append(`meta`, meta);
+
+      this.$store.dispatch(`UPLOAD_CATEGORY_PICTURE`, formData);
     },
   },
 };
