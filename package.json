@@ -10,25 +10,22 @@
     "deploy": "sh deploy.sh"
   },
   "dependencies": {
-    "core-js": "3.6.5",
-    "vue": "3.0.2",
+    "core-js": "^3.30.0",
+    "vue": "^3.0.0",
     "vue-router": "4.0.12",
     "vuex": "4.0.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.5.15",
-    "@vue/cli-plugin-eslint": "4.5.15",
-    "@vue/cli-plugin-router": "4.5.15",
-    "@vue/cli-plugin-vuex": "4.5.15",
-    "@vue/cli-service": "4.5.15",
-    "@vue/compiler-sfc": "3.0.0",
+    "@vue/cli-plugin-babel": "^5.0.8",
+    "@vue/cli-plugin-eslint": "^5.0.8",
+    "@vue/cli-plugin-router": "^5.0.8",
+    "@vue/cli-plugin-vuex": "^5.0.8",
+    "@vue/cli-service": "^5.0.8",
+    "@vue/compiler-sfc": "^3.0.0",
     "axios": "0.26.1",
     "babel-eslint": "10.1.0",
-    "dayjs": "1.10.8",
-    "eslint": "6.7.2",
+    "eslint": "7.5.0",
     "eslint-plugin-vue": "7.0.0",
-    "imagemin": "8.0.1",
-    "imagemin-webpack-plugin": "2.4.2",
     "sass": "1.26.5",
     "sass-loader": "8.0.2",
     "secure-ls": "1.2.6",
@@ -36,8 +33,7 @@
     "vue-cli-plugin-style-resources-loader": "0.1.5",
     "vue-click-outside": "1.1.0",
     "vuex-persistedstate": "4.1.0",
-    "vuex-persistedstate-migrate": "1.0.0",
-    "webpack": "4.46.0"
+    "webpack": "^5.78.0"
   },
   "eslintConfig": {
     "root": true,

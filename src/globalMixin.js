@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-const dayjs = require("dayjs");
+// const dayjs = require("dayjs");
 
 export default {
     methods: {
@@ -25,9 +25,9 @@ export default {
             ).getTime();
             return timestamp;
         },
-        getDate(date) {
-            return dayjs(date).format("MMMM D, YYYY h:mm A");
-        },
+        // getDate(date) {
+        //     return dayjs(date).format("MMMM D, YYYY h:mm A");
+        // },
         fadePage(arg1, arg2){
             let page = document.querySelector(arg1);
             let pics = document.querySelectorAll(arg2);

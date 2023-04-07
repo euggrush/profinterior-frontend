@@ -1,6 +1,4 @@
 const path = require('path')
-const ImageminPlugin = require('imagemin-webpack-plugin').default
-
 module.exports = {
   pluginOptions: {
     'style-resources-loader': {
@@ -11,7 +9,4 @@ module.exports = {
       ]
     },
   },
-  configureWebpack: {
-    plugins: [new ImageminPlugin()]
-  }
 }
