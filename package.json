@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": "16.6"
+  },  
   "name": "profinterior",
   "version": "0.1.0",
   "private": true,
